@@ -1,0 +1,32 @@
+body {
+  font-family: Arial;
+}
+
+#mapid {
+  background: #CCC;
+  position: absolute;
+
+  top: 0px;
+  bottom: 0px;
+  left: 0;
+
+  width: 75%;
+}
+
+#right {
+  position: absolute;
+
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+
+  width: 25%;
+}
+
+#states {
+  margin: 7px 15px;
+}
+
+ul {
+  
+}

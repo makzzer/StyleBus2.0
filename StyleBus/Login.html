@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../1/css/bootstrap.min.css">
+  <title>StyleBus</title>
+
+
+  <!--JQUERY-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <!-- Los iconos tipo Solid de Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <link rel="stylesheet" href="./login.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+
+</head>
+
+<body>
+
+  <div class="container">
+    <header class="row justify-content-between mt-3">
+
+
+
+      <div class="row mt-1">
+        <div class="col">
+          <ul class="nav nav-tabs">
+            <li class="nav-item"><a href="index.html" class="nav-link  text-light" aria-current="page">Home</a>
+            </li>
+
+
+            <li class="nav-item"><a href="#" class="nav-link  text-light">Paquetes</a>
+            </li>
+
+            <li class="nav-item"><a href="#" class="nav-link text-light ">Excursiones</a>
+            </li>
+
+            <li class="nav-item"><a href="#" class="nav-link active">Registrate</a>
+            </li>
+
+            <!--data-bs-toggle digo que voy a ejecutar la funcion dropdown-->
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" role="button"
+                aria-expanded="false">
+                Buscar
+              </a>
+
+              <ul class="dropdown-menu">
+                <li><a href="buscar_taller.html" class="dropdown-item">Buscar Talleres</a></li>
+                <li><a href="buscar_producto.html" class="dropdown-item">Buscar Productos</a></li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="row bg-dark">
+      <div class="col text-light text-right">
+        <h1 class="display-6 ">StyleBus.</h1>
+
+      </div>
+    </div>
+
+
+
+
+
+
+    <section class="vh-100 bg-image"
+    style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5 text-dark">Crear cuenta</h2>
+  
+                <form>
+  
+                  <div class="form-outline mb-4">
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                    <label class="form-label text-dark" for="form3Example1cg">Nombre</label>
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                    <label class="form-label text-dark" for="form3Example3cg">Apellido</label>
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                    <label class="form-label text-dark" for="form3Example4cg">Correo Electronico</label>
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                    <label class="form-label text-dark" for="form3Example4cdg">Contraseña</label>
+                  </div>
+  
+                  <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                    <label class="form-check-label" for="form2Example3g">
+                      I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                    </label>
+                  </div>
+  
+                  <div class="d-flex justify-content-center">
+                    <button type="button"
+                      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body text-dark">Register</button>
+                  </div>
+  
+                  <p class="text-center text-muted mt-5 mb-0 text-dark">Have already an account? <a href="#!"
+                      class="fw-bold text-body text-dark"><u>Login here</u></a></p>
+  
+                </form>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+
+        <!-- Twitter -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+        <!-- Google -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+
+        <!-- Instagram -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+
+
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2022 Copyright:
+      <a class="text-white" href="#!">StyleBus.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </header>
+
+
+
+
+
+
+
+  </div>
+  </div>
+
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

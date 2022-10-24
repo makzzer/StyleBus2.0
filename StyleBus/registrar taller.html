@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Taller</title>
+
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+
+</head>
+
+<body>
+
+    <!--btn btn-outline-primary probar en class botones, queda bien-->
+    <div class="container">
+        <header class="row justify-content-between mt-3">
+            <div class="row mt-5">
+                <div class="col">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">Inicio</a>
+                        </li>
+
+
+                        <li class="nav-item"><a href="publicar_articulo.html" class="nav-link">Publicar
+                                Articulo</a>
+                        </li>
+
+                        <li class="nav-item"><a href="registrar taller.html" class="nav-link active">Registrar
+                                Taller</a>
+                        </li>
+
+                        <!--data-bs-toggle digo que voy a ejecutar la funcion dropdown-->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button"
+                                aria-expanded="false">
+                                Buscar
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="buscar_taller.html" class="dropdown-item">Buscar Talleres</a></li>
+                                <li><a href="buscar_producto.html" class="dropdown-item">Buscar Productos</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </header>
+
+        <!--row align-items-center con eso alineo el Main y el ASIDE como tiene distinto 
+        padding me quedan desiguales pero alineadas al centro-->
+        <section class="contenedor-main row justify-content-evenly align-items-center mb-30">
+            <main class="col-md-6">
+                <h2>Registrar Taller</h2>
+
+                <form action="" id="formulario">
+                    <div class="mb-1">
+                        <label for="nombre-taller" class="form-label">Nombre del Taller</label>
+                        <input type="text" class="form-control" id="nombre-taller" >
+                    </div>
+
+                    <div class=" mb-1">
+                        <label for="descripcion" class="form-label">Descripcion</label>
+                        <textarea class="form-control" name="descripcion" id="descripcion" ></textarea>
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="telefono" class="form-label">Telefono de Contacto</label>
+                        <input type="number" class="form-control" id="telefono" >
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="localidad" class="form-label">Localidad</label>
+                        <input type="text" class="form-control" id="localidad" >
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="Calle" class="form-label">Calle</label>
+                        <input type="text" class="form-control" id="calle" >
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="altura" class="form-label">Altura</label>
+                        <input type="number" class="form-control" id="altura" >
+                    </div>
+
+                    <!--
+                    <div class="mb-1">
+                        <label for="ec1" class="form-label">Entre Calle 1</label>
+                        <input type="text" class="form-control" id="ec1">
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="ec2" class="form-label">Entre Calle 2</label>
+                        <input type="text" class="form-control" id="ec2">
+                    </div>-->
+
+                    <div class="col">
+
+                  
+                      <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#exampleModalCenter"
+                        id="boton_validar_direccion">
+                        Validar Dirección
+                      </button>
+
+                      <input type="submit" value="Registrar Taller" id="submit" class="btn btn-primary mt-1">
+                    </div>
+                </form>
+
+
+                <!-- Button trigger modal -->
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="col">
+                                    <ul id="resultado_normalizado">
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </main>
+
+
+
+            <aside class="col-md-6">
+                <form action="">
+                    <div class="mb-1">
+                        <hr>
+                        <h5>Actividades del taller</h5>
+                        <input type="checkbox" name="checkbox-boton-1" class="btn-check" id="checkbox-boton-1">
+                        <label for="checkbox-boton-1" class="btn btn-outline-primary">Manualidades</label>
+
+
+                        <input type="checkbox" name="checkbox-boton-2" class="btn-check" id="checkbox-boton-2">
+                        <label for="checkbox-boton-2" class="btn btn-outline-primary">Pintura</label>
+
+
+                        <input type="checkbox" name="checkbox-boton-3" class="btn-check" id="checkbox-boton-3">
+                        <label for="checkbox-boton-3" class="btn btn-outline-primary">Costura</label>
+
+                        <input type="checkbox" name="checkbox-boton-4" class="btn-check" id="checkbox-boton-4">
+                        <label for="checkbox-boton-4" class="btn btn-outline-primary">Escultura</label>
+
+                        <input type="checkbox" name="checkbox-boton-5" class="btn-check" id="checkbox-boton-5">
+                        <label for="checkbox-boton-5" class="btn btn-outline-primary">Artesanias</label>
+
+                        <input type="checkbox" name="checkbox-boton-6" class="btn-check" id="checkbox-boton-6">
+                        <label for="checkbox-boton-6" class="btn btn-outline-primary">Musica</label>
+
+                        <input type="checkbox" name="checkbox-boton-7" class="btn-check" id="checkbox-boton-7">
+                        <label for="checkbox-boton-7" class="btn btn-outline-primary">Pintura</label>
+
+                        <input type="checkbox" name="checkbox-boton-8" class="btn-check" id="checkbox-boton-8">
+                        <label for="checkbox-boton-8" class="btn btn-outline-primary">Botanica</label>
+
+                        <input type="checkbox" name="checkbox-boton-9" class="btn-check" id="checkbox-boton-9">
+                        <label for="checkbox-boton-9" class="btn btn-outline-primary">Computación</label>
+
+                        <input type="checkbox" name="checkbox-boton-10" class="btn-check" id="checkbox-boton-10">
+                        <label for="checkbox-boton-10" class="btn btn-outline-primary">Cerveza Artesanal</label>
+
+                        <input type="checkbox" name="checkbox-boton-11" class="btn-check" id="checkbox-boton-11">
+                        <label for="checkbox-boton-11" class="btn btn-outline-primary">Talabartería</label>
+
+                    </div>
+                    <hr>
+
+                    <h5>Categoría del taller</h5>
+                    <select name="categoria" id="categoria" class="form-select form-select-md mb-3"
+                        aria-label="Seleccion de categoria">
+                        <option value="manualidades">Manualidades</option>
+                        <option value="pintura">Pintura</option>
+                        <option value="artesanias">Artesanias</option>
+                        <option value="costura">Costura</option>
+                        <option value="escultura">Escultura</option>
+                    </select>
+
+
+                    <h5>Horario de atención</h5>
+                    <select name="actividad" id="actividad" class="form-select form-select-md mb-3"
+                        aria-label="Seleccion de actividad">
+                        <option value="manualidades">24 hs</option>
+                        <option value="pintura">Lu Vie 09 hs : 18 hs</option>
+                        <option value="artesanias">Solo Fines de Semana</option>
+                    </select>
+
+                    <hr>
+
+
+                </form>
+
+                <h5>Cargar foto de taller</h5>
+                <input type="file" class="form-control" name="" id=""> </input>
+                <hr>
+
+                <div class="col">
+
+                    
+
+
+
+    <!--
+                    <button class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#mi-modal-1"
+                        id="validar_taller_Boton">
+                         Registrar Taller </button>
+
+                         -->
+
+                    <div class="modal fade" id="mi-modal-1" tabindex="-1" aria-hidden="true"
+                        aria-labelledby="label-modal-1">
+
+                        <!--esta es nuestra caja de dialogo-->
+                        <div class="modal-dialog modal-dialog-centered">
+
+                            <!--contenido de la caja-->
+                            <div class="modal-content">
+                                <!--cuerpo de la caja -->
+
+                                <!--Encabezado de la caja -->
+                                <div class="modal-header">
+                                    <button class="btn-close" data-bs-dismiss="modal" aria-label="" Cerrar></button>
+                                </div>
+
+                                <!--cuerpo de la caja -->
+                                <div class="modal-body">
+                                    <h4 class="text-center">Taller registrado con éxito</h4>
+
+                                    <!--Pie de la caja -->
+                                    <div class="modal-footer">
+                                        <button class="btn btn-light" data-bs-dismiss="modal">Finalizar</button>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+    </div>
+    <!--
+    <div class=" col-6">
+        <img class="img-fluid float-end img-thumbnail mt-3" width="600" src="img/deadp.jpg" alt="">
+    </div>
+-->
+    </aside>
+
+    </section>
+
+    <hr>
+
+
+    <div class="container">
+
+        <section class="row widgets justify-content-between">
+            <div class="col-12 col-md-4 col-lg-3">
+            </div>
+
+
+            <div class="col-12 col-md-4 col-lg-3">
+            </div>
+
+
+            <div class="col-12 col-md-4 col-lg-3">
+            </div>
+
+
+
+        </section>
+
+
+        <footer class="row footer">
+            <div class="col">
+                <p>Todos los derechos reservados.</p>
+            </div>
+
+
+        </footer>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="validar_direccion.js"></script>
+
+</body>
+
+</html>

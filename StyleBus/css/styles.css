@@ -1,0 +1,137 @@
+body{
+    background-color: #292b2c;
+    color: #fff;
+}
+
+/*Margin bottom le da la separación*/
+header{
+    background: #2785ad;
+    padding: 1px;
+    margin-bottom: 0px;
+}
+
+.contenedor-main{
+margin-bottom: 2px;
+}
+
+/*esta es para poner colores en los text del navbar pero no la uso, llamo directamente a text-light*/
+.color-me{
+    color:rgb(255, 0, 195);
+}
+
+/*el padding en la parte de arriba y abajo de 20px*/
+main{
+    background: #fff;
+    color: #424242;
+    padding: 20px 0;
+
+}
+
+/*margen interno con el padding de 60px arriba y abajo y 0 a los costados*/
+aside{
+    background: #dee5e8;
+    color: #0d47a1;
+    margin-top: 20px;
+    padding: 10px;
+
+}
+
+
+
+.widgets{
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+
+
+/*todos los div que estan dentro de los widgets*/
+.widgets > div {
+    background: #2196f3;
+    color: #fff;
+    padding: 20px;
+
+}
+
+
+.footer{
+    padding: 20px 0;
+    background: #1e1e1e;
+    margin-top: auto;
+}
+
+
+.columna_comparativa{
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #4d5061;
+
+
+}
+
+
+.gradient-custom-3 {
+    /* fallback for old browsers */
+    background: #84fab0;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+    }
+    .gradient-custom-4 {
+    /* fallback for old browsers */
+    background: #84fab0;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+    }
+
+
+
+
+
+.columna_comparativa > .columna_comparativa{
+    padding: 80px;
+    border : none;
+    min-height: 300px;
+    max-height: 400px;
+
+}
+
+
+#mapid {
+    /*height: 500px;*/
+    /*width: 500px;*/
+    height: 100%;
+    width: calc(100% - 300px - 0.25em);
+    float: left;
+}
+
+
+@media (min-width: 1025px) {
+    .h-custom {
+    height: 100vh !important;
+    }
+    }
+
+
+.contenedor > footer{
+
+
+    padding: 20px 0;
+
+
+    position: fixed;
+    height: 50px;
+    margin-top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0; 
+    background: #1e1e1e;
+
+}

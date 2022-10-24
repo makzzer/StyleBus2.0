@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/js/bootstrap.bundle.min.js">
+    <title>Buscar Productos</title>
+
+
+
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+
+    <link rel="stylesheet" type="text/css" media="screen" href="client.css" />
+    <script src="config.js"></script>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+</head>
+
+
+<body onload="AgregarMapa();">
+    <div class="container">
+        <header class="row justify-content-between mt-3">
+            <div class="row mt-5">
+                <div class="col">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">Inicio</a>
+                        </li>
+
+
+                        <li class="nav-item"><a href="publicar_articulo.html" class="nav-link">Publicar
+                                Articulo</a>
+                        </li>
+
+                        <li class="nav-item"><a href="registrar taller.html" class="nav-link">Registrar
+                                Taller</a>
+                        </li>
+
+                        <!--data-bs-toggle digo que voy a ejecutar la funcion dropdown-->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" role="button"
+                                aria-expanded="false">
+                                Buscar
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="buscar_taller.html" class="dropdown-item">Buscar Talleres</a></li>
+                                <li><a href="buscar_producto.html" class="dropdown-item">Buscar Productos</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </header>
+
+
+
+        <div class="container mt-3">
+            <div class="col bg-light text-dark">
+                <h4 class="text-center display-4">Buscar producto</h4>
+                Categorias:
+                <select id="categoria">
+                    <option value="Musica">Musica</option>>
+                    <option value="Artesania">Artesania</option>>
+                    <option value="Pintura">Pintura</option>>
+                    <option value="Costura">Costura</option>>
+                    <option selected value="">Ver Todas</option>
+                </select>
+                <input type="text" id="formulario" class="form-control my-2">
+                <ul id="resultado">
+                    <li></li>
+                </ul>
+
+
+                <div class="col">
+                    <button class="btn btn-primary mt-2 mb-2" id="btnfiltrar">Encontrar Producto</button>
+                    <button class="btn btn-danger mt-2 mb-2" id="btnvertodos">Ver todos</button>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="col text-center bg-info">
+                <h1 class="text-center text-dark">Articulos Disponibles</h1>
+            </div>
+            <div class="row">
+                <div class="col-12 bg-light mt-3">
+                    <figure class="figure" id="piano">
+                        <img class="img-fluid rounded" src="img/piano.jpg" width="400" alt="">
+                        <figcaption>
+                            <p class="text-center text-dark">Piano</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="figure" id="guitarra" >
+                        <img class="img-fluid rounded" src="img/guitarra.jpg" width="400" alt="">
+                        <figcaption>
+                            <p class="text-center text-dark">Guitarra</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="figure" id="silla">
+                        <img class="img-fluid rounded" src="img/silla.jpg" width="400" alt="">
+                        <figcaption>
+                            <p class="text-center text-dark"> Silla</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="figure" id="jarron">
+                        <img class="img-fluid rounded" src="img/jarron.jpg" width="400" alt="">
+                        <figcaption>
+                            <p class="text-center text-dark">Jarrón</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="figure" id="mono liso">
+                        <img class="img-fluid rounded" src="img/monoliso.jpg" width="400" alt="">
+                        <figcaption>
+                            <p class="text-center text-dark"> Mono Liso</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="figure" id="charango">
+                        <img class="img-fluid rounded" src="img/charango.jpg" width="400" alt="">
+                        <figcaption>
+                            <p class="text-center text-dark">Charango</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="figure" id="bateria">
+                        <img class="img-fluid rounded" src="img/bateria.jpg" width="400" alt="">
+                        <figcaption>
+                            <p class="text-center text-dark">Batería</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="figure" id="mesa">
+                        <img class="img-fluid rounded" src="img/mesa.jpg" width="400" alt="">
+                        <figcaption>
+                            <p class="text-center text-dark">Mesa</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="figure" id="florero">
+                        <img class="img-fluid rounded" src="img/florero.jpg" width="400" alt="">
+                        <figcaption>
+                            <p class="text-center text-dark">Florero</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+
+
+            <section class="row widgets justify-content-between">
+                <div class="col-12 col-md-4 col-lg-3">
+                </div>
+        
+        
+                <div class="col-12 col-md-4 col-lg-3">
+                </div>
+        
+        
+                <div class="col-12 col-md-4 col-lg-3">
+                </div>
+        
+        
+        
+            </section>
+        
+        
+        
+            <footer class="row footer">
+                <div class="col">
+                    <p>Todos los derechos reservados.</p>
+                </div>
+        
+        
+            </footer>
+            
+        </div>
+
+
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script src="buscar_producto.js"></script>
+
+
+
+
+
+</body>
+
+</html>
