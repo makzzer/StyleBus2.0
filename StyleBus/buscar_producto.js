@@ -24,6 +24,8 @@ var Producto = [
   { nombre: 'Mesa', categoria: 'Artesania', tipo: 'muestra', telefono: 1160685639, obtencion: "por pedido" },
   { nombre: 'Florero', categoria: 'Artesania', tipo: 'muestra', telefono: 1160685638, obtencion: "Agotado hasta el martes en la tienda" }
 ]
+
+
 const formulario = document.querySelector('#formulario');
 
 const categoria = document.querySelector('#categoria');
