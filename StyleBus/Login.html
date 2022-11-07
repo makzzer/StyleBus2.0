@@ -2,181 +2,217 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../1/css/bootstrap.min.css">
-  <title>StyleBus</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../1/css/bootstrap.min.css">
+    <title>StyleBus</title>
 
 
-  <!--JQUERY-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-  <!-- Los iconos tipo Solid de Fontawesome-->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
-  <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="./login.css">
 
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
-  <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 
 
 </head>
 
 <body>
 
-  <div class="container">
-    <header class="row justify-content-between mt-1">
 
 
 
-      <div class="row mt-1">
-        <div class="col">
-          <ul class="nav nav-tabs">
-            <li class="nav-item"><a href="index.html" class="nav-link  text-light" aria-current="page">Home</a>
-            </li>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
 
 
-            <li class="nav-item"><a href="#" class="nav-link  text-light">Paquetes</a>
-            </li>
-
-            <li class="nav-item"><a href="#" class="nav-link text-light ">Excursiones</a>
-            </li>
-
-            <li class="nav-item"><a href="#" class="nav-link active">Registrate</a>
-            </li>
-
-            <!--data-bs-toggle digo que voy a ejecutar la funcion dropdown-->
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" role="button"
-                aria-expanded="false">
-                Buscar
-              </a>
-
-              <ul class="dropdown-menu">
-                <li><a href="buscar_taller.html" class="dropdown-item">Buscar Paqu</a></li>
-                <li><a href="buscar_producto.html" class="dropdown-item">Buscar Productos</a></li>
-              </ul>
-            </li>
-
-          </ul>
-        </div>
-
-      </div>
-
-    </header>
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar de la marca -->
 
 
-    <div class="row bg-dark">
-      <div class="col text-light text-right">
-        <h1 class="display-6 ">StyleBus.</h1>
+                <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+                    <div class="col text-light text-right">
+                        <h1 class="display-6 ">StyleBus.</h1>
+                    </div>
+                </a>
 
-      </div>
-    </div>
+                <div class="d-flex" style="height: 22px; width : 2px; color: black;">
+                    <div class="vr"></div>
+                </div>
 
+                <!-- links de la izquierda -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-    <section class="vh-100 bg-image"
-    style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
-    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-      <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-            <div class="card" style="border-radius: 15px;">
-              <div class="card-body p-5">
-                <h2 class="text-uppercase text-center mb-5 text-dark">Crear cuenta</h2>
-  
-                <form>
-  
-                  <div class="form-outline mb-4">
-                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                    <label class="form-label text-dark" for="form3Example1cg">Nombre</label>
-                  </div>
-  
-                  <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                    <label class="form-label text-dark" for="form3Example3cg">Apellido</label>
-                  </div>
-  
-                  <div class="form-outline mb-4">
-                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                    <label class="form-label text-dark" for="form3Example4cg">Correo Electronico</label>
-                  </div>
-  
-                  <div class="form-outline mb-4">
-                    <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                    <label class="form-label text-dark" for="form3Example4cdg">Contraseña</label>
-                  </div>
-  
-                  <div class="form-check d-flex justify-content-center mb-5">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                    <label class="form-check-label" for="form2Example3g">
-                      I agree all statements in <a href="#!" class="text-body"><u>Terminos y condiciones</u></a>
-                    </label>
-                  </div>
-  
-                  <div class="d-flex justify-content-center">
-                    <button type="button"
-                      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body text-dark">Register</button>
-                  </div>
-  
-                  <p class="text-center text-muted mt-5 mb-0 text-dark">Have already an account? <a href="#!"
-                      class="fw-bold text-body text-dark"><u>Login here</u></a></p>
-  
-                </form>
-  
-              </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Excursiones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Viajes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Paquetes</a>
+                    </li>
+
+                </ul>
+                <!--  links de la izquierda -->
             </div>
-          </div>
+            <!-- Collapsible wrapper -->
+
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+
+
+
+
+                <div class="me-1"><a href="login.html" class="btn btn btn-outline-light" role="button">Iniciar
+                        Sesión</a>
+                </div>
+
+                <div><a href="crearCuenta.html" class="btn btn btn-light me-1" role="button">Crear Cuenta</a>
+                </div>
+
+                <a class="nav-link" href="carrito.html">
+                    <?xml version="1.0" ?><svg height="60" viewBox="0 0 58 60" width="22"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <style>
+                                .cls-1 {
+                                    fill: #bf873e;
+                                    fill-rule: evenodd;
+                                }
+                            </style>
+                        </defs>
+                        <path class="cls-1"
+                            d="M826.828,970.83A3.988,3.988,0,0,1,824,972H780v7.418a0.582,0.582,0,0,0,.582.582l2.129,0a6.971,6.971,0,0,1,12.615,0h15.383a7.009,7.009,0,1,1-.6,4H795.922a6.973,6.973,0,0,1-13.809,0H782v0h-2a4,4,0,0,1-4-4V934h-4a2,2,0,0,1,0-4h8v8h48v30A3.988,3.988,0,0,1,826.828,970.83ZM817,985.937a3,3,0,1,0-3-3A3,3,0,0,0,817,985.937Zm-28,0a3,3,0,1,0-3-3A3,3,0,0,0,789,985.937ZM792,944a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm16-20a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm16-20a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Z"
+                            data-name="shopping cart" id="shopping_cart" transform="translate(-770 -930)" />
+                    </svg>
+                </a>
+
+
+                <!-- Right elements -->
+            </div>
+            <!-- Container wrapper -->
+
+
+    </nav>
+    <!-- Navbar -->
+
+
+
+    <hr style="color: white; height: 5px; width: 20000px;" />
+
+
+
+
+
+
+    <!-- Login -->
+
+    <div>
+
+        <section class="vh-100 gradient-custom">
+            <div class="container py-5 h-1">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                            <div class="card-body p-5 text-center">
+
+                                <div class="mb-md-5 mt-md-4 pb-5">
+
+                                    <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                                    <p class="text-white-50 mb-5">Ingresa tu usuario y password !</p>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                                        <label class="form-label" for="typeEmailX">Email</label>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-1">
+                                        <input type="password" id="typePasswordX"
+                                            class="form-control form-control-lg" />
+                                        <label class="form-label" for="typePasswordX">Password</label>
+                                    </div>
+
+                                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Olvidaste la contraseña?</a></p>
+
+                                    <button class="btn btn-outline-light btn-lg px-5 gradient-custom" type="submit">Ingresar</button>
+
+
+
+                                </div>
+
+                                <div>
+                                    <p class="mb-0">Todavía no tenés cuenta? <a href="crearCuenta.html"
+                                            class="text-white-50 fw-bold">Registrate</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-instagram"></i></a>
+
+
+            </section>
+            <!-- Section: Social media -->
         </div>
-      </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright:
+            <a class="text-white" href="#!">StyleBus.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+
     </div>
-  </section>
-
-
-
-  <footer class="bg-dark text-center text-white">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
-      <!-- Section: Social media -->
-      <section class="mb-4">
-        <!-- Facebook -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
-
-        <!-- Twitter -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
-
-        <!-- Google -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
-
-        <!-- Instagram -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
-
-
-      </section>
-      <!-- Section: Social media -->
     </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2022 Copyright:
-      <a class="text-white" href="#!">StyleBus.com</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
 
 
-</div>
-</div>
-
-
-  <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
 </body>
 

@@ -29,235 +29,380 @@
 
 </head>
 
-<body>
+<body class="vh-100 gradient-custom">
 
-    <div class="container">
-        <header class="row justify-content-between mt-1">
-
-            <div class="row mt-1">
-                <div class="col">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a>
-                        </li>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
 
 
-                        <li class="nav-item"><a href="#" class="nav-link  text-light">Paquetes</a>
-                        </li>
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar de la marca -->
 
-                        <li class="nav-item"><a href="#" class="nav-link text-light ">Excursiones</a>
-                        </li>
 
-                        <li class="nav-item"><a href="Login.html" class="nav-link text-light">Registrate</a>
-                        </li>
+                <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+                    <div class="col text-light text-right">
+                        <h1 class="display-6 ">StyleBus.</h1>
+                    </div>
+                </a>
 
-                        <!--data-bs-toggle digo que voy a ejecutar la funcion dropdown-->
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" role="button"
-                                aria-expanded="false">
-                                Buscar
-                            </a>
-
-                            <ul class="dropdown-menu">
-                                <li><a href="buscar_taller.html" class="dropdown-item">Buscar Talleres</a></li>
-                                <li><a href="buscar_producto.html" class="dropdown-item">Buscar Productos</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
+                <div class="d-flex" style="height: 22px; width : 2px; color: black;">
+                    <div class="vr"></div>
                 </div>
 
+                <!-- links de la izquierda -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Excursiones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Viajes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Paquetes</a>
+                    </li>
+
+                </ul>
+                <!--  links de la izquierda -->
             </div>
+            <!-- Collapsible wrapper -->
 
-        </header>
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
 
 
 
-        <div class="row bg-dark">
-            <div class="col text-light text-right">
-                <h1 class="display-6 ">StyleBus.</h1>
-                
+
+                <div class="me-1"><a href="login.html" class="btn btn btn-outline-light" role="button">Iniciar
+                        Sesión</a>
+                </div>
+
+                <div><a href="crearCuenta.html" class="btn btn btn-light me-1" role="button">Crear Cuenta</a>
+                </div>
+
+                <a class="nav-link" href="carrito.html">
+                    <?xml version="1.0" ?><svg height="60" viewBox="0 0 58 60" width="22"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <style>
+                                .cls-1 {
+                                    fill: #bf873e;
+                                    fill-rule: evenodd;
+                                }
+                            </style>
+                        </defs>
+                        <path class="cls-1"
+                            d="M826.828,970.83A3.988,3.988,0,0,1,824,972H780v7.418a0.582,0.582,0,0,0,.582.582l2.129,0a6.971,6.971,0,0,1,12.615,0h15.383a7.009,7.009,0,1,1-.6,4H795.922a6.973,6.973,0,0,1-13.809,0H782v0h-2a4,4,0,0,1-4-4V934h-4a2,2,0,0,1,0-4h8v8h48v30A3.988,3.988,0,0,1,826.828,970.83ZM817,985.937a3,3,0,1,0-3-3A3,3,0,0,0,817,985.937Zm-28,0a3,3,0,1,0-3-3A3,3,0,0,0,789,985.937ZM792,944a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm16-20a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm16-20a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Z"
+                            data-name="shopping cart" id="shopping_cart" transform="translate(-770 -930)" />
+                    </svg>
+                </a>
+
+
+                <!-- Right elements -->
             </div>
-        </div>
-
- 
+            <!-- Container wrapper -->
 
 
-        <div class="row">
-            <div class="col">
-                <!-- Section-->
-                <section class="py-5">
-                    <div class="container px-4 px-lg-5 mt-5">
-                        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                            <div class="col mb-5">
-                                <div class="card h-100">
-                                    <!-- Product image-->
-                                    <img class="card-img-top" src="img/cataratas.jpg" alt="..." />
-                                    <!-- Product details-->
-                                    <div class="card-body p-4">
-                                        <div class="text-center text-dark">
-                                            <!-- Product name-->
-                                            <h5 class="fw-bolder">Iguazú</h5>
-                                            <!-- Product price-->
-                                            $40.00 - $80.00
-                                        </div>
-                                    </div>
-                                    <!-- Product actions-->
-                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Agregar al carrito</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col mb-5">
-                                <div class="card h-100">
-                                    <!-- Sale badge-->
-                                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Oferta</div>
-                                    <!-- Product image-->
-                                    <img class="card-img-top" src="img/bariloche.webp" alt="..." />
-                                    <!-- Product details-->
-                                    <div class="card-body p-4">
-                                        <div class="text-center text-dark">
-                                            <!-- Product name-->
-                                            <h5 class="fw-bolder">Bariloche</h5>
-                                            <!-- Product reviews-->
-                                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                                <div class="bi-star-fill"></div>
-                                                <div class="bi-star-fill"></div>
-                                                <div class="bi-star-fill"></div>
-                                                <div class="bi-star-fill"></div>
-                                                <div class="bi-star-fill"></div>
-                                            </div>
-                                            <!-- Product price-->
-                                            <span class="text-muted text-decoration-line-through">$20.00</span>
-                                            $18.00
-                                        </div>
-                                    </div>
-                                    <!-- Product actions-->
-                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Agregar al carrito</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col mb-5">
-                                <div class="card h-100">
-                                    <!-- Sale badge-->
-                                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Oferta</div>
-                                    <!-- Product image-->
-                                    <img class="card-img-top" src="img/mdq.png" alt="..." />
-                                    <!-- Product details-->
-                                    <div class="card-body p-4">
-                                        <div class="text-center text-dark">
-                                            <!-- Product name-->
-                                            <h5 class="fw-bolder">Mar del Plata</h5>
-                                            <!-- Product price-->
-                                            <span class="text-muted text-decoration-line-through">$50.00</span>
-                                            $25.00
-                                        </div>
-                                    </div>
-                                    <!-- Product actions-->
-                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Agregar al carrito</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col mb-5">
-                                <div class="card h-100">
-                                    <!-- Product image-->
-                                    <img class="card-img-top" src="img/purma.jpg" alt="..." />
-                                    <!-- Product details-->
-                                    <div class="card-body p-4">
-                                        <div class="text-center text-dark">
-                                            <!-- Product name-->
-                                            <h5 class="fw-bolder">Purmamarca</h5>
-                                            <!-- Product reviews-->
-                                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                                <div class="bi-star-fill"></div>
-                                                <div class="bi-star-fill"></div>
-                                                <div class="bi-star-fill"></div>
-                                                <div class="bi-star-fill"></div>
-                                                <div class="bi-star-fill"></div>
-                                            </div>
-                                            <!-- Product price-->
-                                            $40.00
-                                        </div>
-                                    </div>
-                                    <!-- Product actions-->
-                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Agregar al carrito</a></div>
-                                    </div>
-                                </div>
-                            </div>
+    </nav>
+    <!-- Navbar -->
 
-                            
+    <hr style="color: white; height: 5px; width: 20000px;" />
+
+
+
+
+
+    <div class="row">
+        <div class="col">
+            <!-- Section-->
+            <section class="py-5">
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        <div class="col mb-5">
+                            <div class="card border-light bg-dark h-100">
+                                <!-- Product image-->
+                                <img class="card-img-top" src="img/cataratas.jpg" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center text-light">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder text-light">Iguazú</h5>
+                                        <!-- Product price-->
+                                        $40.00 - $80.00
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-light mt-auto gradient-custom" href="#">Agregar al
+                                            carrito</a></div>
+                                </div>
+                            </div>
                         </div>
+                        <div class="col mb-5">
+                            <div class="card border-light bg-dark h-100">
+                                <!-- Sale badge-->
+                                <div class="badge bg-dark text-white position-absolute"
+                                    style="top: 0.5rem; right: 0.5rem">Oferta</div>
+                                <!-- Product image-->
+                                <img class="card-img-top" src="img/bariloche.webp" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center text-light">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder">Bariloche</h5>
+                                        <!-- Product reviews-->
+                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                        </div>
+                                        <!-- Product price-->
+                                        <span class="text-muted text-decoration-line-through">$20.00</span>
+                                        $18.00
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-light mt-auto gradient-custom" href="#">Agregar al
+                                            carrito</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-5">
+                            <div class="card border-light bg-dark h-100">
+                                <!-- Sale badge-->
+                                <div class="badge bg-dark text-white position-absolute"
+                                    style="top: 0.5rem; right: 0.5rem">Oferta</div>
+                                <!-- Product image-->
+                                <img class="card-img-top" src="img/mdq.png" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center text-light">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder">Mar del Plata</h5>
+                                        <!-- Product price-->
+                                        <span class="text-muted text-decoration-line-through">$50.00</span>
+                                        $25.00
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-light mt-auto gradient-custom" href="#">Agregar al
+                                            carrito</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-5">
+                            <div class="card border-light bg-dark h-100">
+                                <!-- Product image-->
+                                <img class="card-img-top" src="img/purma.jpg" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center text-light">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder">Purmamarca</h5>
+                                        <!-- Product reviews-->
+                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                        </div>
+                                        <!-- Product price-->
+                                        $40.00
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-light mt-auto gradient-custom" href="#">Agregar al
+                                            carrito</a></div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
-                </section>
-                
-            </div>
+                </div>
+            </section>
+
         </div>
-
-
-
-
-        <div class="row bg-danger">
-            <div class="col-12 bg-light">
-
-
-                <div class="row mt-4 ml-4">
-                    <div class="col-12">
-
-
-
-
-        <footer class="bg-dark text-center text-white">
-            <!-- Grid container -->
-            <div class="container p-4 pb-0">
-              <!-- Section: Social media -->
-              <section class="mb-4">
-                <!-- Facebook -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-          
-                <!-- Twitter -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-          
-                <!-- Google -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                  ><i class="fab fa-google"></i
-                ></a>
-          
-                <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                  ><i class="fab fa-instagram"></i
-                ></a>
-  
-  
-              </section>
-              <!-- Section: Social media -->
-            </div>
-            <!-- Grid container -->
-          
-            <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-              © 2022 Copyright:
-              <a class="text-white" href="#!">StyleBus.com</a>
-            </div>
-            <!-- Copyright -->
-          </footer>
-  
-
-
-
-
-
     </div>
-</div>
 
 
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <div class="row">
+        <div class="col">
+            <!-- Section-->
+            <section class="py-5">
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        <div class="col mb-5">
+                            <div class="card border-light bg-dark h-100">
+                                <!-- Product image-->
+                                <img class="card-img-top" src="img/cataratas.jpg" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center text-light">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder text-light">Iguazú</h5>
+                                        <!-- Product price-->
+                                        $40.00 - $80.00
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-light mt-auto gradient-custom" href="#">Agregar al
+                                            carrito</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-5">
+                            <div class="card border-light bg-dark h-100">
+                                <!-- Sale badge-->
+                                <div class="badge bg-dark text-white position-absolute"
+                                    style="top: 0.5rem; right: 0.5rem">Oferta</div>
+                                <!-- Product image-->
+                                <img class="card-img-top" src="img/bariloche.webp" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center text-light">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder">Bariloche</h5>
+                                        <!-- Product reviews-->
+                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                        </div>
+                                        <!-- Product price-->
+                                        <span class="text-muted text-decoration-line-through">$20.00</span>
+                                        $18.00
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-light mt-auto gradient-custom" href="#">Agregar al
+                                            carrito</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-5">
+                            <div class="card border-light bg-dark h-100">
+                                <!-- Sale badge-->
+                                <div class="badge bg-dark text-white position-absolute"
+                                    style="top: 0.5rem; right: 0.5rem">Oferta</div>
+                                <!-- Product image-->
+                                <img class="card-img-top" src="img/mdq.png" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center text-light">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder">Mar del Plata</h5>
+                                        <!-- Product price-->
+                                        <span class="text-muted text-decoration-line-through">$50.00</span>
+                                        $25.00
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-light mt-auto gradient-custom" href="#">Agregar al
+                                            carrito</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-5">
+                            <div class="card border-light bg-dark h-100">
+                                <!-- Product image-->
+                                <img class="card-img-top" src="img/purma.jpg" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center text-light">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder">Purmamarca</h5>
+                                        <!-- Product reviews-->
+                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                        </div>
+                                        <!-- Product price-->
+                                        $40.00
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-light mt-auto gradient-custom" href="#">Agregar al
+                                            carrito</a></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+
+
+
+
+
 
 </body>
+
+
+<footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                    class="fab fa-facebook-f"></i></a>
+
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                    class="fab fa-instagram"></i></a>
+
+
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-white" href="#!">StyleBus.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
+
+
+
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+
 
 </html>

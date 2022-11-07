@@ -4,6 +4,7 @@ var ProductoVenta = [
   { nombre: 'Silla', categoria: 'Artesania', tipo: 'venta', telefono: 1160685639, precio: 500 },
   { nombre: 'Jarron', categoria: 'Artesania', tipo: 'venta', telefono: 1160685638, precio: 500 },
   { nombre: 'Mono Liso', categoria: 'Pintura', tipo: 'venta', telefono: 1160685637, precio: 500 }
+  { nombre: 'Mono Liso', categoria: 'Pintura', tipo: 'venta', telefono: 1160685637, precio: 500 }
 ]
 
 var ProductoMuestra = [
