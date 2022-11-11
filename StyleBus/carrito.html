@@ -29,7 +29,7 @@
 
 </head>
 
-<body class="vh-100 gradient-custom">
+<body class="vh-100 gradient-custom" id="cuerpito">
 
 
 
@@ -124,145 +124,78 @@
   <!--acá arranca la parte del formulario de compra con el carrito, agregarle logica-->
   <section class="vh-100 gradient-custom" style="background-color: #292B2C;">
     <div class="container vh-100 py-5">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col">
-          <div class="card shopping-cart text-white bg-dark" style="border-radius: 15px;">
-            <div class="card-body text-black">
 
-              <div class="row">
-                <div class="col-lg-6 px-5 py-4">
 
-                  <h3 class="mb-5 pt-2 text-center text-light fw-bold text-uppercase">Tus Productos</h3>
 
-                  <div class="d-flex align-items-center mb-5">
-                    <div class="flex-shrink-0">
-                      <img src="img/bariloche.webp"
-                        class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                      <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                      <h5 class="text-primary">Bariloche</h5>
-                      <h6 style="color: #9e9e9e;">Tipo: Paquete</h6>
-                      <div class="d-flex align-items-center">
-                        <p class="fw-bold mb-0 me-5 pe-3 text-light">799$</p>
-                        <div class="def-number-input number-input safari_only">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                            class="minus"></button>
-                          <input class="quantity fw-bold text-black" min="0" name="quantity" value="1" type="number">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                            class="plus"></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="d-flex align-items-center mb-5">
-                    <div class="flex-shrink-0">
-                      <img src="img/cataratas.jpg"
-                        class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                      <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                      <h5 class="text-primary">Cataratas</h5>
-                      <h6 style="color: #9e9e9e;">Tipo: Excursion</h6>
-                      <div class="d-flex align-items-center">
-                        <p class="fw-bold mb-0 me-5 pe-3 text-light">239$</p>
-                        <div class="def-number-input number-input safari_only">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                            class="minus"></button>
-                          <input class="quantity fw-bold text-black" min="0" name="quantity" value="1" type="number">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                            class="plus"></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="d-flex align-items-center mb-5">
-                    <div class="flex-shrink-0">
-                      <img src="img/mdq.png"
-                        class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                      <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                      <h5 class="text-primary">Mar del Plata</h5>
-                      <h6 style="color: #9e9e9e;">Tipo: Viaje</h6>
-                      <div class="d-flex align-items-center">
-                        <p class="fw-bold mb-0 me-5 pe-3 text-light">659$</p>
-                        <div class="def-number-input number-input safari_only">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                            class="minus"></button>
-                          <input class="quantity fw-bold text-black" min="0" name="quantity" value="2" type="number">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                            class="plus"></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+      <div class="container">
+        <h1>Carrito</h1>
+        <hr>
+        <table class="table">
+          <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Acción</th>
+            <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody id="items"></tbody>
+          <tfoot>
+            <tr id="footer">
+            <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+            </tr>
+          </tfoot>
+          </table>
 
-                  <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
-
-                  <div class="d-flex justify-content-between px-x">
-                  </div>
-                  <div class="d-flex justify-content-between p-2 mb-2 gradient-custom" style="background-color: #e1f5fe;">
-                    <h5 class="fw-bold mb-0">Total:</h5>
-                    <h5 class="fw-bold mb-0">2261$</h5>
-                  </div>
-
-                </div>
-                <div class="col-lg-6 px-5 py-4">
-
-                  <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase text-light">Medios de Pago</h3>
-
-                  <form class="mb-5">
-
-                    <div class="form-outline mb-5">
-                      <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                        value="1111 1111 1111 1111 " minlength="19" maxlength="19" />
-                      <label class="form-label text-light" for="typeText">Número de tarjeta</label>
-                    </div>
-
-                    <div class="form-outline mb-5">
-                      <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                        value="makZ" />
-                      <label class="form-label text-light" for="typeName">Nombre Titular</label>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-6 mb-5">
-                        <div class="form-outline">
-                          <input type="text" id="typeExp" class="form-control form-control-lg" value="01/22" size="7"
-                            id="exp" minlength="7" maxlength="7" />
-                          <label class="form-label text-light" for="typeExp">Vencimiento (MM/XX) </label>
-                        </div>
-                      </div>
-                      <div class="col-md-6 mb-5">
-                        <div class="form-outline">
-                          <input type="password" id="typeText" class="form-control form-control-lg"
-                            value="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                          <label class="form-label text-light" for="typeText">Cvv</label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <p class="mb-5 text-light">Lorem ipsum dolor sit amet consectetur, adipisicing elit <a href="#!">obcaecati
-                        sapiente</a>.</p>
-
-                    <button type="button" class="btn btn-outline-light btn-block btn-lg gradient-custom">Comprar</button>
-
-                    <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
-                      <a href="#!"><i class="fas fa-angle-left me-2 mt-2"></i>Volver a productos</a>
-                    </h5>
-
-                  </form>
-
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        <div class="row" id="cards"></div>
       </div>
+
+
+
+      <template id="template-footer">
+        <th scope="row" colspan="2">Total productos</th>
+        <td>10</td>
+        <td>
+            <button class="btn btn-danger btn-sm" id="vaciar-carrito">
+                vaciar todo
+            </button>
+        </td>
+        <td class="font-weight-bold">$ <span>5000</span></td>
+    </template>
+    
+
+
+
+
+    <template id="template-carrito">
+      <tr>
+        <th scope="row">id</th>
+        <td>Café</td>
+        <td>1</td>
+        <td>
+            <button class="btn btn-info btn-sm">
+                +
+            </button>
+            <button class="btn btn-danger btn-sm">
+                -
+            </button>
+        </td>
+        <td>$ <span>500</span></td>
+      </tr>
+    </template>
+
+
+
+
+
+
+
+
+
+
     </div>
   </section>
 
@@ -324,6 +257,7 @@
 
 
 
+<script src="carrito.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 
 

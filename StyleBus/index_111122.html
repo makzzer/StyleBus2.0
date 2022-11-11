@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../1/css/bootstrap.min.css">
     <title>StyleBus</title>
 
 
@@ -20,20 +19,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
-    <link rel="stylesheet" href="./login.css">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
 
 </head>
 
-<body>
-
-
-
-
+<body class="vh-100 gradient-custom ">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -68,6 +62,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Paquetes</a>
                     </li>
+
 
                 </ul>
                 <!--  links de la izquierda -->
@@ -114,106 +109,80 @@
     </nav>
     <!-- Navbar -->
 
-
-
     <hr style="color: white; height: 5px; width: 20000px;" />
 
 
 
+    <div class="container">
+       
+        <!--despues dibujo las cards-->
+        <div class="row" id="cards"></div>
 
 
 
-    <!-- Login -->
 
-    <div>
-
-        <section class="vh-100 gradient-custom">
-            <div class="container py-5 h-1">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                            <div class="card-body p-5 text-center">
-
-                                <div class="mb-md-5 mt-md-4 pb-5">
-
-                                    <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                                    <p class="text-white-50 mb-5">Ingresa tu usuario y password</p>
-
-                                    <div class="form-outline form-white mb-4">
-                                        <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                                        <label class="form-label" for="typeEmailX">Email</label>
-                                    </div>
-
-                                    <div class="form-outline form-white mb-1">
-                                        <input type="password" id="typePasswordX"
-                                            class="form-control form-control-lg" />
-                                        <label class="form-label" for="typePasswordX">Password</label>
-                                    </div>
-
-                                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Olvidaste la contraseña?</a></p>
-
-                                    <button class="btn btn-outline-light btn-lg px-5 gradient-custom" type="submit">Ingresar</button>
+    </div>
 
 
-
-                                </div>
-
-                                <div>
-                                    <p class="mb-0">Todavía no tenés cuenta? <a href="crearCuenta.html"
-                                            class="text-white-50 fw-bold">Registrate</a>
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <template id="template-card">
+        <div class="col-12 mb-2 col-md-4">
+          <div class="card">
+            <img src="" alt="" class="card-img-top">
+            <div class="card-body">
+              <h5 class="text-dark">Titulo</h5>
+              <p class="text-dark">precio</p>
+              <!--cada boton tiene que tener el id del producto desde el json, esto se lo agrego con data-id: "producto.id" pero desde el archivo Js-->
+              <button class="btn btn-dark" data-id="">Comprar</button>
             </div>
-        </section>
-    </div>
-
-    <footer class="bg-dark text-center text-white">
-        <!-- Grid container -->
-        <div class="container p-4 pb-0">
-            <!-- Section: Social media -->
-            <section class="mb-4">
-                <!-- Facebook -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="fab fa-facebook-f"></i></a>
-
-                <!-- Twitter -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="fab fa-twitter"></i></a>
-
-                <!-- Google -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="fab fa-google"></i></a>
-
-                <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="fab fa-instagram"></i></a>
-
-
-            </section>
-            <!-- Section: Social media -->
+          </div>
         </div>
-        <!-- Grid container -->
-
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2022 Copyright:
-            <a class="text-white" href="#!">StyleBus.com</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+      </template>
 
 
-    </div>
-    </div>
 
-
-    <script src="js/bootstrap.bundle.min.js"></script>
 
 </body>
+
+
+<footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                    class="fab fa-facebook-f"></i></a>
+
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                    class="fab fa-instagram"></i></a>
+
+
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-white" href="#!">StyleBus.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
+
+
+
+<script src="js/scripts.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+
+
 
 </html>
