@@ -38,8 +38,21 @@ function confirmarPago() {
 }*/
 
 
-const validarFormulario =() =>{
-    console.log('validando formulario, espere por favor')
+const validarFormulario = (e) => {
+    switch (e.target.name) {
+        case "nombre":
+            console.log("Funciona nombre");
+            break
+        case "apellido":
+            console.log("Funciona apellido");
+            break
+        case "email":
+            console.log("Funciona email");
+            break
+
+
+
+    }
 }
 
 
