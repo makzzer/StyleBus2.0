@@ -27,26 +27,21 @@ const expresiones = {
     telefono: /^\d{7,14}$/ // 7 a 14 numeros.
 }
 
-/*
-function confirmarPago() {
-    if (true) {
-        mensajesErrorRecap.push("errorrrrrrrr")
-        errorNombre.innerHTML = mensajesErrorRecap.join(',')
-        //vacio el array de mensajes para que no me los vuelva a mostrar
-        mensajesErrorRecap = []
-    }
-}*/
-
 
 const validarFormulario = (e) => {
     switch (e.target.name) {
         case "nombre":
-            if (expresiones.usuario.test(e.target.value)){
+            //lo siguiente me devuelve un true comparando el usuario ingresado con la expresion regular
+            if (expresiones.usuario.test(e.target.value)) {
+                if (listUsuariosRECAP.some(us => us.mail === e.target.value))
+                alert('Usuario correcto')
+                return
 
-            }else{
-                
+            } else {
+                alert('el usuario debe ser una direccion de correo electronico valida')
+                return
             }
-            break
+            
         case "apellido":
             console.log("Funciona apellido");
             break
@@ -54,7 +49,7 @@ const validarFormulario = (e) => {
             console.log("Funciona email");
             break
 
-
+        
 
     }
 }
@@ -62,8 +57,8 @@ const validarFormulario = (e) => {
 
 //Para validar el formulario cuando lo envie
 formularioRecap.addEventListener('submit', (e) => {
-    e.preventDefault
-})
+    e.preventDefault()
+});
 
 //para validar que los inputs cuando se deja de seleccionar el campo
 
@@ -71,3 +66,11 @@ inputs.forEach((input) => {
     input.addEventListener('keyup', validarFormulario);
     input.addEventListener('blur', validarFormulario);
 })
+
+
+
+
+
+
+
+
