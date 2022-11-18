@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/StyleBus/css/bootstrap.min.css">
+  <title>StyleBus</title>
+
+
+  <!--JQUERY-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <!-- Los iconos tipo Solid de Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+
+</head>
+
+<body>
+
+
+
+
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Navbar de la marca -->
+
+
+        <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+          <div class="col text-light text-right">
+            <h1 class="display-6 ">StyleBus.</h1>
+          </div>
+        </a>
+
+        <div class="d-flex" style="height: 22px; width : 2px; color: black;">
+          <div class="vr"></div>
+        </div>
+
+        <!-- links de la izquierda -->
+
+        <!--  links de la izquierda -->
+      </div>
+      <!-- Collapsible wrapper -->
+
+      <!-- Right elements -->
+      <div class="d-flex align-items-center">
+        <!-- Icon -->
+
+
+
+
+        <div class="me-1"><a href="login.html" class="btn btn btn-outline-light" role="button">Iniciar
+            Sesión</a>
+        </div>
+
+        <div><a href="crearCuenta.html" class="btn btn btn-light me-1" role="button">Crear Cuenta</a>
+        </div>
+
+
+
+      </div>
+
+      <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+
+
+  </nav>
+
+
+
+  <hr style="color: white; height: 5px; width: 20000px;" />
+
+
+
+
+  <div class="container">
+
+    <section class="ml-3 mb-2">
+      <div class="d-flex justify-content-between align-items-center mb-5">
+        <div class="d-flex flex-row align-items-center">
+          <h4 class="text-uppercase mt-1">StyleBus</h4>
+          <span class="ms-2 me-3">Pay</span>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-7 col-lg-7 col-xl-6 mb-4 mb-md-0">
+
+          <h5 class="mb-3">Complete los datos de pago</h5>
+          <div>
+
+            <hr />
+
+
+            <form action="" method="POST" id="formularioCrearCuenta">
+
+              <!--Nombre-->
+              <div class="form-outline mb-2">
+
+                <input type="text" id="nombrecc" class="form-control form-control-lg">
+                <label class="form-label text-light" for="nombrecc">Nombre</label>
+              </div>
+
+              <!--Apellido-->
+              <div class="form-outline mb-2">
+                <input type="text" id="apellidocc" class="form-control form-control-lg" />
+                <label class="form-label text-light" for="apellidocc">Apellido</label>
+              </div>
+              <!--Direccion-->
+              <div class="form-outline mb-2">
+                <input type="email" id="direccioncc" class="form-control form-control-lg" />
+                <label class="form-label text-light" for="direccioncc">Correo electronico</label>
+              </div>
+
+              <!--Fecha nacimiento-->
+              <div class="form-outline mb-4">
+                <p class="h-blue">Fecha de nacimiento</p> <input class="inputbox textmuted" type="date">
+              </div>
+
+
+              <div>
+
+              </div>
+
+
+
+              <!--boton modal template-->
+              <div class="div mb-4">
+
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Elegir medio de pago
+                </button>
+
+
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title text-center text-dark" id="exampleModalLabel">Datos de pago</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+
+
+
+
+
+
+                      <!--cuerpo del modal-->
+                      <div class="modal-body">
+                        ... <div class="card ">
+                          <div class="card-header">
+                            <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                              <!-- Credit card form tabs -->
+                              <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                                <li class="nav-item"> <a data-toggle="pill" href="#credit-card"
+                                    class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Tarjeta </a>
+                                </li>
+                                <li class="nav-item"> <a data-toggle="pill" href="#paypal" class="nav-link "> <i
+                                      class="far fa-handshake"></i></i> MercadoPago </a> </li>
+                                <li class="nav-item"> <a data-toggle="pill" href="#net-banking" class="nav-link ">
+                                    <i class="fas fa-mobile-alt mr-2"></i> Cuenta bancaria </a> </li>
+                              </ul>
+                            </div> <!-- End -->
+                            <!-- Credit card form content -->
+                            <div class="tab-content">
+                              <!-- credit card info-->
+                              <div id="credit-card" class="tab-pane fade show active pt-3">
+                                <form role="form" onsubmit="event.preventDefault()">
+                                  <div class="form-group"> <label for="username">
+                                      <h6 class="text-dark">Nombre de la tarjeta</h6>
+                                    </label> <input type="text" name="username"
+                                      placeholder="Nombre como figura en la tarjeta" required class="form-control ">
+                                  </div>
+                                  <div class="form-group"> <label for="cardNumber">
+                                      <h6 class="text-dark">Numero de la tarjeta</h6>
+                                    </label>
+                                    <div class="input-group"> <input type="text" name="cardNumber"
+                                        placeholder="Numero de la tarjeta" class="form-control " required>
+                                      <div class="input-group-append"> <span class="input-group-text text-muted">
+                                          <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i>
+                                          <i class="fab fa-cc-amex mx-1"></i> </span> </div>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-sm-8">
+                                      <div class="form-group"> <label><span class="hidden-xs">
+                                            <h6 class="text-dark">Fecha de vencimiento</h6>
+                                          </span></label>
+                                        <div class="input-group"> <input type="number" placeholder="MM" name=""
+                                            class="form-control" required> <input type="number" placeholder="YY" name=""
+                                            class="form-control" required> </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                      <div class="form-group mb-4"> <label data-toggle="tooltip"
+                                          title="Three digit CV code on the back of your card">
+                                          <h6 class="text-dark">CVV <i class="fa fa-question-circle d-inline"></i>
+                                          </h6>
+                                        </label> <input type="text" required class="form-control"> </div>
+                                    </div>
+                                  </div>
+                                  <div class="card-footer"> <button type="button"
+                                      class="subscribe btn btn-primary btn-block shadow-sm"> Confirmar</button>
+                                </form>
+                              </div>
+                            </div> <!-- End -->
+                            <!-- Paypal info -->
+                            <div id="paypal" class="tab-pane fade pt-3">
+                              <p> <button type="button" class="btn btn-primary"><i class="far fa-handshake mr-2"></i>
+                                  Iniciar sesión con mercado pago</button>
+                              </p>
+                              <p class="text-muted"> Nota: Despues de clickear el botón, usted será redireccionado
+                                a una plataforma externa donde realizará el logueo a su cuenta de MercadoPago. Los
+                                datos se almacenaran en forma automatica en StyleBus.
+                              </p>
+                            </div> <!-- End -->
+                            <!-- bank transfer info -->
+                            <div id="net-banking" class="tab-pane fade pt-3">
+                              <div class="form-group "> <label for="Select Your Bank">
+                                  <h6 class="text-dark">Seleccione su banco</h6>
+                                </label> <select class="form-control" id="ccmonth">
+                                  <option value="" selected disabled>--Por favor seleccione su banco--</option>
+                                  <option>Galicia</option>
+                                  <option>Santander</option>
+                                  <option>Hsbc</option>
+
+                                </select> </div>
+                              <div class="form-group">
+
+                                <h6 class="text-dark">Ingrese el numero de su caja de ahorro</h6>
+
+                                <input type="text" id="numeroCuentaBancaria" class="form-control form-control-lg">
+                                <label class="form-label text-light" for="cuentabancariacc">Cuenta bancaria</label>
+                              </div>
+
+                              <p class="text-muted">Nota: Despues de clickear el botón, usted será redireccionado
+                                a una plataforma externa donde realizará el logueo a su cuenta de MercadoPago. Los
+                                datos se almacenaran en forma automatica en StyleBus.</p>
+                            </div> <!-- End -->
+                            <!-- End -->
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Elegir este metodo de
+                          pago</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+              </div>
+
+
+
+              <div class="d-flex justify-content-end mb-2 mt-4">
+                <button type="button" onclick='return validarFormularioCrearCuenta()'
+                  class="btn btn-block btn-lg btn-outline-light text-white-60 gradient-custom">Registrarse</button>
+              </div>
+
+
+
+
+
+
+
+
+              <div id="errorcc"> </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="RecibisPromos">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Quiero recibir promociones por mail
+                </label>
+              </div>
+
+          </div>
+        </div>
+
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="col-md-5 col-lg-4 col-xl-4 offset-lg-1 offset-xl-2 background-primary">
+        <div class="p-3">
+          <span class="fw-bold">Detalle de su pedido</span>
+
+          <hr />
+
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="d-flex flex-row mt-1">
+              <h6 class="me-2">Puntos StyleBus disponibles para su canje</h6>
+
+            </div>
+
+
+            <div class="d-flex flex-row align-items-center text-primary">
+              <h6 class="fw-bold text-success ms-1">300</h6>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="d-flex justify-content-between mt-2">
+            <span class="lh-sm">Total Deductible,<br />
+              Coinsurance and copay
+            </span>
+            <span>$40.00</span>
+          </div>
+          <div class="d-flex justify-content-between mt-2">
+            <span class="lh-sm">Maximum out-of-pocket <br />
+              on insurance policy</span>
+            <span>$40.00</span>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-between mt-2">
+            <span>Insurance Responsibility </span> <span>$71.76</span>
+          </div>
+          <div class="d-flex justify-content-between mt-2">
+            <span>Patient Balance </span> <span>$13.24</span>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-between mt-2 mb-4">
+            <span>Total </span> <span class="text-success">$85.00</span>
+          </div>
+        </div>
+
+
+        <button class="btn btn-dark mt-4- ml-2" onclick="location.href='recap.html'" id="boton_confirmar_compra_carrito">
+          Confirmar
+          compra</button>
+
+      </div>
+      <div>
+
+
+
+      </div>
+
+  </div>
+  </section>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+
+        <!-- Twitter -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+        <!-- Google -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+
+        <!-- Instagram -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+
+
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2022 Copyright:
+      <a class="text-white" href="#!">StyleBus.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+
+  </div>
+  </div>
+
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <script src="/StyleBus/pagos.js" type="module"></script>
+
+
+</body>
+
+</html>

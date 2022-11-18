@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/StyleBus/css/bootstrap.min.css">
     <title>StyleBus</title>
 
 
@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
-    <link rel="stylesheet" href="./login.css">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
@@ -57,19 +56,7 @@
                 </div>
 
                 <!-- links de la izquierda -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Excursiones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Viajes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Paquetes</a>
-                    </li>
-
-                </ul>
                 <!--  links de la izquierda -->
             </div>
             <!-- Collapsible wrapper -->
@@ -88,31 +75,16 @@
                 <div><a href="crearCuenta.html" class="btn btn btn-light me-1" role="button">Crear Cuenta</a>
                 </div>
 
-                <a class="nav-link" href="carrito.html">
-                    <?xml version="1.0" ?><svg height="60" viewBox="0 0 58 60" width="22"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <style>
-                                .cls-1 {
-                                    fill: #bf873e;
-                                    fill-rule: evenodd;
-                                }
-                            </style>
-                        </defs>
-                        <path class="cls-1"
-                            d="M826.828,970.83A3.988,3.988,0,0,1,824,972H780v7.418a0.582,0.582,0,0,0,.582.582l2.129,0a6.971,6.971,0,0,1,12.615,0h15.383a7.009,7.009,0,1,1-.6,4H795.922a6.973,6.973,0,0,1-13.809,0H782v0h-2a4,4,0,0,1-4-4V934h-4a2,2,0,0,1,0-4h8v8h48v30A3.988,3.988,0,0,1,826.828,970.83ZM817,985.937a3,3,0,1,0-3-3A3,3,0,0,0,817,985.937Zm-28,0a3,3,0,1,0-3-3A3,3,0,0,0,789,985.937ZM792,944a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm16-20a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm16-20a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Zm0,10a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2v-2Z"
-                            data-name="shopping cart" id="shopping_cart" transform="translate(-770 -930)" />
-                    </svg>
-                </a>
 
 
-                <!-- Right elements -->
             </div>
-            <!-- Container wrapper -->
+
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
 
 
     </nav>
-    <!-- Navbar -->
 
 
 
@@ -133,30 +105,42 @@
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                         <div class="card bg-dark text-white" style="border-radius: 1rem;">
                             <div class="card-body p-5 text-center">
+                                <h2 class="text-uppercase text-center mb-5 text-light">Iniciar Sesión</h2>
 
-                                <div class="mb-md-5 mt-md-4 pb-5">
 
-                                    <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                                    <p class="text-white-50 mb-5">Ingresa tu usuario y password</p>
 
-                                    <div class="form-outline form-white mb-4">
-                                        <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                                        <label class="form-label" for="typeEmailX">Email</label>
+                                <!--formulario login-->
+
+                                <form action="" method="POST" id="formularioLogin">
+                                    <!-- Email input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="email" id="emailInput" class="form-control" />
+                                        <label class="form-label" for="emailInput">Usuario</label>
                                     </div>
 
-                                    <div class="form-outline form-white mb-1">
-                                        <input type="password" id="typePasswordX"
-                                            class="form-control form-control-lg" />
-                                        <label class="form-label" for="typePasswordX">Password</label>
+                                    <!-- Password input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="PasswordInput" class="form-control" />
+                                        <label class="form-label" for="PasswordInput">Password</label>
                                     </div>
 
-                                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Olvidaste la contraseña?</a></p>
+                                    <!-- 2 column grid layout for inline styling -->
+                                    <div class="row ">
+                                        <div class="col d-flex justify-content-center">
+                                            <!-- Checkbox -->
 
-                                    <button class="btn btn-outline-light btn-lg px-5 gradient-custom" type="submit">Ingresar</button>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Submit button -->
+                                    <button type="button" onclick='return validarFormularioLogin()'
+                                        class="btn btn-primary btn-block mb-4 gradient-custom"
+                                        id="submit">Ingresar</button>
+                                    <div id="error"> </div>
 
 
-
-                                </div>
+                                </form>
 
                                 <div>
                                     <p class="mb-0">Todavía no tenés cuenta? <a href="crearCuenta.html"
@@ -211,7 +195,7 @@
     </div>
     </div>
 
-
+    <script src="/StyleBus/js/logins.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 
 </body>

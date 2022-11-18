@@ -112,6 +112,20 @@ aside{
 }
 
 
+.btn-group-vertical>.btn:not(:first-child),
+.btn-group-vertical>.btn-group:not(:first-child) {
+margin-top: 0;
+}
+
+
+
+
+
+.card-img-top {
+    width: 530px;
+    height: 280px;
+  }
+
 #mapid {
     /*height: 500px;*/
     /*width: 500px;*/
@@ -145,6 +159,13 @@ aside{
 }
 
 
+.warnigns {
+width: 200px;
+text-align: center;
+margin: auto;
+color : #b06ab3;
+padding-top : 20px;
+}
 
 
 /*Desde acá voy a hacer el carrito de compras 2*/
@@ -166,6 +187,7 @@ aside{
     .number-input input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     }
+
     
     .number-input button {
     -webkit-appearance: none;
@@ -296,3 +318,5 @@ aside{
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
         }
+
+
