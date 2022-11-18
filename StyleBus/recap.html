@@ -117,13 +117,16 @@
             <hr />
 
 
-            <form action="" method="POST" id="formularioCrearCuenta">
+            <form action="" method="POST" id="formularioPagoRECAP">
 
               <!--Nombre-->
               <div class="form-outline mb-2">
 
                 <input type="text" id="nombrecc" class="form-control form-control-lg">
-                <label class="form-label text-light" for="nombrecc">Nombre</label>
+                <label class="form-label text-light" for="nombreRECAP">Nombre</label>
+
+                <div id="errorNombreRECAP"> </div>
+
               </div>
 
               <!--Apellido-->
@@ -152,10 +155,11 @@
 
               </div>
 
+              <div id="errorRECAP"> </div>
 
               <div class="d-flex justify-content-end mb-2 mt-4">
-                <button type="button" onclick='return validarFormularioCrearCuenta()'
-                  class="btn btn-block btn-lg btn-outline-light text-white-60 btn-dark">Confirmar Compra</button>
+                <button type="button" 
+                  class="btn btn-block btn-lg btn-outline-light text-white-60 btn-dark" id="botonConfirmarCompraRECAP" onclick='return confirmarPago()'>Confirmar Compra</button>
               </div>
 
 
@@ -292,10 +296,10 @@
   </div>
   </div>
 
-
+  <script src="/StyleBus/recap.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
 
-  <script src="/StyleBus/recap.js" type="module"></script>
+
 
 
 </body>

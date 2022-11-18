@@ -27,7 +27,7 @@ const expresiones = {
     telefono: /^\d{7,14}$/ // 7 a 14 numeros.
 }
 
-
+/*
 function confirmarPago() {
     if (true) {
         mensajesErrorRecap.push("errorrrrrrrr")
@@ -35,10 +35,12 @@ function confirmarPago() {
         //vacio el array de mensajes para que no me los vuelva a mostrar
         mensajesErrorRecap = []
     }
+}*/
+
+
+const validarFormulario =() =>{
+    console.log('validando formulario, espere por favor')
 }
-
-
-const validarFormulario()
 
 
 //Para validar el formulario cuando lo envie
@@ -49,8 +51,6 @@ formularioRecap.addEventListener('submit', (e) => {
 //para validar que los inputs cuando se deja de seleccionar el campo
 
 inputs.forEach((input) => {
-    input.addEventListener('keyup', () => {
-        console.log("tecla levantada")
-
-    })
+    input.addEventListener('keyup', validarFormulario);
+    input.addEventListener('blur', validarFormulario);
 })
