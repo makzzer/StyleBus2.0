@@ -10,6 +10,11 @@ const errorNombre = document.getElementById('errorNombreRECAP')
 const errorApellidoRecap = document.getElementById('errorApellidoRECAP')
 const errorMailRecap = document.getElementById('errorMailRECAP')
 
+//acceso a los inputs del formulario
+const nombreIn = document.getElementById('nombreRECAP')
+const apellidoIn = document.getElementById('apellidoRecap')
+const emailIn = document.getElementById('emailRecap')
+
 //arrays de errores
 
 var mensajesErrorRecap = []
@@ -32,8 +37,8 @@ let listUsuariosRECAP = [
 const campos = {
     nombre: false,
     apellido: false,
-    Email: false,
-    MedioPago: false,
+    email: false,
+    medioPago: false,
     telefono: false
 }
 
@@ -51,6 +56,7 @@ const validarFormulario = (e) => {
     errorApellidoRecap.innerHTML = ''
     errorNombre.innerHTML = ''
     errorMailRecap.innerHTML = ''
+    errorRecap.innerHTML = ''
 
     switch (e.target.name) {
         case "nombre":
@@ -113,13 +119,15 @@ const validarEmail = (expresion, input, campo) => {
 //Para validar el formulario cuando lo envie
 formularioRecap.addEventListener('submit', (e) => {
     console.log("estoy aca adentro")
-    if (nombre)
-        e.preventDefault()
+    
+    e.preventDefault()
 
-    if (campos.nombre == true) {
-        alert("es truee")
-    } else {
-        alert("es falsee")
+    //si el formulario está vacio
+    if (campos.nombre == false && campos.apellido == false && campos.email == false) {
+        mensajesErrorRecap.push('formulario vacio, por favor complete los campos correctamente para continuar')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
     }
 
 
