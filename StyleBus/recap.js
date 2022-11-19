@@ -148,9 +148,9 @@ function clavesMediosDePago() {
 
 
 //voy a preguntar por el estado de los botones de ida y vuelta
-tarjetaCk.addEventListener('change', clavesMediosDePago())
-mercadoPagoCk.addEventListener('change', clavesMediosDePago())
-cajaAhorroCk.addEventListener('change', clavesMediosDePago())
+tarjetaCk.addEventListener('change', clavesMediosDePago)
+mercadoPagoCk.addEventListener('change', clavesMediosDePago)
+cajaAhorroCk.addEventListener('change', clavesMediosDePago)
 
 
 
