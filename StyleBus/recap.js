@@ -23,7 +23,7 @@ const emailIn = document.getElementById('emailRecap')
 
 //accediendo al input de clave de metodo de pago
 const claveTarjetaIn = document.getElementById('TarjetaCreditoInput')
-const cbuMp = document.getElementById('mercadoPagoCVUInput')
+const cbumpIn = document.getElementById('mercadoPagoCVUInput')
 
 
 //arrays de errores
@@ -39,7 +39,7 @@ errorMailRecap.style.color = 'red';
 errorClaveOCBU.style.color = 'red';
 
 let listUsuariosRECAP = [
-    { mail: 'makzofx@gmail.com', password: 'test1234', nombre: 'maximiliano', apellido: 'sanchez', domicilioCalle: 'Buschiazzo', domicilioAltura: '785', DNI: '36293754', fechaNacimiento: '19910927', nombreTarjetadeCredito: 'maximiliano sanchez', numeroTarjetaDeCredito: '1111111111111111', claveTarjetaDeCredito: '123', fechavenTarjetaDeCredito: '20270425' }
+    { mail: 'makzofx@gmail.com', password: 'test1234', nombre: 'maximiliano', apellido: 'sanchez', domicilioCalle: 'Buschiazzo', domicilioAltura: '785', DNI: '36293754', fechaNacimiento: '19910927', nombreTarjetadeCredito: 'maximiliano sanchez', numeroTarjetaDeCredito: '1111111111111111', claveTarjetaDeCredito: '123', fechavenTarjetaDeCredito: '20270425', mp: '2222222222', cbu: '3333333333' }
 
 ]
 
@@ -155,7 +155,7 @@ const validarCbu = (expresion, input) => {
     } else {
         campos.cbu = false;
         console.log("fallo el CBU ")
-        mensajesErrorClaves.push("Formato de CBU incorrectO. Por favor ingrese correctamente su CBU")
+        mensajesErrorClaves.push("Formato de CBU de MercadoPago incorrecto. El CBU deben ser 10 Digitos numericos")
         errorClaveOCBU.innerHTML = mensajesErrorClaves.join(', ')
         mensajesErrorClaves = []
     }
@@ -167,13 +167,13 @@ const validarCbu = (expresion, input) => {
 function OcultarclavesMediosDePago() {
     if (tarjetaCk.checked) {
         claveTarjetaIn.hidden = false;
-        cbuMp.hidden = true;
+        cbumpIn.hidden = true;
     } if (mercadoPagoCk.checked) {
         claveTarjetaIn.hidden = true;
-        cbuMp.hidden = false;
+        cbumpIn.hidden = false;
     } if (cajaAhorroCk.checked) {
         claveTarjetaIn.hidden = true;
-        cbuMp.hidden = false;
+        cbumpIn.hidden = false;
     }
 }
 
@@ -277,29 +277,35 @@ formularioRecap.addEventListener('submit', (e) => {
 
 
                 if (listUsuariosRECAP.some(us => us.nombre === nombreIn.value.toLowerCase() && us.apellido === apellidoIn.value.toLowerCase() && us.mail === emailIn.value.toLowerCase() && us.claveTarjetaDeCredito === claveTarjetaIn.value)) {
-                    mensajesErrorRecap.push('Pago confirmado!')
+                    mensajesErrorRecap.push('Pago confirmado con su tarjeta de Credito! Enviando mail de confirmación de reservaa la casilla ' + emailIn.value)
                     errorRecap.innerHTML = mensajesErrorRecap.join(', ')
                     mensajesErrorRecap = []
 
 
 
                 } else {
-                    mensajesErrorRecap.push('Ha habido un problema en procesar su pago, por favor revise sus datos o seleccione otro medio de pago')
+                    mensajesErrorRecap.push('Ha habido un problema en procesar el pago con su tarjeta de crédito, por favor revise sus datos o seleccione otro medio de pago y vuelva a intentarlo')
                     errorRecap.innerHTML = mensajesErrorRecap.join(', ')
                     mensajesErrorRecap = []
                 }
 
-            } else {
-                console.log("soy el else!!")
+            } else if (mercadoPagoCk.checked === true && campos.passcard) {
+                if (listUsuariosRECAP.some(us => us.nombre === nombreIn.value.toLowerCase() && us.apellido === apellidoIn.value.toLowerCase() && us.mail === emailIn.value.toLowerCase() && us.mp === cbumpIn.value)) {
+                    mensajesErrorRecap.push('Pago confirmado con Mercado Pago! Enviando mail de confirmación de reserva a la casilla ' + emailIn.value)
+                    errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+                    mensajesErrorRecap = []
+
+
+
+                } else {
+                    mensajesErrorRecap.push('Ha habido un problema en procesar el pago con MercadoPago, por favor revise sus datos o seleccione otro medio de pago y vuelva a intentarlo')
+                    errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+                    mensajesErrorRecap = []
+                }
+
             }
         }
-
-    } console.log("ni entre perro")
-    console.log(campos.nombre)
-    console.log(campos.apellido)
-    console.log(campos.mail)
-
-
+    }
 
 });
 
