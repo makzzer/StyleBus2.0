@@ -4,10 +4,6 @@ const formularioRecap = document.getElementById('formularioPagoRECAP')
 const botonConfirmarcompra = document.getElementById('botonConfirmarCompraRECAP')
 const inputs = document.querySelectorAll('#formularioPagoRECAP input')
 
-//accediendo al input de clave de metodo de pago
-const claveTarjeta = document.getElementById('TarjetaCreditoInput')
-const cbuMp = document.getElementById('mercadoPagoCVUInput')
-
 //accediedo a los botones check de medios de pago
 const tarjetaCk = document.getElementById('tarjetaCreditoCheck')
 const mercadoPagoCk = document.getElementById('mercadoPagoCheck')
@@ -25,8 +21,12 @@ const nombreIn = document.getElementById('nombreRECAP')
 const apellidoIn = document.getElementById('apellidoRecap')
 const emailIn = document.getElementById('emailRecap')
 
-//arrays de errores
+//accediendo al input de clave de metodo de pago
+const claveTarjeta = document.getElementById('TarjetaCreditoInput')
+const cbuMp = document.getElementById('mercadoPagoCVUInput')
 
+
+//arrays de errores
 var mensajesErrorRecap = [] //este va con errorRecap
 var mensajesErrorNombre = []
 var mensajesErrorApellido = []
@@ -152,16 +152,15 @@ const validarClaveTarjeta = (expresion, input) => {
 }
 
 
-
 //habilitar o deshabilitar medios de pago
 function OcultarclavesMediosDePago() {
     if (tarjetaCk.checked) {
         claveTarjeta.hidden = false;
         cbuMp.hidden = true;
-    }if(mercadoPagoCk.checked){
+    } if (mercadoPagoCk.checked) {
         claveTarjeta.hidden = true;
         cbuMp.hidden = false;
-    }if (cajaAhorroCk.checked){
+    } if (cajaAhorroCk.checked) {
         claveTarjeta.hidden = true;
         cbuMp.hidden = false;
     }
@@ -189,13 +188,12 @@ formularioRecap.addEventListener('submit', (e) => {
 
     e.preventDefault()
 
-    if (campos.clavetarjeta == true) {
-        console.log("clave tarjeta ok")
-    }
+
 
 
     //si el formulario está vacio
-    else if (campos.nombre == false && campos.apellido == false && campos.email == false) {
+
+    if (nombreIn.value.length == 0 && apellidoIn.value.length == 0 && emailIn.value.length == 0) {
         mensajesErrorRecap.push('Formulario vacio, por favor complete los campos correctamente para continuar')
         errorRecap.innerHTML = mensajesErrorRecap.join(', ')
         mensajesErrorRecap = []
@@ -203,51 +201,64 @@ formularioRecap.addEventListener('submit', (e) => {
         return
     }
 
-    //si la opcion de pago con tarjeta de credito está activa --> tiene que validar el campo claveTarjeta tambien antes de dar correcta la compra
-
-
-    //si solo completó el nombre
-    else if (campos.nombre != false && campos.apellido == false && campos.email == false) {
+    //si solo completó el nombre y puso comprar
+    else if (nombreIn.value.length != 0 && apellidoIn.value.length == 0 && emailIn.value.length == 0) {
         mensajesErrorRecap.push('Por favor complete su apellido y correo electronico para continuar')
         errorRecap.innerHTML = mensajesErrorRecap.join(', ')
         mensajesErrorRecap = []
         return
     }
-    //si solo completó el apellido
-    else if (campos.apellido != false && campos.nombre == false && campos.email == false) {
+
+    //si solo completó el nombre y el apellido pero no el mail
+    else if (nombreIn.value.length != 0 && apellidoIn.value.length != 0 && emailIn.value.length == 0) {
+        console.log("estoy aca nombre y apellido sin mail")
+        mensajesErrorRecap.push('Por favor complete su correo electronico para continuar')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+
+
+
+    //si solo completó el nombre y mail pero no el apellido
+    else if (nombreIn.value.length != 0 && apellidoIn.value.length == 0 && emailIn.value.length != 0) {
+        mensajesErrorRecap.push('Por favor complete su Apellido para continuar')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+
+
+    //si solo completó el apellido y puso comprar
+    else if (nombreIn.value.length == 0 && apellidoIn.value.length != 0 && emailIn.value.length == 0) {
         mensajesErrorRecap.push('Por favor complete su nombre y correo electronico para continuar')
         errorRecap.innerHTML = mensajesErrorRecap.join(', ')
         mensajesErrorRecap = []
         return
     }
-    //si solo completó el mail
-    else if (campos.mail != false && campos.nombre == false && campos.apellido == false) {
+
+    //si solo completó el apellido y el mail y puso comprar
+    else if (nombreIn.value.length == 0 && apellidoIn.value.length != 0 && emailIn.value.length != 0) {
+        mensajesErrorRecap.push('Por favor complete su nombre para continuar')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+
+
+    //si solo completó el mail y puso comprar
+    else if (nombreIn.value.length == 0 && apellidoIn.value.length == 0 && emailIn.value.length != 0) {
         mensajesErrorRecap.push('Por favor complete su nombre y apellido para continuar')
         errorRecap.innerHTML = mensajesErrorRecap.join(', ')
         mensajesErrorRecap = []
         return
     }
 
-    //si solo completó el nombre y el mail
-    else if (campos.mail != false && campos.nombre != false && campos.apellido == false) {
-        mensajesErrorRecap.push('Por favor complete su apellido para continuar')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
 
-
-    //si solo completó el nombre y el apellido
-    else if (campos.apellido != false && campos.nombre != false && campos.mail == false) {
-        mensajesErrorRecap.push('Por favor complete su apellido para continuar')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
-
+    //Acá viene el caso correcto
 
     //si está todo completo confirma la compra --> validar con los datos de la lista de usuarios antes
-    else if (campos.apellido != false && campos.nombre != false && campos.email != false) {
+    else if (nombreIn.value.length != 0 && apellidoIn.value.length != 0 && emailIn.value.length != 0) {
         mensajesErrorRecap.push('Compra correcta!!')
         errorRecap.innerHTML = mensajesErrorRecap.join(', ')
         mensajesErrorRecap = []
