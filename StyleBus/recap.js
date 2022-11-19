@@ -4,6 +4,15 @@ const formularioRecap = document.getElementById('formularioPagoRECAP')
 const botonConfirmarcompra = document.getElementById('botonConfirmarCompraRECAP')
 const inputs = document.querySelectorAll('#formularioPagoRECAP input')
 
+//accediendo al input de clave de metodo de pago
+const claveTarjeta = document.getElementById('TarjetaCredito3dig')
+const cbuMp = document.getElementById('mercadoPagoCVU')
+
+//accediedo a los botones check de medios de pago
+const tarjetaCk = document.getElementById('tarjetaCreditoCheck')
+const mercadoPagoCk = document.getElementById('mercadoPagoCheck')
+const cajaAhorroCk = document.getElementById('cajaAhorroCheck')
+
 //accesos a divs de errores
 const errorRecap = document.getElementById('errorRECAP')
 const errorNombre = document.getElementById('errorNombreRECAP')
@@ -39,7 +48,11 @@ const campos = {
     apellido: false,
     email: false,
     medioPago: false,
-    telefono: false
+}
+
+const mediosPago = {
+    clavetarjeta: false,
+    cbu: false,
 }
 
 
@@ -116,19 +129,68 @@ const validarEmail = (expresion, input, campo) => {
 
 
 
+
+//habilitar o deshabilitar medios de pago
+function clavesMediosDePago() {
+    if (tarjetaCk.checked) {
+        //console.log("acá remuevo")
+        //claveTarjeta.removeAttribute("hidden")
+        claveTarjeta.hidden = false;
+        cbuMp.hidden = true;
+    }if(mercadoPagoCk.checked){
+        claveTarjeta.hidden = true;
+        cbuMp.hidden = false;
+    }if (cajaAhorroCk.checked){
+        claveTarjeta.hidden = true;
+        cbuMp.hidden = false;
+    }
+}
+
+
+//voy a preguntar por el estado de los botones de ida y vuelta
+tarjetaCk.addEventListener('change', clavesMediosDePago())
+mercadoPagoCk.addEventListener('change', clavesMediosDePago())
+cajaAhorroCk.addEventListener('change', clavesMediosDePago())
+
+
+
+
+
+console.log("check tarjeta" + tarjetaCk.checked)
+console.log("check mercadoPago" + mercadoPagoCk.checked)
+console.log("check Caja Ahorro" + cajaAhorroCk.checked)
+
+
 //Para validar el formulario cuando lo envie
 formularioRecap.addEventListener('submit', (e) => {
     console.log("estoy aca adentro")
     
+
     e.preventDefault()
+
+    //voy a preguntar por el estado de los botones de ida y vuelta
+
+
 
     //si el formulario está vacio
     if (campos.nombre == false && campos.apellido == false && campos.email == false) {
         mensajesErrorRecap.push('formulario vacio, por favor complete los campos correctamente para continuar')
         errorRecap.innerHTML = mensajesErrorRecap.join(', ')
         mensajesErrorRecap = []
+        //formularioRecap.reset()
         return
     }
+
+    //si solo completó el nombre
+    else if (campos.nombre != false && campos.nombre.length != 0 && campos.apellido == false && campos.email == false) {
+        mensajesErrorRecap.push('Por favor complete su apellido y correo electronico para continuar')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+
+
+
 
 
 });
