@@ -22,7 +22,7 @@ const apellidoIn = document.getElementById('apellidoRecap')
 const emailIn = document.getElementById('emailRecap')
 
 //accediendo al input de clave de metodo de pago
-const claveTarjeta = document.getElementById('TarjetaCreditoInput')
+const claveTarjetaIn = document.getElementById('TarjetaCreditoInput')
 const cbuMp = document.getElementById('mercadoPagoCVUInput')
 
 
@@ -39,9 +39,7 @@ errorMailRecap.style.color = 'red';
 errorClaveOCBU.style.color = 'red';
 
 let listUsuariosRECAP = [
-    { mail: 'administrador@stylebus.com', password: 'admin1234', nombre: 'administrador', apellido: 'administrador,', domicilio: 'admin 785', DNI: '36000000', fechaNacimiento: '27091991', nombreTarjetadeCredito: 'Visa', numeroTarjetaDeCredito: '1111-1111-1111-1111', claveTarjetaDeCredito: '123' },
-
-    { mail: 'makzofx@gmail.com', password: 'test1234', nombre: 'Maximiliano', apellido: 'Sanchez,', domicilio: 'Buschiazzo 785', DNI: '36293754', fechaNacimiento: '27091991', nombreTarjetadeCredito: 'Visa', numeroTarjetaDeCredito: '1111-1111-1111-1111', claveTarjetaDeCredito: '123' }
+    { mail: 'makzofx@gmail.com', password: 'test1234', nombre: 'maximiliano', apellido: 'sanchez', domicilioCalle: 'Buschiazzo', domicilioAltura: '785', DNI: '36293754', fechaNacimiento: '19910927', nombreTarjetadeCredito: 'maximiliano sanchez', numeroTarjetaDeCredito: '1111111111111111', claveTarjetaDeCredito: '123', fechavenTarjetaDeCredito: '20270425' }
 
 ]
 
@@ -50,13 +48,10 @@ const campos = {
     passcard: false,
     nombre: false,
     apellido: false,
-    email: false,
+    mail: false,
     cbu: false,
 }
 
-console.log(campos)
-
-console.log(campos.passcard)
 
 const expresiones = {
     usuario: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // EMAIL VALIDO
@@ -64,7 +59,7 @@ const expresiones = {
     password: /^.{4,12}$/, // 4 a 12 digitos.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^\d{7,14}$/, // 7 a 14 numeros.
-    cbu: /^\d{10}$/, // 10 numeros.
+    cbu: /^\d{0,10}$/, // 10 numeros.
     claveCard: /^\d{0,3}$/,
 }
 
@@ -86,13 +81,14 @@ const validarFormulario = (e) => {
             validarApellido(expresiones.nombre, e.target, 'apellido');
             break;
         case "email":
-            validarEmail(expresiones.correo, e.target, 'email');
+            validarEmail(expresiones.correo, e.target);
             break;
         case "TarjetaCreditoInput":
             validarClaveTarjeta(expresiones.claveCard, e.target)
             break;
-
-
+        case "mercadoPagoCVUInput":
+            validarCbu(expresiones.cbu, e.target)
+            break;
     }
 }
 
@@ -123,13 +119,13 @@ const validarApellido = (expresion, input, campo) => {
 
 }
 
-const validarEmail = (expresion, input, campo) => {
+const validarEmail = (expresion, input) => {
     if (expresion.test(input.value)) {
-        campos.passcard = true;
+        campos.mail = true;
 
     } else {
-        campos[campo] = false;
-        mensajesErrorEmail.push("el campo: " + campo + " es invalido")
+        campos.mail = false;
+        mensajesErrorEmail.push("el campo: email es invalido")
         errorMailRecap.innerHTML = mensajesErrorEmail.join(', ')
         mensajesErrorEmail = []
     }
@@ -151,17 +147,32 @@ const validarClaveTarjeta = (expresion, input) => {
 
 }
 
+const validarCbu = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        console.log("CBU correcto")
+        campos.cbu = true;
+
+    } else {
+        campos.cbu = false;
+        console.log("fallo el CBU ")
+        mensajesErrorClaves.push("Formato de CBU incorrectO. Por favor ingrese correctamente su CBU")
+        errorClaveOCBU.innerHTML = mensajesErrorClaves.join(', ')
+        mensajesErrorClaves = []
+    }
+
+}
+
 
 //habilitar o deshabilitar medios de pago
 function OcultarclavesMediosDePago() {
     if (tarjetaCk.checked) {
-        claveTarjeta.hidden = false;
+        claveTarjetaIn.hidden = false;
         cbuMp.hidden = true;
     } if (mercadoPagoCk.checked) {
-        claveTarjeta.hidden = true;
+        claveTarjetaIn.hidden = true;
         cbuMp.hidden = false;
     } if (cajaAhorroCk.checked) {
-        claveTarjeta.hidden = true;
+        claveTarjetaIn.hidden = true;
         cbuMp.hidden = false;
     }
 }
@@ -257,18 +268,36 @@ formularioRecap.addEventListener('submit', (e) => {
 
     //Acá viene el caso correcto
 
-    //si está todo completo confirma la compra --> validar con los datos de la lista de usuarios antes
+    //si está todo completo confirma la compra --> validar con los datos de la lista de usuarios antes elaborada
     else if (nombreIn.value.length != 0 && apellidoIn.value.length != 0 && emailIn.value.length != 0) {
-        mensajesErrorRecap.push('Compra correcta!!')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
+        if (campos.nombre && campos.apellido && campos.mail) {
+
+            if (tarjetaCk.checked === true && campos.passcard) {
+                console.log(tarjetaCk.checked)
+
+
+                if (listUsuariosRECAP.some(us => us.nombre === nombreIn.value.toLowerCase() && us.apellido === apellidoIn.value.toLowerCase() && us.mail === emailIn.value.toLowerCase() && us.claveTarjetaDeCredito === claveTarjetaIn.value)) {
+                    mensajesErrorRecap.push('Pago confirmado!')
+                    errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+                    mensajesErrorRecap = []
 
 
 
+                } else {
+                    mensajesErrorRecap.push('Ha habido un problema en procesar su pago, por favor revise sus datos o seleccione otro medio de pago')
+                    errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+                    mensajesErrorRecap = []
+                }
 
+            } else {
+                console.log("soy el else!!")
+            }
+        }
 
+    } console.log("ni entre perro")
+    console.log(campos.nombre)
+    console.log(campos.apellido)
+    console.log(campos.mail)
 
 
 
