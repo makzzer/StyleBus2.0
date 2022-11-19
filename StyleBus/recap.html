@@ -145,36 +145,37 @@
                 <div id="errorMailRECAP"> </div>
               </div>
 
-              <div class="align-items-center">
+              <div class="align-items-centern form-outline">
                 <p class="text-secondary">Seleccione su metodo de pago</p>
                 <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 
                   <div class="btn radio-btn mb-3 text-danger"> <label class="radio"> <input type="radio"
-                        value="tarjetaCreditoCheck" name="book" id="tarjetaCreditoCheck">
+                        value="false" name="book" id="tarjetaCreditoCheck">
                       Tarjeta de crédito <span></span>
                     </label> </div>
 
                   <div class="btn radio-btn mb-3 text-danger"> <label class="radio"> <input type="radio"
-                        value="mercadoPagoCheck" name="book" id="mercadoPagoCheck">
+                        value="false" name="book" id="mercadoPagoCheck">
                       Mercado Pago <span></span>
                     </label> </div>
 
                   <div class="btn radio-btn mb-3 text-danger"> <label class="radio"> <input type="radio"
-                        value="cajaAhorroCheck" name="book" id="cajaAhorroCheck">
+                        value="false" name="book" id="cajaAhorroCheck">
                       Caja de ahorro<span></span>
                     </label> </div>
 
                 </div>
 
                 <div class="form-outline mb-2 mt-2">
-                  <input type="text" id="TarjetaCredito3dig" class="form-control form-control-lg" name="TarjetaCredito"
-                    placeholder="Ingrese la clave de seguridad de su tarjeta" hidden />
-
-                  <input type="text" id="mercadoPagoCVU" class="form-control form-control-lg" name="TarjetaCredito"
-                    placeholder="Ingrese su CBU" hidden />
+                  <input type="text" id="TarjetaCreditoInput" class="form-control form-control-lg"
+                    name="TarjetaCreditoInput" placeholder="Ingrese la clave de seguridad de su tarjeta" hidden />
 
 
-                  <div id="errorMailRECAP"> </div>
+                  <input type="text" id="mercadoPagoCVUInput" class="form-control form-control-lg" name="mercadoPagoCVUInput"
+                    placeholder="Ingrese su CBU" hidden/>
+
+
+                  <div id="errorClaveOCBU"> </div>
                 </div>
 
               </div>

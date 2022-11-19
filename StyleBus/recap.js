@@ -5,8 +5,8 @@ const botonConfirmarcompra = document.getElementById('botonConfirmarCompraRECAP'
 const inputs = document.querySelectorAll('#formularioPagoRECAP input')
 
 //accediendo al input de clave de metodo de pago
-const claveTarjeta = document.getElementById('TarjetaCredito3dig')
-const cbuMp = document.getElementById('mercadoPagoCVU')
+const claveTarjeta = document.getElementById('TarjetaCreditoInput')
+const cbuMp = document.getElementById('mercadoPagoCVUInput')
 
 //accediedo a los botones check de medios de pago
 const tarjetaCk = document.getElementById('tarjetaCreditoCheck')
@@ -18,6 +18,7 @@ const errorRecap = document.getElementById('errorRECAP')
 const errorNombre = document.getElementById('errorNombreRECAP')
 const errorApellidoRecap = document.getElementById('errorApellidoRECAP')
 const errorMailRecap = document.getElementById('errorMailRECAP')
+const errorClaveOCBU = document.getElementById('errorClaveOCBU')
 
 //acceso a los inputs del formulario
 const nombreIn = document.getElementById('nombreRECAP')
@@ -26,14 +27,16 @@ const emailIn = document.getElementById('emailRecap')
 
 //arrays de errores
 
-var mensajesErrorRecap = []
+var mensajesErrorRecap = [] //este va con errorRecap
 var mensajesErrorNombre = []
 var mensajesErrorApellido = []
 var mensajesErrorEmail = []
+var mensajesErrorClaves = [] //este va en el div de claves debajo del input de clave o cbu
 errorRecap.style.color = 'red';
 errorNombre.style.color = 'red';
 errorApellidoRecap.style.color = 'red';
 errorMailRecap.style.color = 'red';
+errorClaveOCBU.style.color = 'red';
 
 let listUsuariosRECAP = [
     { mail: 'administrador@stylebus.com', password: 'admin1234', nombre: 'administrador', apellido: 'administrador,', domicilio: 'admin 785', DNI: '36000000', fechaNacimiento: '27091991', nombreTarjetadeCredito: 'Visa', numeroTarjetaDeCredito: '1111-1111-1111-1111', claveTarjetaDeCredito: '123' },
@@ -44,24 +47,25 @@ let listUsuariosRECAP = [
 
 
 const campos = {
+    passcard: false,
     nombre: false,
     apellido: false,
     email: false,
-    medioPago: false,
-}
-
-const mediosPago = {
-    clavetarjeta: false,
     cbu: false,
 }
 
+console.log(campos)
+
+console.log(campos.passcard)
 
 const expresiones = {
     usuario: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // EMAIL VALIDO
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
     password: /^.{4,12}$/, // 4 a 12 digitos.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    telefono: /^\d{7,14}$/ // 7 a 14 numeros.
+    telefono: /^\d{7,14}$/, // 7 a 14 numeros.
+    cbu: /^\d{10}$/, // 10 numeros.
+    claveCard: /^\d{0,3}$/,
 }
 
 
@@ -70,10 +74,13 @@ const validarFormulario = (e) => {
     errorNombre.innerHTML = ''
     errorMailRecap.innerHTML = ''
     errorRecap.innerHTML = ''
+    errorClaveOCBU.innerHTML = ''
 
+    //despues del case , va lo que esté en el atributo "name" del campo input relacionado al caso en el html
     switch (e.target.name) {
         case "nombre":
             validarNombre(expresiones.nombre, e.target, 'nombre');
+            console.log(e.target)
             break;
         case "apellido":
             validarApellido(expresiones.nombre, e.target, 'apellido');
@@ -81,10 +88,13 @@ const validarFormulario = (e) => {
         case "email":
             validarEmail(expresiones.correo, e.target, 'email');
             break;
+        case "TarjetaCreditoInput":
+            validarClaveTarjeta(expresiones.claveCard, e.target)
+            break;
+
+
     }
 }
-
-
 
 
 const validarNombre = (expresion, input, campo) => {
@@ -115,7 +125,7 @@ const validarApellido = (expresion, input, campo) => {
 
 const validarEmail = (expresion, input, campo) => {
     if (expresion.test(input.value)) {
-        campos[campo] = true;
+        campos.passcard = true;
 
     } else {
         campos[campo] = false;
@@ -126,15 +136,26 @@ const validarEmail = (expresion, input, campo) => {
 
 }
 
+const validarClaveTarjeta = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        console.log("clave tarjeta bien")
+        campos.passcard = true;
 
+    } else {
+        campos.passcard = false;
+        console.log("fallo la clave tarjeta")
+        mensajesErrorClaves.push("Formato de clave incorrecta. Por favor ingrese los tres números de su clave")
+        errorClaveOCBU.innerHTML = mensajesErrorClaves.join(', ')
+        mensajesErrorClaves = []
+    }
+
+}
 
 
 
 //habilitar o deshabilitar medios de pago
-function clavesMediosDePago() {
+function OcultarclavesMediosDePago() {
     if (tarjetaCk.checked) {
-        //console.log("acá remuevo")
-        //claveTarjeta.removeAttribute("hidden")
         claveTarjeta.hidden = false;
         cbuMp.hidden = true;
     }if(mercadoPagoCk.checked){
@@ -147,12 +168,12 @@ function clavesMediosDePago() {
 }
 
 
-//voy a preguntar por el estado de los botones de ida y vuelta
-tarjetaCk.addEventListener('change', clavesMediosDePago)
-mercadoPagoCk.addEventListener('change', clavesMediosDePago)
-cajaAhorroCk.addEventListener('change', clavesMediosDePago)
 
 
+//voy a preguntar por el estado de los botones MEDIO DE PAGO
+tarjetaCk.addEventListener('change', OcultarclavesMediosDePago)
+mercadoPagoCk.addEventListener('change', OcultarclavesMediosDePago)
+cajaAhorroCk.addEventListener('change', OcultarclavesMediosDePago)
 
 
 
@@ -164,30 +185,77 @@ console.log("check Caja Ahorro" + cajaAhorroCk.checked)
 //Para validar el formulario cuando lo envie
 formularioRecap.addEventListener('submit', (e) => {
     console.log("estoy aca adentro")
-    
+
 
     e.preventDefault()
 
-    //voy a preguntar por el estado de los botones de ida y vuelta
-
+    if (campos.clavetarjeta == true) {
+        console.log("clave tarjeta ok")
+    }
 
 
     //si el formulario está vacio
-    if (campos.nombre == false && campos.apellido == false && campos.email == false) {
-        mensajesErrorRecap.push('formulario vacio, por favor complete los campos correctamente para continuar')
+    else if (campos.nombre == false && campos.apellido == false && campos.email == false) {
+        mensajesErrorRecap.push('Formulario vacio, por favor complete los campos correctamente para continuar')
         errorRecap.innerHTML = mensajesErrorRecap.join(', ')
         mensajesErrorRecap = []
-        //formularioRecap.reset()
+        formularioRecap.reset()
         return
     }
 
+    //si la opcion de pago con tarjeta de credito está activa --> tiene que validar el campo claveTarjeta tambien antes de dar correcta la compra
+
+
     //si solo completó el nombre
-    else if (campos.nombre != false && campos.nombre.length != 0 && campos.apellido == false && campos.email == false) {
+    else if (campos.nombre != false && campos.apellido == false && campos.email == false) {
         mensajesErrorRecap.push('Por favor complete su apellido y correo electronico para continuar')
         errorRecap.innerHTML = mensajesErrorRecap.join(', ')
         mensajesErrorRecap = []
         return
     }
+    //si solo completó el apellido
+    else if (campos.apellido != false && campos.nombre == false && campos.email == false) {
+        mensajesErrorRecap.push('Por favor complete su nombre y correo electronico para continuar')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+    //si solo completó el mail
+    else if (campos.mail != false && campos.nombre == false && campos.apellido == false) {
+        mensajesErrorRecap.push('Por favor complete su nombre y apellido para continuar')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+
+    //si solo completó el nombre y el mail
+    else if (campos.mail != false && campos.nombre != false && campos.apellido == false) {
+        mensajesErrorRecap.push('Por favor complete su apellido para continuar')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+
+
+    //si solo completó el nombre y el apellido
+    else if (campos.apellido != false && campos.nombre != false && campos.mail == false) {
+        mensajesErrorRecap.push('Por favor complete su apellido para continuar')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+
+
+    //si está todo completo confirma la compra --> validar con los datos de la lista de usuarios antes
+    else if (campos.apellido != false && campos.nombre != false && campos.email != false) {
+        mensajesErrorRecap.push('Compra correcta!!')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+
+
+
 
 
 
