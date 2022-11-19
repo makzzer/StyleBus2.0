@@ -2,14 +2,24 @@
 
 const formularioRecap = document.getElementById('formularioPagoRECAP')
 const botonConfirmarcompra = document.getElementById('botonConfirmarCompraRECAP')
-const errorRecap = document.getElementById('errorRECAP')
-const errorNombre = document.getElementById('errorNombreRECAP')
-
 const inputs = document.querySelectorAll('#formularioPagoRECAP input')
 
+//accesos a divs de errores
+const errorRecap = document.getElementById('errorRECAP')
+const errorNombre = document.getElementById('errorNombreRECAP')
+const errorApellidoRecap = document.getElementById('errorApellidoRECAP')
+const errorMailRecap = document.getElementById('errorMailRECAP')
+
+//arrays de errores
+
 var mensajesErrorRecap = []
+var mensajesErrorNombre = []
+var mensajesErrorApellido = []
+var mensajesErrorEmail = []
 errorRecap.style.color = 'red';
 errorNombre.style.color = 'red';
+errorApellidoRecap.style.color = 'red';
+errorMailRecap.style.color = 'red';
 
 let listUsuariosRECAP = [
     { mail: 'administrador@stylebus.com', password: 'admin1234', nombre: 'administrador', apellido: 'administrador,', domicilio: 'admin 785', DNI: '36000000', fechaNacimiento: '27091991', nombreTarjetadeCredito: 'Visa', numeroTarjetaDeCredito: '1111-1111-1111-1111', claveTarjetaDeCredito: '123' },
@@ -17,6 +27,15 @@ let listUsuariosRECAP = [
     { mail: 'makzofx@gmail.com', password: 'test1234', nombre: 'Maximiliano', apellido: 'Sanchez,', domicilio: 'Buschiazzo 785', DNI: '36293754', fechaNacimiento: '27091991', nombreTarjetadeCredito: 'Visa', numeroTarjetaDeCredito: '1111-1111-1111-1111', claveTarjetaDeCredito: '123' }
 
 ]
+
+
+const campos = {
+    nombre: false,
+    apellido: false,
+    Email: false,
+    MedioPago: false,
+    telefono: false
+}
 
 
 const expresiones = {
@@ -29,35 +48,81 @@ const expresiones = {
 
 
 const validarFormulario = (e) => {
+    errorApellidoRecap.innerHTML = ''
+    errorNombre.innerHTML = ''
+    errorMailRecap.innerHTML = ''
+
     switch (e.target.name) {
         case "nombre":
-            //lo siguiente me devuelve un true comparando el usuario ingresado con la expresion regular
-            if (expresiones.usuario.test(e.target.value)) {
-                if (listUsuariosRECAP.some(us => us.mail === e.target.value))
-                alert('Usuario correcto')
-                return
-
-            } else {
-                alert('el usuario debe ser una direccion de correo electronico valida')
-                return
-            }
-            
+            validarNombre(expresiones.nombre, e.target, 'nombre');
+            break;
         case "apellido":
-            console.log("Funciona apellido");
-            break
+            validarApellido(expresiones.nombre, e.target, 'apellido');
+            break;
         case "email":
-            console.log("Funciona email");
-            break
-
-        
-
+            validarEmail(expresiones.correo, e.target, 'email');
+            break;
     }
 }
 
 
+
+
+const validarNombre = (expresion, input, campo) => {
+    if (expresion.test(input.value)) {
+        campos[campo] = true;
+
+    } else {
+        campos[campo] = false;
+        mensajesErrorNombre.push("el campo: " + campo + " es invalido")
+        errorNombre.innerHTML = mensajesErrorNombre.join(', ')
+        mensajesErrorNombre = []
+    }
+
+}
+
+const validarApellido = (expresion, input, campo) => {
+    if (expresion.test(input.value)) {
+        campos[campo] = true;
+
+    } else {
+        campos[campo] = false;
+        mensajesErrorApellido.push("el campo: " + campo + " es invalido")
+        errorApellidoRecap.innerHTML = mensajesErrorApellido.join(', ')
+        mensajesErrorApellido = []
+    }
+
+}
+
+const validarEmail = (expresion, input, campo) => {
+    if (expresion.test(input.value)) {
+        campos[campo] = true;
+
+    } else {
+        campos[campo] = false;
+        mensajesErrorEmail.push("el campo: " + campo + " es invalido")
+        errorMailRecap.innerHTML = mensajesErrorEmail.join(', ')
+        mensajesErrorEmail = []
+    }
+
+}
+
+
+
+
 //Para validar el formulario cuando lo envie
 formularioRecap.addEventListener('submit', (e) => {
-    e.preventDefault()
+    console.log("estoy aca adentro")
+    if (nombre)
+        e.preventDefault()
+
+    if (campos.nombre == true) {
+        alert("es truee")
+    } else {
+        alert("es falsee")
+    }
+
+
 });
 
 //para validar que los inputs cuando se deja de seleccionar el campo
@@ -66,11 +131,3 @@ inputs.forEach((input) => {
     input.addEventListener('keyup', validarFormulario);
     input.addEventListener('blur', validarFormulario);
 })
-
-
-
-
-
-
-
-
