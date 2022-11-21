@@ -64,7 +64,7 @@ const expresiones = {
 }
 
 
-const validarFormulario = (e) => {
+const validarCampos = (e) => {
     errorApellidoRecap.innerHTML = ''
     errorNombre.innerHTML = ''
     errorMailRecap.innerHTML = ''
@@ -198,6 +198,7 @@ formularioRecap.addEventListener('submit', (e) => {
 
 
     e.preventDefault()
+
 
 
     console.log("la clave tarjeta"+claveTarjetaIn.value)
@@ -363,6 +364,23 @@ formularioRecap.addEventListener('submit', (e) => {
 //para validar que los inputs cuando se deja de seleccionar el campo
 
 inputs.forEach((input) => {
-    input.addEventListener('keyup', validarFormulario);
-    input.addEventListener('blur', validarFormulario);
+    input.addEventListener('keyup', validarCampos);
+    input.addEventListener('blur', validarCampos);
 })
+
+/*
+
+const validarFormulario = () => {
+    console.log("nada")
+
+    var formularioValido = true;
+
+    if (nombreIn.value.length == 0 || nombreIn.value == null){
+        alert("debe ")
+    }
+
+
+
+}
+
+*/
