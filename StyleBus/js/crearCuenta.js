@@ -30,6 +30,11 @@ var erroresMailMSJ = []
 const errorMailDIV = document.getElementById('errorMail')
 errorMailDIV.style.color = 'red';
 
+//Errores Password
+var erroresPasswordMSJ = []
+const errorPasswordDIV = document.getElementById('errorPassword')
+errorPasswordDIV.style.color = 'red';
+
 
 
 //Errores generales
@@ -47,6 +52,8 @@ const direccionCalleIn = document.getElementById('calleNombre')
 const direccionNumeroIn = document.getElementById('numDireccion')
 const fechaNacIn = document.getElementById('fechaNac')
 const mailIn = document.getElementById('mail')
+const passwordIn = document.getElementById('password')
+
 
 let listUsuarios = [
     { mail: 'makzofx@gmail.com', password: 'test1234', nombre: 'maximiliano', apellido: 'sanchez', domicilioCalle: 'Buschiazzo', domicilioAltura: '785', DNI: '36293754', fechaNacimiento: '19910927', nombreTarjetadeCredito: 'maximiliano sanchez', numeroTarjetaDeCredito: '1111111111111111', claveTarjetaDeCredito: '123', fechavenTarjetaDeCredito: '20270425', mp: '2222222222', cbu: '3333333333' }
@@ -63,8 +70,7 @@ const campos = {
     fecha_nac: false,
     mail: false,
     telefono: false,
-    password1: false,
-    password2: false,
+    password: false,
 
     //formulario de tarjeta
 
@@ -81,7 +87,7 @@ const campos = {
 const expresiones = {
     usuario: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // EMAIL VALIDO
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-    password: /^.{4,12}$/, // 4 a 12 digitos.
+    password: /^.{5,20}$/, // 5 a 20 digitos.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^\d{7,14}$/, // 7 a 14 numeros.
     cbu: /^\d{0,10}$/, // 10 numeros.
@@ -106,6 +112,12 @@ function calcularEdad(fecha_nacimiento) {
 function validarFormulario() {
     var formularioCompleto = true;
     //si no colocó el nombre
+
+    /*
+    if (nombreccIn.value.length == 0 || nombreccIn.value == null && apellidoccIn.value.length == 0 || apellidoccIn.value == null && direccionCalleIn.value.length == 0 || direccionCalleIn.value == null && direccionNumeroIn.value.length == 0 || direccionNumeroIn.value == null && fechaNacIn.value == "" || fechaNacIn.value == null && mailIn.value == null || mailIn.value.length == 0 && passwordIn.value.length == 0 || passwordIn.value == null) {
+        alert("Formulario vacio, complete los campos para continuar")
+        formularioCompleto = false
+    }*/
     if (nombreccIn.value.length == 0 || nombreccIn.value == null) {
         alert("debe completar el Nombre para continuar")
         formularioCompleto = false
@@ -154,14 +166,21 @@ function validarFormulario() {
     var dia = fechaHoy.getDate()
     var fechaHoySt = año + "-" + mes + "-" + dia
 
-    if (fechaNacIn.value > fechaHoySt) {
-        alert("la fecha de nacimiento no puede ser mayor a la fecha actual")
+    //Si no ingresó la fecha
+    if (fechaNacIn.value == "" || fechaNacIn.value == null) {
+        alert("Debe ingresar su fecha de nacimiento para continuar")
         formularioCompleto = false;
-
-    } if (calcularEdad(fechaNacIn.value) < 18) {
-        formularioCompleto = false;
-        alert("no puede registrarse si es menor a 18 años, lo sentimos.")
-
+        //si la ingresó
+    } else {
+        //si la ingresó pero la fecha de nacimiento es mayor a la fecha actual
+        if (fechaNacIn.value > fechaHoySt) {
+            alert("la fecha de nacimiento no puede ser mayor a la fecha actual")
+            formularioCompleto = false;
+            //si la ingresó pero la es menor de 18 años
+        } else if (calcularEdad(fechaNacIn.value) < 18) {
+            formularioCompleto = false;
+            alert("no puede registrarse si es menor a 18 años, lo sentimos.")
+        }
         //si no ingreso el mail
     } if (mailIn.value == null || mailIn.value.length == 0) {
         alert("debe completar su MAIL para continuar")
@@ -181,7 +200,19 @@ function validarFormulario() {
             alert("El mail ingresado no es valido, por favor ingrese un mail valido")
             formularioCompleto = false
         }
+    } if (passwordIn.value.length == 0 || passwordIn.value == null) {
+        alert("debe completar su Password para continuar")
+        formularioCompleto = false
+    } else {
+        if (campos.password) {
+            alert("Password Correcta")
+        } else {
+            alert("La password ingresada no cumple con los parametros de seguridad")
+            formularioCompleto = false
+        }
     }
+
+
     return formularioCompleto;
 
 }
@@ -208,6 +239,12 @@ const validarCampos = e => {
         case "mail":
             validarMail(expresiones.correo, e.target);
             break;
+        case "password":
+            validarPassword(expresiones.password, e.target);
+            break;
+
+
+
     }
 }
 
@@ -302,7 +339,23 @@ const validarMail = (expresion, input) => {
 
 }
 
+//Validar password
+const validarPassword = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.password = true;
+        erroresPasswordMSJ.push("el campo PASSWORD ingresado es Valido")
+        errorPasswordDIV.innerHTML = erroresPasswordMSJ.join(', ')
+        erroresPasswordMSJ = []
 
+    } else {
+        campos.mail = false;
+        erroresPasswordMSJ.push("el campo PASSWORD ingresado no es Valido")
+        errorPasswordDIV.innerHTML = erroresPasswordMSJ.join(', ')
+        erroresPasswordMSJ = []
+
+    }
+
+}
 
 
 

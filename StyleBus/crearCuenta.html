@@ -141,15 +141,31 @@
 
                   <!--password-->
                   <div class="form-outline mb-1">
-                    <input type="password" id="passwordcc" class="form-control form-control-md" />
-                    <label class="form-label text-light" for="passwordcc">Contraseña</label>
+                    <input type="password" id="password" class="form-control form-control-md" name="password"/>
+                    <label class="form-label text-light" for="password">Contraseña</label>
+                    <div id="errorPassword"> </div>
                   </div>
 
-                  <!--password2-->
-                  <div class="form-outline mb-4">
-                    <input type="password" id="passwordcc" class="form-control form-control-md" />
-                    <label class="form-label text-light" for="passwordcc">Confirmar Contraseña</label>
+
+                  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+                    <div class="btn radio-btn mb-3 text-light"> <label class="radio"> <input type="radio" name="book"
+                          id="tarjetaCreditoCheck">
+                        Tarjeta de crédito <span></span>
+                      </label> </div>
+  
+                    <div class="btn radio-btn mb-3 text-light"> <label class="radio"> <input type="radio" name="book"
+                          id="mercadoPagoCheck">
+                        Mercado Pago <span></span>
+                      </label> </div>
+  
+                    <div class="btn radio-btn mb-3 text-light"> <label class="radio"> <input type="radio" name="book"
+                          id="cajaAhorroCheck">
+                        Caja de ahorro<span></span>
+                      </label> </div>
+  
                   </div>
+
 
                   <div>
 
