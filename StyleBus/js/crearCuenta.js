@@ -129,6 +129,8 @@ const expresiones = {
     cbu: /^\d{0,10}$/, // 10 numeros.
     claveCard: /^\d{0,3}$/,
     numCalle: /^\d{1,4}$/, // 1 a 4 numeros.
+    mes: /^\d{2}$/, // 2 numeros.de 0 a 12
+    año: /^\d{4}$/, // 4 numeros. de 1 a 31
 }
 
 function calcularEdad(fecha_nacimiento) {
@@ -141,6 +143,25 @@ function calcularEdad(fecha_nacimiento) {
     }
     return edad;
 }
+
+function tarjetaVencida(año, mes) {
+
+    var hoy = new Date();
+    var fechaCard = new Date(año + "-" + mes + "-" + 2)
+    if (hoy > fechaCard) {
+        console.log("la tarjeta está vencida")
+        return true;
+    } else {
+        console.log("la tarjeta NO está vencida")
+        return false;
+       
+    }
+
+
+
+}
+
+console.log(tarjetaVencida(2027, 09))
 
 
 //habilitar o deshabilitar medios de pago
@@ -169,11 +190,6 @@ function validarFormulario() {
     var formularioCompleto = true;
     //si no colocó el nombre
 
-    /*
-    if (nombreccIn.value.length == 0 || nombreccIn.value == null && apellidoccIn.value.length == 0 || apellidoccIn.value == null && direccionCalleIn.value.length == 0 || direccionCalleIn.value == null && direccionNumeroIn.value.length == 0 || direccionNumeroIn.value == null && fechaNacIn.value == "" || fechaNacIn.value == null && mailIn.value == null || mailIn.value.length == 0 && passwordIn.value.length == 0 || passwordIn.value == null) {
-        alert("Formulario vacio, complete los campos para continuar")
-        formularioCompleto = false
-    }*/
     if (nombreccIn.value.length == 0 || nombreccIn.value == null) {
         alert("debe completar el Nombre para continuar")
         formularioCompleto = false
@@ -265,11 +281,28 @@ function validarFormulario() {
         } else {
             alert("La password ingresada no cumple con los parametros de seguridad")
             formularioCompleto = false
-        }     
-    }if(!tarjetaCk.checked && !mercadoPagoCk.checked && !cajaAhorroCk.checked){
+        }
+        //si no coloca ningun medio de pago avisarle y no continuar
+    } if (!tarjetaCk.checked && !mercadoPagoCk.checked && !cajaAhorroCk.checked) {
         alert("Debe seleccionar un metodo de pago para continuar")
         formularioCompleto = false
+        //si seleccionó tarjeta
+    } if (tarjetaCk.checked) {
+        //si estan todos los campos completos
+        if (campos.nombreTarjetaCreditoIn && campos.numeroTarjeta && campos.vencimientoTarjetaAño && campos.vencimientoTarjetaMes && campos.cvvTarjeta) {
+            //si la tarjeta no está vencida
+            if (!tarjetaVencida(fechaVencimientoTarjetaAño.value, fechaVencimientoTarjetaMESIn.value)) {
+                alert("todo en orden , agregamos el medio de pago de la tarjeta de credito")
+            } else {
+                alert("Tarjeta vencida, ingrese otra tarjeta o seleccione otro medio de pago para continuar")
+                formularioCompleto = false;
+            }
+        } else {
+            formularioCompleto = false;
+            alert("tarjeta no validada, corrija los campos ingresados para continuar")
+        }
     }
+
 
 
 
@@ -309,9 +342,18 @@ const validarCampos = e => {
         case "numTarjetaDeCredito":
             validarNumeroTarjeta(expresiones.numTarjeta, e.target);
             break;
+        case "mesVencimientoTarjeta":
+            validarMesTarjeta(expresiones.mes, e.target);
+            break;
+        case "AñoVencimientoTarjeta":
+            validarañoTarjeta(expresiones.año, e.target);
+            break;
+        case "CVVTarjetaCredito":
+            validarañoTarjeta(expresiones.mesAñoTarjeta, e.target);
+            break;
 
 
-            
+
     }
 }
 
@@ -455,6 +497,76 @@ const validarNumeroTarjeta = (expresion, input) => {
         erroresNumeroTarjetaCreditodMSJ.push("el campo Numero tarjeta de credito no tiene formato valido")
         errorNumeroTarjetaCreditoDIV.innerHTML = erroresNumeroTarjetaCreditodMSJ.join(', ')
         erroresNumeroTarjetaCreditodMSJ = []
+
+    }
+
+}
+
+
+//Validar Mes Tarjeta
+const validarMesTarjeta = (expresion, input) => {
+    console.log("iv:"+input.value)
+    if (input.value < 1 || input.value > 12) {
+        campos.vencimientoTarjetaMes = false;
+        alert("el campo MES VENCIMIENTO no puede ser menor a 1 ni mayor a 12")
+        console.log("el campo MES VENCIMIENTO no puede ser menor a 1 y mayor a 12")
+        
+        erroresVencimientoTarjetaCreditodMSJ.push("el campo MES VENCIMIENTO no puede ser menor a 1 o mayor a 12")
+        errorVencimientoTarjetaCreditoDIV.innerHTML = erroresVencimientoTarjetaCreditodMSJ.join(', ')
+        erroresVencimientoTarjetaCreditodMSJ = []
+    
+    } else {
+
+        if (expresion.test(input.value)) {
+            campos.vencimientoTarjetaMes = true;
+            erroresVencimientoTarjetaCreditodMSJ.push("el campo MES VENCIMIENTO de credito tiene formato valido")
+            errorVencimientoTarjetaCreditoDIV.innerHTML = erroresVencimientoTarjetaCreditodMSJ.join(', ')
+            erroresVencimientoTarjetaCreditodMSJ = []
+
+        } else {
+            campos.mail = false;
+            erroresVencimientoTarjetaCreditodMSJ.push("el campo MES VENCIMIENTO de tarjeta de credito no tiene formato valido")
+            errorVencimientoTarjetaCreditoDIV.innerHTML = erroresVencimientoTarjetaCreditodMSJ.join(', ')
+            erroresVencimientoTarjetaCreditodMSJ = []
+
+        }
+
+    }
+
+
+}
+
+//Validar NumeroTarjeta
+const validarañoTarjeta = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.vencimientoTarjetaAño = true;
+        erroresVencimientoTarjetaCreditodMSJ.push("el campo año VENCIMIENTO de tarjeta de credito tiene formato valido")
+        errorVencimientoTarjetaCreditoDIV.innerHTML = erroresVencimientoTarjetaCreditodMSJ.join(', ')
+        erroresVencimientoTarjetaCreditodMSJ = []
+
+    } else {
+        campos.mail = false;
+        erroresVencimientoTarjetaCreditodMSJ.push("el campo AÑO VENCIMIENTO de tarjeta de credito no tiene formato valido")
+        errorVencimientoTarjetaCreditoDIV.innerHTML = erroresVencimientoTarjetaCreditodMSJ.join(', ')
+        erroresVencimientoTarjetaCreditodMSJ = []
+
+    }
+
+}
+
+//Validar CVV Tarjeta
+const validarCVVTarjeta = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.cvvTarjeta = true;
+        erroresCVVTarjetaCreditodMSJ.push("el campo año VENCIMIENTO de tarjeta de credito tiene formato valido")
+        errorCVVTarjetaCreditoDIV.innerHTML = erroresCVVTarjetaCreditodMSJ.join(', ')
+        erroresCVVTarjetaCreditodMSJ = []
+
+    } else {
+        campos.mail = false;
+        erroresCVVTarjetaCreditodMSJ.push("el campo AÑO VENCIMIENTO de tarjeta de credito no tiene formato valido")
+        errorCVVTarjetaCreditoDIV.innerHTML = erroresCVVTarjetaCreditodMSJ.join(', ')
+        erroresCVVTarjetaCreditodMSJ = []
 
     }
 
