@@ -56,6 +56,64 @@ var erroresCVVTarjetaCreditodMSJ = []
 const errorCVVTarjetaCreditoDIV = document.getElementById('errorCVVTarjetaCredito')
 errorCVVTarjetaCreditoDIV.style.color = 'red';
 
+
+
+
+
+
+
+
+//-----------Errores En CajaDeAhorro-------------
+
+
+//Errores CVU MercadoPago
+var errornumCBUCajaAhorroMSJ = []
+const errornumCBUCajaAhorroDIV = document.getElementById('errornumCBUCajaAhorro')
+errornumCBUCajaAhorroDIV.style.color = 'red';
+
+//Errores mail Banco
+var errormailmailBancoMSJ = []
+const errormailBancoDIV = document.getElementById('errormailBanco')
+errormailBancoDIV.style.color = 'red';
+
+
+
+//Errores pin Banco
+var errorPasswordBancoMSJ = []
+const errorPasswordBancoDIV = document.getElementById('errorPasswordBanco')
+errorPasswordBancoDIV.style.color = 'red';
+
+
+
+
+
+
+//-----------Errores En MercadoPago-------------
+//Errores mail mercadoPago
+var errormailMercadoPagodMSJ = []
+const errormailMercadoPagoDIV = document.getElementById('errormailMercadoPago')
+errormailMercadoPagoDIV.style.color = 'red';
+
+//Errores Contraseña MercadoPago
+var errorpasswordMercadoPagoMSJ = []
+const errorpasswordMercadoPagoDIV = document.getElementById('errorpasswordMercadoPago')
+errorpasswordMercadoPagoDIV.style.color = 'red';
+
+
+//Errores CVU MercadoPago
+var errorNumCVUMercadoPagoMSJ = []
+const errorNumCVUMercadoPagoDIV = document.getElementById('errorNumCVUMercadoPago')
+errorNumCVUMercadoPagoDIV.style.color = 'red';
+
+
+
+
+
+
+
+
+
+
 //Errores generales
 var mensajesErrorcc = []
 const errorcc = document.getElementById('errorcc')
@@ -81,6 +139,9 @@ const CVVTarjetaCreditoIn = document.getElementById('CVVTarjetaCredito')
 
 //Accedo a los sectores de formularios de pago
 const formularioTarjetaGrupo = document.getElementById('formularioTarjetaGrupo')
+const formularioMercadoPago = document.getElementById('formularioMercadoPagoGrupo')
+const formularioCajaAhorro = document.getElementById('formularioCajaAhorro')
+
 
 //accediedo a los botones check de medios de pago
 const tarjetaCk = document.getElementById('tarjetaCreditoCheck')
@@ -115,7 +176,18 @@ const campos = {
     vencimientoTarjetaAño: false,
     cvvTarjeta: false,
 
-    //
+    //Formulario de MercadoPago
+    mailMercadoPago: false,
+    contraseñaMercadoPago: false,
+    CVUMercadoPago: false,
+
+    //Formulario de CajadeAhorro
+    mailBanco: false,
+    PinBanco: false,
+    CBUBanco: false,
+
+
+
 }
 
 
@@ -131,6 +203,14 @@ const expresiones = {
     numCalle: /^\d{1,4}$/, // 1 a 4 numeros.
     mes: /^\d{2}$/, // 2 numeros.de 0 a 12
     año: /^\d{4}$/, // 4 numeros. de 1 a 31
+
+    // CBU
+    cbu: /^\d{22}$/, // 22 numeros.
+
+    //Pin Banco
+    pinBanco: /^\d{4}$/,
+
+
 }
 
 function calcularEdad(fecha_nacimiento) {
@@ -168,15 +248,18 @@ console.log(tarjetaVencida(2027, 09))
 function OcultarFormulariosMediosDePago() {
     if (tarjetaCk.checked) {
         formularioTarjetaGrupo.hidden = false;
-        /*
-        cbumpIn.hidden = true;
+        formularioMercadoPago.hidden = true;
+        formularioCajaAhorro.hidden = true;
     } if (mercadoPagoCk.checked) {
-        claveTarjetaIn.hidden = true;
-        cbumpIn.hidden = false;
+        formularioMercadoPago.hidden = false;
+        formularioTarjetaGrupo.hidden = true;
+        formularioCajaAhorro.hidden = true;
+
     } if (cajaAhorroCk.checked) {
-        claveTarjetaIn.hidden = true;
-        cbumpIn.hidden = false;
-        */
+        formularioCajaAhorro.hidden = false;
+        formularioTarjetaGrupo.hidden = true;
+        formularioMercadoPago.hidden = true;
+
     }
 }
 
@@ -318,11 +401,11 @@ function validarFormulario() {
             }
         } else {
             alert("paso la validacion voy a la parte de la tarjeta")
-          
+
             //si estan todos los campos son y validos
             if (campos.nombreEnTarjeta && campos.numeroTarjeta && campos.vencimientoTarjetaAño && campos.vencimientoTarjetaMes && campos.cvvTarjeta) {
 
-      
+
                 //si la tarjeta no está vencida
                 if (!tarjetaVencida(fechaVencimientoTarjetaAñoIN.value, fechaVencimientoTarjetaMESIn.value)) {
                     alert("todo en orden , agregamos el medio de pago de la tarjeta de credito")
@@ -397,11 +480,95 @@ const validarCampos = e => {
         case "CVVTarjetaCredito":
             validarCVVTarjeta(expresiones.claveCard, e.target);
             break;
+        //CASOS DE MERCADO PAGO
+        case "mailMercadoPago":
+            validarMailMercadoPago(expresiones.correo, e.target);
+            break;
+        case "passwordMercadoPago":
+            validarPasswordMercadoPago(expresiones.password, e.target);
+            break;
+        case "numCVUMercadoPago":
+            validarCVUMercadoPago(expresiones.cbu, e.target);
+            break;
+        //CASOS DE CajaDeAhorro
+        case "mailBanco":
+            validarmailBanco(expresiones.correo, e.target);
+            break;
+        case "PinBanco":
+            validarPinBanco(expresiones.pinBanco, e.target);
+            break;
+        case "numCBUCajaAhorro":
+            validarnumCBUCajaAhorro(expresiones.cbu, e.target);
+            break;
+
+
 
 
 
     }
 }
+
+
+
+//validar MercadoPago
+
+//Validar el correo electronico mercadoPago
+const validarmailBanco = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.mailBanco = true;
+        errormailmailBancoMSJ.push("el campo MAIL de Mercado Pago ingresado es Valido")
+        errormailBancoDIV.innerHTML = errormailmailBancoMSJ.join(', ')
+        errormailmailBancoMSJ = []
+
+    } else {
+        campos.mailBanco = false;
+        errormailmailBancoMSJ.push("el campo MAIL de MERCADO PAGO ingresado no es Valido. Se espera un mail valido. Ej: test@stylebus.com")
+        errormailBancoDIV.innerHTML = errormailmailBancoMSJ.join(', ')
+        errormailmailBancoMSJ = []
+
+    }
+
+}
+
+//Validar el correo electronico de Mercado Pago
+const validarPinBanco = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.PinBanco = true;
+        errorPasswordBancoMSJ.push("el campo PIN BANCARIO ingresado es Valido")
+        errorPasswordBancoDIV.innerHTML = errorPasswordBancoMSJ.join(', ')
+        errorPasswordBancoMSJ = []
+
+    } else {
+        campos.PinBanco = false;
+        errorPasswordBancoMSJ.push("el campo PIN BANCARIO ingresado no es Valido. El formato correcto son 4 digitos numericos")
+        errorPasswordBancoDIV.innerHTML = errorPasswordBancoMSJ.join(', ')
+        errorPasswordBancoMSJ = []
+
+    }
+
+}
+
+//Validar el CBU de MercadoPago 
+const validarnumCBUCajaAhorro = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.CBUBanco = true;
+        errornumCBUCajaAhorroMSJ.push("el campo CBU DE LA CAJA DE AHORRO es Valido")
+        errornumCBUCajaAhorroDIV.innerHTML = errornumCBUCajaAhorroMSJ.join(', ')
+        errornumCBUCajaAhorroMSJ = []
+
+    } else {
+        campos.CVUMercadoPago = false;
+        errornumCBUCajaAhorroMSJ.push("el campo CBU DE CAJA DE AHORRO ingresado no es Valido. El Formato correcto son 22 digitos numericos")
+        errornumCBUCajaAhorroDIV.innerHTML = errornumCBUCajaAhorroMSJ.join(', ')
+        errornumCBUCajaAhorroMSJ = []
+
+    }
+
+}
+
+
+
+
 
 
 const validarNombre = (expresion, input) => {
@@ -617,6 +784,69 @@ const validarCVVTarjeta = (expresion, input) => {
     }
 
 }
+
+//validar MercadoPago
+
+//Validar el correo electronico mercadoPago
+const validarMailMercadoPago = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.mailMercadoPago = true;
+        errormailMercadoPagodMSJ.push("el campo MAIL de Mercado Pago ingresado es Valido")
+        errormailMercadoPagoDIV.innerHTML = erroresMailMSJ.join(', ')
+        errormailMercadoPagodMSJ = []
+
+    } else {
+        campos.mailMercadoPago = false;
+        errormailMercadoPagodMSJ.push("el campo MAIL de MERCADO PAGO ingresado no es Valido")
+        errormailMercadoPagoDIV.innerHTML = errormailMercadoPagodMSJ.join(', ')
+        errormailMercadoPagodMSJ = []
+
+    }
+
+}
+
+//Validar el correo electronico de Mercado Pago
+const validarPasswordMercadoPago = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.contraseñaMercadoPago = true;
+        errorpasswordMercadoPagoMSJ.push("el campo CONTRASEÑA de Mercado Pago ingresado es Valido")
+        errorpasswordMercadoPagoDIV.innerHTML = errorpasswordMercadoPagoMSJ.join(', ')
+        errorpasswordMercadoPagoMSJ = []
+
+    } else {
+        campos.contraseñaMercadoPago = false;
+        errorpasswordMercadoPagoMSJ.push("el campo CONTRASEÑA de MERCADO PAGO ingresado no es Valido")
+        errorpasswordMercadoPagoDIV.innerHTML = errorpasswordMercadoPagoMSJ.join(', ')
+        errorpasswordMercadoPagoMSJ = []
+
+    }
+
+}
+
+//Validar el CBU de MercadoPago 
+const validarCVUMercadoPago = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.CVUMercadoPago = true;
+        errorNumCVUMercadoPagoMSJ.push("el campo CVU DE MERCADO Pago ingresado es Valido")
+        errorNumCVUMercadoPagoDIV.innerHTML = errorNumCVUMercadoPagoMSJ.join(', ')
+        errorNumCVUMercadoPagoMSJ = []
+
+    } else {
+        campos.CVUMercadoPago = false;
+        errorNumCVUMercadoPagoMSJ.push("el campo  CVU DE MERCADO Pago ingresado no es Valido")
+        errorNumCVUMercadoPagoDIV.innerHTML = errorNumCVUMercadoPagoMSJ.join(', ')
+        errorNumCVUMercadoPagoMSJ = []
+
+    }
+
+}
+
+
+
+
+
+
+
 
 
 
