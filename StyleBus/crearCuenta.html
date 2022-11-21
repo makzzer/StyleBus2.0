@@ -120,7 +120,7 @@
                     <label class="form-label text-light" for="calleNombre">Calle</label>
                     <div id="errorDirCalle"> </div>
                     <!--numero-->
-                    <input type="text" id="numDireccion" class="form-control form-control-md" name="numDireccion"/>
+                    <input type="text" id="numDireccion" class="form-control form-control-md" name="numDireccion" />
                     <label class="form-label text-light" for="numDireccion">Altura</label>
                     <div id="errorDirNum"> </div>
 
@@ -128,7 +128,8 @@
 
                   <!--Fecha nacimiento-->
                   <div class="form-outline mb-4">
-                    <p class="h-blue">Fecha de nacimiento</p> <input class="inputbox textmuted" type="date" max="<?php echo date('Y-m-d');?>" id="fechaNac">
+                    <p class="h-blue">Fecha de nacimiento</p> <input class="inputbox textmuted" type="date"
+                      max="<?php echo date('Y-m-d');?>" id="fechaNac">
                   </div>
 
                   <!--email-->
@@ -140,12 +141,14 @@
 
 
                   <!--password-->
-                  <div class="form-outline mb-1">
-                    <input type="password" id="password" class="form-control form-control-md" name="password"/>
+                  <div class="form-outline ">
+                    <input type="password" id="password" class="form-control form-control-md" name="password" />
                     <label class="form-label text-light" for="password">Contraseña</label>
                     <div id="errorPassword"> </div>
                   </div>
 
+
+                  <h6 class="text-light mt-2">Seleccione su medio de pago</h6>
 
                   <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 
@@ -153,18 +156,61 @@
                           id="tarjetaCreditoCheck">
                         Tarjeta de crédito <span></span>
                       </label> </div>
-  
+
                     <div class="btn radio-btn mb-3 text-light"> <label class="radio"> <input type="radio" name="book"
                           id="mercadoPagoCheck">
                         Mercado Pago <span></span>
                       </label> </div>
-  
+
                     <div class="btn radio-btn mb-3 text-light"> <label class="radio"> <input type="radio" name="book"
                           id="cajaAhorroCheck">
                         Caja de ahorro<span></span>
                       </label> </div>
-  
+
                   </div>
+
+
+
+
+                                  <!--Datos tarjeta-->
+                  <!--Nombre en tarjeta-->
+                  <div class="form-outline" id="formularioTarjetaGrupo" hidden>
+                    <input type="text" id="nombreTarjetaCredito" class="form-control form-control-md"
+                      name="nombreTarjetaCredito" />
+                    <label class="form-label text-light" for="nombreTarjetaCredito">Nombre tarjeta de crédito</label>
+                    <div id="errorNombreTarjetaCredito"> </div>
+
+                    <!--numero Tarjeta Credito-->
+                    <input type="text" id="numTarjetaDeCredito" class="form-control form-control-md" name="numTarjetaDeCredito" />
+                    <label class="form-label text-light" for="numTarjetaDeCredito">Numero Tarjeta crédito</label>
+                    <div id="errorNumeroTarjetaCredito"> </div>
+
+                    <!--Fecha vencimiento tarjeta MM/AA-->
+                    
+                    <div class="input-group"> <input type="number" placeholder="MM" name="mesVencimientoTarjeta" class="form-control" id="mesVencimientoTarjeta"
+                        >
+                      <input type="number" placeholder="YY" name="AñoVencimientoTarjeta" class="form-control" name="AñoVencimientoTarjeta" >
+                    
+                    </div>
+                    <h6 class="text-light mt-2"> Fecha de Vencimiento tarjeta </h6>
+                    <div id="errorVencimientoTarjetaCredito"> </div>
+
+                    
+                  </label> <input type="text"  class="form-control" id="CVVTarjetaCredito" name="CVVTarjetaCredito"> 
+                  <h6 class="text-success mt-2">CVV <i class="fa fa-question-circle d-inline"></i>
+                  </h6>
+                  <div id="errorCVVTarjetaCredito"> </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
 
 
                   <div>
@@ -176,7 +222,7 @@
 
 
 
-                  <div class="d-flex justify-content-end mb-2 mt-4">
+                  <div class="d-flex justify-content-end mb-2 mt-2">
                     <button type="submit"
                       class="btn btn-block btn-lg btn-outline-light text-white-60 gradient-custom">Registrarse</button>
                   </div>
@@ -198,7 +244,7 @@
               </div>
             </div>
 
-         
+
 
             <div>
               <p class="text-center text-muted text-light">Ya tenes cuenta? <a href="login.html"

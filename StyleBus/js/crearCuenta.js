@@ -35,14 +35,31 @@ var erroresPasswordMSJ = []
 const errorPasswordDIV = document.getElementById('errorPassword')
 errorPasswordDIV.style.color = 'red';
 
+//-----------Errores En Tarjeta de credito-------------
+//Errores nombre tarjeta de crédito
+var erroresNombreTarjetaCreditodMSJ = []
+const errorNombreTarjetaCreditoDIV = document.getElementById('errorNombreTarjetaCredito')
+errorNombreTarjetaCreditoDIV.style.color = 'red';
 
+//Errores Numero tarjeta de credito
+var erroresNumeroTarjetaCreditodMSJ = []
+const errorNumeroTarjetaCreditoDIV = document.getElementById('errorNumeroTarjetaCredito')
+errorNumeroTarjetaCreditoDIV.style.color = 'red';
+
+//Errores Fecha Vencimiento tarjeta de credito
+var erroresVencimientoTarjetaCreditodMSJ = []
+const errorVencimientoTarjetaCreditoDIV = document.getElementById('errorVencimientoTarjetaCredito')
+errorVencimientoTarjetaCreditoDIV.style.color = 'red';
+
+//Errores CVV tarjeta de credito
+var erroresCVVTarjetaCreditodMSJ = []
+const errorCVVTarjetaCreditoDIV = document.getElementById('errorCVVTarjetaCredito')
+errorCVVTarjetaCreditoDIV.style.color = 'red';
 
 //Errores generales
 var mensajesErrorcc = []
 const errorcc = document.getElementById('errorcc')
 errorcc.style.color = 'red';
-
-//Inputs con valores
 
 
 //importo los campos del input desde el DOM
@@ -53,6 +70,24 @@ const direccionNumeroIn = document.getElementById('numDireccion')
 const fechaNacIn = document.getElementById('fechaNac')
 const mailIn = document.getElementById('mail')
 const passwordIn = document.getElementById('password')
+
+//importo los input de tarjeta de crédito
+
+const nombreTarjetaCreditoIn = document.getElementById('nombreTarjetaCredito')
+const numeroTarjetaCreditoIn = document.getElementById('numTarjetaDeCredito')
+const fechaVencimientoTarjetaMESIn = document.getElementById('mesVencimientoTarjeta')
+const fechaVencimientoTarjetaAño = document.getElementById('AñoVencimientoTarjeta')
+const CVVTarjetaCreditoIn = document.getElementById('CVVTarjetaCredito')
+
+//Accedo a los sectores de formularios de pago
+const formularioTarjetaGrupo = document.getElementById('formularioTarjetaGrupo')
+
+//accediedo a los botones check de medios de pago
+const tarjetaCk = document.getElementById('tarjetaCreditoCheck')
+const mercadoPagoCk = document.getElementById('mercadoPagoCheck')
+const cajaAhorroCk = document.getElementById('cajaAhorroCheck')
+
+
 
 
 let listUsuarios = [
@@ -74,11 +109,11 @@ const campos = {
 
     //formulario de tarjeta
 
-    marcaTarjeta: false,
     nombreEnTarjeta: false,
     numeroTarjeta: false,
     vencimientoTarjetaMes: false,
     vencimientoTarjetaAño: false,
+    cvvTarjeta: false,
 
     //
 }
@@ -90,6 +125,7 @@ const expresiones = {
     password: /^.{5,20}$/, // 5 a 20 digitos.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^\d{7,14}$/, // 7 a 14 numeros.
+    numTarjeta: /^\d{16}$/, // 16 numeros.
     cbu: /^\d{0,10}$/, // 10 numeros.
     claveCard: /^\d{0,3}$/,
     numCalle: /^\d{1,4}$/, // 1 a 4 numeros.
@@ -107,6 +143,26 @@ function calcularEdad(fecha_nacimiento) {
 }
 
 
+//habilitar o deshabilitar medios de pago
+function OcultarFormulariosMediosDePago() {
+    if (tarjetaCk.checked) {
+        formularioTarjetaGrupo.hidden = false;
+        /*
+        cbumpIn.hidden = true;
+    } if (mercadoPagoCk.checked) {
+        claveTarjetaIn.hidden = true;
+        cbumpIn.hidden = false;
+    } if (cajaAhorroCk.checked) {
+        claveTarjetaIn.hidden = true;
+        cbumpIn.hidden = false;
+        */
+    }
+}
+
+//voy a preguntar por el estado de los botones MEDIO DE PAGO
+tarjetaCk.addEventListener('change', OcultarFormulariosMediosDePago)
+mercadoPagoCk.addEventListener('change', OcultarFormulariosMediosDePago)
+cajaAhorroCk.addEventListener('change', OcultarFormulariosMediosDePago)
 
 
 function validarFormulario() {
@@ -209,8 +265,13 @@ function validarFormulario() {
         } else {
             alert("La password ingresada no cumple con los parametros de seguridad")
             formularioCompleto = false
-        }
+        }     
+    }if(!tarjetaCk.checked && !mercadoPagoCk.checked && !cajaAhorroCk.checked){
+        alert("Debe seleccionar un metodo de pago para continuar")
+        formularioCompleto = false
     }
+
+
 
 
     return formularioCompleto;
@@ -242,9 +303,15 @@ const validarCampos = e => {
         case "password":
             validarPassword(expresiones.password, e.target);
             break;
+        case "nombreTarjetaCredito":
+            validarNombreTarjeta(expresiones.nombre, e.target);
+            break;
+        case "numTarjetaDeCredito":
+            validarNumeroTarjeta(expresiones.numTarjeta, e.target);
+            break;
 
 
-
+            
     }
 }
 
@@ -357,9 +424,41 @@ const validarPassword = (expresion, input) => {
 
 }
 
+//Validar NombreTarjeta
+const validarNombreTarjeta = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.nombreEnTarjeta = true;
+        erroresNombreTarjetaCreditodMSJ.push("el campo Nombre tarjeta de credito es valido")
+        errorNombreTarjetaCreditoDIV.innerHTML = erroresNombreTarjetaCreditodMSJ.join(', ')
+        erroresNombreTarjetaCreditodMSJ = []
 
+    } else {
+        campos.mail = false;
+        erroresNombreTarjetaCreditodMSJ.push("el campo Nombre tarjeta de credito no es valido")
+        errorNombreTarjetaCreditoDIV.innerHTML = erroresNombreTarjetaCreditodMSJ.join(', ')
+        erroresNombreTarjetaCreditodMSJ = []
 
+    }
 
+}
+
+//Validar NumeroTarjeta
+const validarNumeroTarjeta = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.numeroTarjeta = true;
+        erroresNumeroTarjetaCreditodMSJ.push("el campo Numero tarjeta de credito tiene formato valido")
+        errorNumeroTarjetaCreditoDIV.innerHTML = erroresNumeroTarjetaCreditodMSJ.join(', ')
+        erroresNumeroTarjetaCreditodMSJ = []
+
+    } else {
+        campos.mail = false;
+        erroresNumeroTarjetaCreditodMSJ.push("el campo Numero tarjeta de credito no tiene formato valido")
+        errorNumeroTarjetaCreditoDIV.innerHTML = erroresNumeroTarjetaCreditodMSJ.join(', ')
+        erroresNumeroTarjetaCreditodMSJ = []
+
+    }
+
+}
 
 
 
