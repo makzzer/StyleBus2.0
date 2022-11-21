@@ -76,7 +76,7 @@ const passwordIn = document.getElementById('password')
 const nombreTarjetaCreditoIn = document.getElementById('nombreTarjetaCredito')
 const numeroTarjetaCreditoIn = document.getElementById('numTarjetaDeCredito')
 const fechaVencimientoTarjetaMESIn = document.getElementById('mesVencimientoTarjeta')
-const fechaVencimientoTarjetaAño = document.getElementById('AñoVencimientoTarjeta')
+const fechaVencimientoTarjetaAñoIN = document.getElementById('AñoVencimientoTarjeta')
 const CVVTarjetaCreditoIn = document.getElementById('CVVTarjetaCredito')
 
 //Accedo a los sectores de formularios de pago
@@ -154,7 +154,7 @@ function tarjetaVencida(año, mes) {
     } else {
         console.log("la tarjeta NO está vencida")
         return false;
-       
+
     }
 
 
@@ -187,6 +187,9 @@ cajaAhorroCk.addEventListener('change', OcultarFormulariosMediosDePago)
 
 
 function validarFormulario() {
+
+    alert(fechaVencimientoTarjetaAñoIN.value)
+    alert(fechaVencimientoTarjetaMESIn.value)
     var formularioCompleto = true;
     //si no colocó el nombre
 
@@ -286,21 +289,64 @@ function validarFormulario() {
     } if (!tarjetaCk.checked && !mercadoPagoCk.checked && !cajaAhorroCk.checked) {
         alert("Debe seleccionar un metodo de pago para continuar")
         formularioCompleto = false
-        //si seleccionó tarjeta
+
+
+
+
+        //si seleccionó tarjeta de credito
     } if (tarjetaCk.checked) {
-        //si estan todos los campos completos
-        if (campos.nombreTarjetaCreditoIn && campos.numeroTarjeta && campos.vencimientoTarjetaAño && campos.vencimientoTarjetaMes && campos.cvvTarjeta) {
-            //si la tarjeta no está vencida
-            if (!tarjetaVencida(fechaVencimientoTarjetaAño.value, fechaVencimientoTarjetaMESIn.value)) {
-                alert("todo en orden , agregamos el medio de pago de la tarjeta de credito")
-            } else {
-                alert("Tarjeta vencida, ingrese otra tarjeta o seleccione otro medio de pago para continuar")
+
+        //si estan completo el nombre
+        if (nombreTarjetaCreditoIn.value.length == 0 || nombreTarjetaCreditoIn.value == null) {
+            formularioCompleto = false;
+            alert("Por favor complete el nombre de la tarjeta de credito para continuar")
+            if (numeroTarjetaCreditoIn.value.length == 0 || numeroTarjetaCreditoIn.value == null) {
                 formularioCompleto = false;
+                alert("Por favor complete el numero de la tarjeta de credito para continuar")
+                if (fechaVencimientoTarjetaMESIn.value.length == 0 || fechaVencimientoTarjetaMESIn.value == null) {
+                    formularioCompleto = false;
+                    alert("Por favor complete el Mes de vencimiento de la tarjeta de credito para continuar")
+                    if (fechaVencimientoTarjetaAñoIN.value.length == 0 || fechaVencimientoTarjetaAñoIN.value == null) {
+                        formularioCompleto = false;
+                        alert("Por favor complete el año de vencimiento de la tarjeta de credito para continuar")
+                        if (CVVTarjetaCreditoIn.value.length == 0 || CVVTarjetaCreditoIn.value == null) {
+                            formularioCompleto = false;
+                            alert("Por favor complete el Codigo de seguridad de 3 digitos de la tarjeta de credito para continuar")
+                        }
+                    }
+                }
             }
         } else {
-            formularioCompleto = false;
-            alert("tarjeta no validada, corrija los campos ingresados para continuar")
+            alert("paso la validacion voy a la parte de la tarjeta")
+          
+            //si estan todos los campos son y validos
+            if (campos.nombreEnTarjeta && campos.numeroTarjeta && campos.vencimientoTarjetaAño && campos.vencimientoTarjetaMes && campos.cvvTarjeta) {
+
+      
+                //si la tarjeta no está vencida
+                if (!tarjetaVencida(fechaVencimientoTarjetaAñoIN.value, fechaVencimientoTarjetaMESIn.value)) {
+                    alert("todo en orden , agregamos el medio de pago de la tarjeta de credito")
+                } else {
+                    //si la tarjeta está vencida
+                    alert("Tarjeta vencida, ingrese otra tarjeta o seleccione otro medio de pago para continuar")
+                    formularioCompleto = false;
+                }
+            } else {
+                formularioCompleto = false;
+                alert("tarjeta no validada, corrija los campos ingresados para continuar")
+            }
+
         }
+
+
+
+
+
+
+
+
+
+
     }
 
 
@@ -349,7 +395,7 @@ const validarCampos = e => {
             validarañoTarjeta(expresiones.año, e.target);
             break;
         case "CVVTarjetaCredito":
-            validarañoTarjeta(expresiones.mesAñoTarjeta, e.target);
+            validarCVVTarjeta(expresiones.claveCard, e.target);
             break;
 
 
@@ -505,16 +551,16 @@ const validarNumeroTarjeta = (expresion, input) => {
 
 //Validar Mes Tarjeta
 const validarMesTarjeta = (expresion, input) => {
-    console.log("iv:"+input.value)
+    console.log("iv:" + input.value)
     if (input.value < 1 || input.value > 12) {
         campos.vencimientoTarjetaMes = false;
-        alert("el campo MES VENCIMIENTO no puede ser menor a 1 ni mayor a 12")
         console.log("el campo MES VENCIMIENTO no puede ser menor a 1 y mayor a 12")
-        
+
         erroresVencimientoTarjetaCreditodMSJ.push("el campo MES VENCIMIENTO no puede ser menor a 1 o mayor a 12")
         errorVencimientoTarjetaCreditoDIV.innerHTML = erroresVencimientoTarjetaCreditodMSJ.join(', ')
         erroresVencimientoTarjetaCreditodMSJ = []
-    
+        return
+
     } else {
 
         if (expresion.test(input.value)) {
@@ -558,13 +604,13 @@ const validarañoTarjeta = (expresion, input) => {
 const validarCVVTarjeta = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.cvvTarjeta = true;
-        erroresCVVTarjetaCreditodMSJ.push("el campo año VENCIMIENTO de tarjeta de credito tiene formato valido")
+        erroresCVVTarjetaCreditodMSJ.push("el campo CVV de tarjeta de credito tiene formato valido")
         errorCVVTarjetaCreditoDIV.innerHTML = erroresCVVTarjetaCreditodMSJ.join(', ')
         erroresCVVTarjetaCreditodMSJ = []
 
     } else {
-        campos.mail = false;
-        erroresCVVTarjetaCreditodMSJ.push("el campo AÑO VENCIMIENTO de tarjeta de credito no tiene formato valido")
+        campos.cvvTarjeta = false;
+        erroresCVVTarjetaCreditodMSJ.push("el campo CVV de tarjeta de credito no tiene formato valido")
         errorCVVTarjetaCreditoDIV.innerHTML = erroresCVVTarjetaCreditodMSJ.join(', ')
         erroresCVVTarjetaCreditodMSJ = []
 

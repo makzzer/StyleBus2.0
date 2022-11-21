@@ -172,7 +172,7 @@
 
 
 
-                                  <!--Datos tarjeta-->
+                  <!--Datos tarjeta-->
                   <!--Nombre en tarjeta-->
                   <div class="form-outline" id="formularioTarjetaGrupo" hidden>
                     <input type="text" id="nombreTarjetaCredito" class="form-control form-control-md"
@@ -181,26 +181,32 @@
                     <div id="errorNombreTarjetaCredito"> </div>
 
                     <!--numero Tarjeta Credito-->
-                    <input type="text" id="numTarjetaDeCredito" class="form-control form-control-md" name="numTarjetaDeCredito" />
+                    <input type="text" id="numTarjetaDeCredito" class="form-control form-control-md"
+                      name="numTarjetaDeCredito" />
                     <label class="form-label text-light" for="numTarjetaDeCredito">Numero Tarjeta crédito</label>
                     <div id="errorNumeroTarjetaCredito"> </div>
 
                     <!--Fecha vencimiento tarjeta MM/AAAA-->
-                    
-                    <div class="input-group"> <input type="number" placeholder="MM" name="mesVencimientoTarjeta" class="form-control" id="mesVencimientoTarjeta"
-                        >
-                      <input type="number" placeholder="YYYY" name="AñoVencimientoTarjeta" class="form-control" name="AñoVencimientoTarjeta" >
-                    
+
+                    <div class="input-group"> <input type="number" placeholder="MM" name="mesVencimientoTarjeta"
+                        class="form-control" id="mesVencimientoTarjeta">
+                      <input type="number" placeholder="YYYY" id="AñoVencimientoTarjeta" class="form-control"
+                        name="AñoVencimientoTarjeta">
+
                     </div>
+
                     <h6 class="text-light mt-2"> Fecha de Vencimiento tarjeta </h6>
                     <div id="errorVencimientoTarjetaCredito"> </div>
 
-                    
-                  </label> <input type="text"  class="form-control" id="CVVTarjetaCredito" name="CVVTarjetaCredito"> 
-                  <h6 class="text-success mt-2">CVV <i class="fa fa-question-circle d-inline"></i>
-                  </h6>
-                  <div id="errorCVVTarjetaCredito"> </div>
-                </div>
+
+                    <!--CVV-->
+                    <input type="number" id="CVVTarjetaCredito" class="form-control form-control-md"
+                      name="CVVTarjetaCredito" />
+                    <div id="errorCVVTarjetaCredito"> </div>
+                    <h6 class="text-success mt-2">CVV <i class="fa fa-question-circle d-inline"></i>
+                    </h6>
+
+                  </div>
 
 
 
