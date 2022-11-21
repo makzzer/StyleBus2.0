@@ -137,6 +137,19 @@ const fechaVencimientoTarjetaMESIn = document.getElementById('mesVencimientoTarj
 const fechaVencimientoTarjetaAñoIN = document.getElementById('AñoVencimientoTarjeta')
 const CVVTarjetaCreditoIn = document.getElementById('CVVTarjetaCredito')
 
+//importo los inputs de mercado Pago
+const mailMercadoPagoIn = document.getElementById('mailMercadoPago')
+const passwordMercadoPagoIn = document.getElementById('passwordMercadoPago')
+const numCVUMercadoPagoIn = document.getElementById('numCVUMercadoPago')
+
+//importo los inputs de Caja de Ahorro
+const mailBancoIn = document.getElementById('mailBanco')
+const PinBancoIn = document.getElementById('PinBanco')
+const numCBUCajaAhorroIn = document.getElementById('numCBUCajaAhorro')
+
+
+
+
 //Accedo a los sectores de formularios de pago
 const formularioTarjetaGrupo = document.getElementById('formularioTarjetaGrupo')
 const formularioMercadoPago = document.getElementById('formularioMercadoPagoGrupo')
@@ -436,6 +449,97 @@ function validarFormulario() {
 
 
 
+
+
+
+    //Si seleccionó MercadoPago
+    if (mercadoPagoCk.checked) {
+
+        //si no está completo el mail
+        if (mailMercadoPagoIn.value.length == 0 || mailMercadoPagoIn.value == null) {
+            formularioCompleto = false;
+            alert("Por favor complete el MAIL DE MERDACOPAGO para continuar")
+            if (passwordMercadoPagoIn.value.length == 0 || passwordMercadoPagoIn.value == null) {
+                formularioCompleto = false;
+                alert("Por favor complete la contraseña de mercadoPago para continuar")
+                if (numCVUMercadoPagoIn.value.length == 0 || numCVUMercadoPagoIn.value.value == null) {
+                    formularioCompleto = false;
+                    alert("Por favor complete Su PASSWORD DE MERCADOPAGO para continuar")
+                }
+            }
+        } else {
+
+            if (campos.mailMercadoPago && campos.contraseñaMercadoPago && campos.CVUMercadoPago) {
+                alert("Todo correcto en mercadoPago")
+
+            } else {
+                formularioCompleto = false;
+                alert("Error confirmando sus datos de mercado Pago, chekee los campos erroneos para continuar")
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+    if (cajaAhorroCk.checked) {
+
+        //si no está completo el mail bancario
+        if (mailBancoIn.value.length == 0 || mailBancoIn.value == null) {
+            formularioCompleto = false;
+            alert("Por favor complete el MAIL REGISTRADO EN SU BANCO para continuar")
+            if (PinBancoIn.value.length == 0 || PinBancoIn.value == null) {
+                formularioCompleto = false;
+                alert("Por favor complete la contraseña de su CUENTA BANCARIA para continuar")
+                if (numCBUCajaAhorroIn.value.length == 0 || numCBUCajaAhorroIn.value.value == null) {
+                    formularioCompleto = false;
+                    alert("Por favor complete CBU BANCARIO para continuar")
+                }
+            }
+        } else {
+
+            if (campos.mailBanco && campos.PinBanco && campos.CBUBanco) {
+                alert("Todo correcto en Caja de ahorro")
+
+            } else {
+                formularioCompleto = false;
+                alert("Error confirmando sus datos de CAJA DE AHORRO, chekee los campos erroneos para continuar")
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     return formularioCompleto;
 
 }
@@ -516,13 +620,13 @@ const validarCampos = e => {
 const validarmailBanco = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.mailBanco = true;
-        errormailmailBancoMSJ.push("el campo MAIL de Mercado Pago ingresado es Valido")
+        errormailmailBancoMSJ.push("el campo MAIL BANCARIO ingresado es Valido")
         errormailBancoDIV.innerHTML = errormailmailBancoMSJ.join(', ')
         errormailmailBancoMSJ = []
 
     } else {
         campos.mailBanco = false;
-        errormailmailBancoMSJ.push("el campo MAIL de MERCADO PAGO ingresado no es Valido. Se espera un mail valido. Ej: test@stylebus.com")
+        errormailmailBancoMSJ.push("el campo MAIL BANCARIO ingresado no es Valido. Se espera un mail valido. Ej: test@stylebus.com")
         errormailBancoDIV.innerHTML = errormailmailBancoMSJ.join(', ')
         errormailmailBancoMSJ = []
 
