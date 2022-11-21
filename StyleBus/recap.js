@@ -200,7 +200,15 @@ formularioRecap.addEventListener('submit', (e) => {
     e.preventDefault()
 
 
+    console.log("la clave tarjeta"+claveTarjetaIn.value)
+    console.log("el campo cbu"+ cbumpIn.value)
+    console.log(tarjetaCk.checked)
+    console.log(mercadoPagoCk.checked)
+    console.log(cajaAhorroCk.checked)
 
+    console.log(nombreIn.value)
+    console.log(apellidoIn.value)
+    console.log(emailIn.value)
 
     //si el formulario está vacio
 
@@ -257,6 +265,37 @@ formularioRecap.addEventListener('submit', (e) => {
     }
 
 
+
+    //tarjeta pero no pone clave
+    else if (tarjetaCk.checked && claveTarjetaIn.value == " " && !mercadoPagoCk && !cajaAhorroCk) {
+        mensajesErrorRecap.push('Ingrese la clave de su tarjeta para continuar por favor')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+
+    //tarjeta pero no pone clave
+    else if (mercadoPagoCk.checked && cbumpIn.value == " " && !tarjetaCk && !cajaAhorroCk) {
+        mensajesErrorRecap.push('Ingrese su CBU de MercadoPago para continuar por favor')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+
+    //tarjeta pero no pone clave
+    else if (cajaAhorroCk.checked  && cbumpIn.value == " " && !mercadoPagoCk && !tarjetaCk) {
+        mensajesErrorRecap.push('Ingrese el de su caja de ahorro para continuar por favor')
+        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+        mensajesErrorRecap = []
+        return
+    }
+
+
+
+
+
+
+
     //si solo completó el mail y puso comprar
     else if (nombreIn.value.length == 0 && apellidoIn.value.length == 0 && emailIn.value.length != 0) {
         mensajesErrorRecap.push('Por favor complete su nombre y apellido para continuar')
@@ -276,19 +315,27 @@ formularioRecap.addEventListener('submit', (e) => {
                 console.log(tarjetaCk.checked)
 
 
-                if (listUsuariosRECAP.some(us => us.nombre === nombreIn.value.toLowerCase() && us.apellido === apellidoIn.value.toLowerCase() && us.mail === emailIn.value.toLowerCase() && us.claveTarjetaDeCredito === claveTarjetaIn.value)) {
-                    mensajesErrorRecap.push('Pago confirmado con su tarjeta de Credito! Enviando mail de confirmación de reservaa la casilla ' + emailIn.value)
+                if (tarjetaCk && claveTarjetaIn.value.length == 0) {
+                    mensajesErrorRecap.push('Ingrese la clave de su tarjeta para continuarrrrrr por favor')
                     errorRecap.innerHTML = mensajesErrorRecap.join(', ')
                     mensajesErrorRecap = []
-
-
-
+                    return
                 } else {
-                    mensajesErrorRecap.push('Ha habido un problema en procesar el pago con su tarjeta de crédito, por favor revise sus datos o seleccione otro medio de pago y vuelva a intentarlo')
-                    errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-                    mensajesErrorRecap = []
-                }
 
+
+                    if (listUsuariosRECAP.some(us => us.nombre === nombreIn.value.toLowerCase() && us.apellido === apellidoIn.value.toLowerCase() && us.mail === emailIn.value.toLowerCase() && us.claveTarjetaDeCredito === claveTarjetaIn.value)) {
+                        mensajesErrorRecap.push('Pago confirmado con su tarjeta de Credito! Enviando mail de confirmación de reservaa la casilla ' + emailIn.value)
+                        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+                        mensajesErrorRecap = []
+
+
+
+                    } else {
+                        mensajesErrorRecap.push('Ha habido un problema en procesar el pago con su tarjeta de crédito, por favor revise sus datos o seleccione otro medio de pago y vuelva a intentarlo')
+                        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+                        mensajesErrorRecap = []
+                    }
+                }
             } else if (mercadoPagoCk.checked === true && campos.passcard) {
                 if (listUsuariosRECAP.some(us => us.nombre === nombreIn.value.toLowerCase() && us.apellido === apellidoIn.value.toLowerCase() && us.mail === emailIn.value.toLowerCase() && us.mp === cbumpIn.value)) {
                     mensajesErrorRecap.push('Pago confirmado con Mercado Pago! Enviando mail de confirmación de reserva a la casilla ' + emailIn.value)
@@ -306,6 +353,10 @@ formularioRecap.addEventListener('submit', (e) => {
             }
         }
     }
+
+
+
+
 
 });
 

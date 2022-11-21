@@ -30,54 +30,54 @@
 <body>
 
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <!-- Container wrapper -->
-      <div class="container-fluid">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
 
 
-          <!-- Collapsible wrapper -->
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <!-- Navbar de la marca -->
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Navbar de la marca -->
 
 
-              <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
-                  <div class="col text-light text-right">
-                      <h1 class="display-6 ">StyleBus.</h1>
-                  </div>
-              </a>
-
-              <div class="d-flex" style="height: 22px; width : 2px; color: black;">
-                  <div class="vr"></div>
-              </div>
-
-              <!-- links de la izquierda -->
-
-              <!--  links de la izquierda -->
+        <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+          <div class="col text-light text-right">
+            <h1 class="display-6 ">StyleBus.</h1>
           </div>
-          <!-- Collapsible wrapper -->
+        </a>
 
-          <!-- Right elements -->
-          <div class="d-flex align-items-center">
-              <!-- Icon -->
+        <div class="d-flex" style="height: 22px; width : 2px; color: black;">
+          <div class="vr"></div>
+        </div>
 
+        <!-- links de la izquierda -->
 
-
-
-              <div class="me-1"><a href="login.html" class="btn btn btn-outline-light" role="button">Iniciar
-                      Sesión</a>
-              </div>
-
-              <div><a href="crearCuenta.html" class="btn btn btn-light me-1" role="button">Crear Cuenta</a>
-              </div>
-
-
-
-          </div>
-
-          <!-- Right elements -->
+        <!--  links de la izquierda -->
       </div>
-      <!-- Container wrapper -->
+      <!-- Collapsible wrapper -->
+
+      <!-- Right elements -->
+      <div class="d-flex align-items-center">
+        <!-- Icon -->
+
+
+
+
+        <div class="me-1"><a href="login.html" class="btn btn btn-outline-light" role="button">Iniciar
+            Sesión</a>
+        </div>
+
+        <div><a href="crearCuenta.html" class="btn btn btn-light me-1" role="button">Crear Cuenta</a>
+        </div>
+
+
+
+      </div>
+
+      <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
 
 
   </nav>
@@ -85,185 +85,223 @@
   <hr style="color: white; height: 5px; width: 1900px;" />
 
 
+  <div class="container"></div>
 
-  <div>
-    <section class="vh-100 gradient-custom" style="background-color: #292B2C;">
-      <div class="mask d-flex align-items-center h-100 gradient-custom">
-        <div class="container h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-              <div class="card text-white bg-dark" style="border-radius: 15px;">
-                <div class="card-body p-5">
-                  <h2 class="text-uppercase text-center mb-5 text-light">Crear Cuenta</h2>
+  <section class="vh-100 gradient-custom mb-4" style="background-color: #292B2C;">
+    <div class="mask d-flex align-items-center h-100 gradient-custom ">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card text-white bg-dark" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5 text-light">Crear Cuenta</h2>
 
-                  <form action="" method="POST" id="formularioCrearCuenta">
+                <form action="" method="POST" id="formularioCrearCuenta">
 
-                    <!--Nombre-->
-                    <div class="form-outline mb-2">
+                  <!--Nombre-->
+                  <div class="form-outline">
 
-                      <input type="text" id="nombrecc" class="form-control form-control-lg">
-                      <label class="form-label text-light" for="nombrecc">Nombre</label>
-                    </div>
+                    <input type="text" id="nombre" class="form-control form-control-md" name="nombre">
+                    <label class="form-label text-light" for="nombre" name="nombre">Nombre</label>
+                    <div id="errorNombre"> </div>
+                  </div>
 
-                    <!--Apellido-->
-                    <div class="form-outline mb-2">
-                      <input type="text" id="apellidocc" class="form-control form-control-lg" />
-                      <label class="form-label text-light" for="apellidocc">Apellido</label>
-                    </div>
-                    <!--Direccion-->
-                    <div class="form-outline mb-2">
-                      <input type="text" id="direccioncc" class="form-control form-control-lg" />
-                      <label class="form-label text-light" for="direccioncc">Dirección</label>
-                    </div>
+                  <!--Apellido-->
+                  <div class="form-outline">
+                    <input type="text" id="apellido" class="form-control form-control-md" name="apellido" />
+                    <label class="form-label text-light" for="apellido">Apellido</label>
+                    <div id="errorApellido"> </div>
+                  </div>
 
-                    <!--Fecha nacimiento-->
-                    <div class="form-outline mb-4">
-                      <p class="h-blue">Fecha de nacimiento</p> <input class="inputbox textmuted" type="date">
-                    </div>
+                  <!--Direccion-->
+                  <!--Calle-->
+                  <div class="form-outline mb-2">
+                    <input type="text" id="calleNombre" class="form-control form-control-md" name="calleNombre" />
+                    <label class="form-label text-light" for="calleNombre">Calle</label>
+                    <div id="errorDirCalle"> </div>
+                    <!--numero-->
+                    <input type="text" id="numDireccion" class="form-control form-control-md" name="numDireccion"/>
+                    <label class="form-label text-light" for="numDireccion">Altura</label>
 
-                    <!--email-->
-                    <div class="form-outline mb-1">
-                      <input type="email" id="emailcc" class="form-control form-control-lg" />
-                      <label class="form-label text-light" for="emailcc">Email</label>
-                    </div>
+                  </div>
 
+                  <!--Fecha nacimiento-->
+                  <div class="form-outline mb-4">
+                    <p class="h-blue">Fecha de nacimiento</p> <input class="inputbox textmuted" type="date">
+                  </div>
 
-                    <!--password-->
-                    <div class="form-outline mb-1">
-                      <input type="password" id="passwordcc" class="form-control form-control-lg" />
-                      <label class="form-label text-light" for="passwordcc">Contraseña</label>
-                    </div>
-
-                    <div>
-
-                    </div>
+                  <!--email-->
+                  <div class="form-outline mb-1">
+                    <input type="email" id="emailcc" class="form-control form-control-md" />
+                    <label class="form-label text-light" for="emailcc">Email</label>
+                  </div>
 
 
+                  <!--password-->
+                  <div class="form-outline mb-1">
+                    <input type="password" id="passwordcc" class="form-control form-control-md" />
+                    <label class="form-label text-light" for="passwordcc">Contraseña</label>
+                  </div>
 
-                    <!--boton modal template-->
-                    <div class="div mb-4">
+                  <!--password2-->
+                  <div class="form-outline mb-4">
+                    <input type="password" id="passwordcc" class="form-control form-control-md" />
+                    <label class="form-label text-light" for="passwordcc">Confirmar Contraseña</label>
+                  </div>
+
+                  <div>
+
+                  </div>
 
 
 
-                      <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  <!--boton modal template-->
+                  <div class="div mb-4">
+
+
+
+                    <!-- Button trigger modal -->
+
+                    <div class="d-flex justify-content-between">
+
+
+
+                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                        data-target="#exampleModal">
+                        Agregar Tarjeta de crédito
+                      </button>
+
+
+                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                        data-target="#exampleModal">
                         Elegir medio de pago
                       </button>
 
-                      <!-- Modal -->
-                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h2 class="modal-title text-center text-dark" id="exampleModalLabel">Datos de pago</h5>
+
+                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                        data-target="#exampleModal">
+                        Elegir medio de pago
+                      </button>
+
+
+                    </div>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                      aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h2 class="modal-title text-center text-dark" id="exampleModalLabel">Datos de pago</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
-                            </div>
+                          </div>
 
 
 
 
 
 
-                            <!--cuerpo del modal-->
-                            <div class="modal-body">
-                              ... <div class="card ">
-                                <div class="card-header">
-                                  <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
-                                    <!-- Credit card form tabs -->
-                                    <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
-                                      <li class="nav-item"> <a data-toggle="pill" href="#credit-card"
-                                          class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Tarjeta </a>
-                                      </li>
-                                      <li class="nav-item"> <a data-toggle="pill" href="#paypal" class="nav-link "> <i
-                                            class="far fa-handshake"></i></i> MercadoPago </a> </li>
-                                      <li class="nav-item"> <a data-toggle="pill" href="#net-banking" class="nav-link ">
-                                          <i class="fas fa-mobile-alt mr-2"></i> Cuenta bancaria </a> </li>
-                                    </ul>
-                                  </div> <!-- End -->
-                                  <!-- Credit card form content -->
-                                  <div class="tab-content">
-                                    <!-- credit card info-->
-                                    <div id="credit-card" class="tab-pane fade show active pt-3">
-                                      <form role="form" onsubmit="event.preventDefault()">
-                                        <div class="form-group"> <label for="username">
-                                            <h6 class="text-dark">Nombre de la tarjeta</h6>
-                                          </label> <input type="text" name="username"
-                                            placeholder="Nombre como figura en la tarjeta" required
-                                            class="form-control "> </div>
-                                        <div class="form-group"> <label for="cardNumber">
-                                            <h6 class="text-dark">Numero de la tarjeta</h6>
-                                          </label>
-                                          <div class="input-group"> <input type="text" name="cardNumber"
-                                              placeholder="Numero de la tarjeta" class="form-control " required>
-                                            <div class="input-group-append"> <span class="input-group-text text-muted">
-                                                <i class="fab fa-cc-visa mx-1"></i> <i
-                                                  class="fab fa-cc-mastercard mx-1"></i> <i
-                                                  class="fab fa-cc-amex mx-1"></i> </span> </div>
+                          <!--cuerpo del modal-->
+                          <div class="modal-body">
+                            ... <div class="card ">
+                              <div class="card-header">
+                                <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                                  <!-- Credit card form tabs -->
+                                  <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                                    <li class="nav-item"> <a data-toggle="pill" href="#credit-card"
+                                        class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Tarjeta </a>
+                                    </li>
+                                    <li class="nav-item"> <a data-toggle="pill" href="#paypal" class="nav-link "> <i
+                                          class="far fa-handshake"></i></i> MercadoPago </a> </li>
+                                    <li class="nav-item"> <a data-toggle="pill" href="#net-banking" class="nav-link ">
+                                        <i class="fas fa-mobile-alt mr-2"></i> Cuenta bancaria </a> </li>
+                                  </ul>
+                                </div> <!-- End -->
+                                <!-- Credit card form content -->
+                                <div class="tab-content">
+                                  <!-- credit card info-->
+                                  <div id="credit-card" class="tab-pane fade show active pt-3">
+                                    <form role="form" onsubmit="event.preventDefault()">
+                                      <div class="form-group"> <label for="username">
+                                          <h6 class="text-dark">Nombre de la tarjeta</h6>
+                                        </label> <input type="text" name="username"
+                                          placeholder="Nombre como figura en la tarjeta" required class="form-control ">
+                                      </div>
+                                      <div class="form-group"> <label for="cardNumber">
+                                          <h6 class="text-dark">Numero de la tarjeta</h6>
+                                        </label>
+                                        <div class="input-group"> <input type="text" name="cardNumber"
+                                            placeholder="Numero de la tarjeta" class="form-control " required>
+                                          <div class="input-group-append"> <span class="input-group-text text-muted">
+                                              <i class="fab fa-cc-visa mx-1"></i> <i
+                                                class="fab fa-cc-mastercard mx-1"></i> <i
+                                                class="fab fa-cc-amex mx-1"></i> </span> </div>
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-sm-8">
+                                          <div class="form-group"> <label><span class="hidden-xs">
+                                                <h6 class="text-dark">Fecha de vencimiento</h6>
+                                              </span></label>
+                                            <div class="input-group"> <input type="number" placeholder="MM" name=""
+                                                class="form-control" required> <input type="number" placeholder="YY"
+                                                name="" class="form-control" required> </div>
                                           </div>
                                         </div>
-                                        <div class="row">
-                                          <div class="col-sm-8">
-                                            <div class="form-group"> <label><span class="hidden-xs">
-                                                  <h6 class="text-dark">Fecha de vencimiento</h6>
-                                                </span></label>
-                                              <div class="input-group"> <input type="number" placeholder="MM" name=""
-                                                  class="form-control" required> <input type="number" placeholder="YY"
-                                                  name="" class="form-control" required> </div>
-                                            </div>
-                                          </div>
-                                          <div class="col-sm-4">
-                                            <div class="form-group mb-4"> <label data-toggle="tooltip"
-                                                title="Three digit CV code on the back of your card">
-                                                <h6 class="text-dark">CVV <i class="fa fa-question-circle d-inline"></i>
-                                                </h6>
-                                              </label> <input type="text" required class="form-control"> </div>
-                                          </div>
+                                        <div class="col-sm-4">
+                                          <div class="form-group mb-4"> <label data-toggle="tooltip"
+                                              title="Three digit CV code on the back of your card">
+                                              <h6 class="text-dark">CVV <i class="fa fa-question-circle d-inline"></i>
+                                              </h6>
+                                            </label> <input type="text" required class="form-control"> </div>
                                         </div>
-                                        <div class="card-footer"> <button type="button"
-                                            class="subscribe btn btn-primary btn-block shadow-sm"> Confirmar</button>
-                                      </form>
-                                    </div>
-                                  </div> <!-- End -->
-                                  <!-- Paypal info -->
-                                  <div id="paypal" class="tab-pane fade pt-3">
-                                    <p> <button type="button" class="btn btn-primary"><i
-                                          class="far fa-handshake mr-2"></i> Iniciar sesión con mercado pago</button>
-                                    </p>
-                                    <p class="text-muted"> Nota: Despues de clickear el botón, usted será redireccionado
-                                      a una plataforma externa donde realizará el logueo a su cuenta de MercadoPago. Los
-                                      datos se almacenaran en forma automatica en StyleBus.
-                                    </p>
-                                  </div> <!-- End -->
-                                  <!-- bank transfer info -->
-                                  <div id="net-banking" class="tab-pane fade pt-3">
-                                    <div class="form-group "> <label for="Select Your Bank">
-                                        <h6 class="text-dark">Seleccione su banco</h6>
-                                      </label> <select class="form-control" id="ccmonth">
-                                        <option value="" selected disabled>--Por favor seleccione su banco--</option>
-                                        <option>Galicia</option>
-                                        <option>Santander</option>
-                                        <option>Hsbc</option>
+                                      </div>
+                                      <div class="card-footer"> <button type="button"
+                                          class="subscribe btn btn-primary btn-block shadow-sm"> Confirmar</button>
+                                    </form>
+                                  </div>
+                                </div> <!-- End -->
+                                <!-- Paypal info -->
+                                <div id="paypal" class="tab-pane fade pt-3">
+                                  <p> <button type="button" class="btn btn-primary"><i
+                                        class="far fa-handshake mr-2"></i> Iniciar sesión con mercado pago</button>
+                                  </p>
+                                  <p class="text-muted"> Nota: Despues de clickear el botón, usted será redireccionado
+                                    a una plataforma externa donde realizará el logueo a su cuenta de MercadoPago. Los
+                                    datos se almacenaran en forma automatica en StyleBus.
+                                  </p>
+                                </div> <!-- End -->
+                                <!-- bank transfer info -->
+                                <div id="net-banking" class="tab-pane fade pt-3">
+                                  <div class="form-group "> <label for="Select Your Bank">
+                                      <h6 class="text-dark">Seleccione su banco</h6>
+                                    </label> <select class="form-control" id="ccmonth">
+                                      <option value="" selected disabled>--Por favor seleccione su banco--</option>
+                                      <option>Galicia</option>
+                                      <option>Santander</option>
+                                      <option>Hsbc</option>
 
-                                      </select> </div>
-                                    <div class="form-group">
+                                    </select> </div>
+                                  <div class="form-group">
 
-                                      <h6 class="text-dark">Ingrese el numero de su caja de ahorro</h6>
+                                    <h6 class="text-dark">Ingrese el numero de su caja de ahorro</h6>
 
-                                      <input type="text" id="numeroCuentaBancaria" class="form-control form-control-lg">
-                                      <label class="form-label text-light" for="cuentabancariacc">Cuenta bancaria</label>
-                                    </div>
+                                    <input type="text" id="numeroCuentaBancaria" class="form-control form-control-lg">
+                                    <label class="form-label text-light" for="cuentabancariacc">Cuenta
+                                      bancaria</label>
+                                  </div>
 
-                                    <p class="text-muted">Nota: Despues de clickear el botón, usted será redireccionado
-                                      a una plataforma externa donde realizará el logueo a su cuenta de MercadoPago. Los
-                                      datos se almacenaran en forma automatica en StyleBus.</p>
-                                  </div> <!-- End -->
-                                  <!-- End -->
-                                </div>
+                                  <p class="text-muted">Nota: Despues de clickear el botón, usted será redireccionado
+                                    a una plataforma externa donde realizará el logueo a su cuenta de MercadoPago. Los
+                                    datos se almacenaran en forma automatica en StyleBus.</p>
+                                </div> <!-- End -->
+                                <!-- End -->
                               </div>
                             </div>
+                          </div>
 
 
 
@@ -273,26 +311,13 @@
 
 
 
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                              <button type="button" class="btn btn-primary" data-dismiss="modal">Elegir este metodo de pago</button>
-                            </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Elegir este metodo de
+                              pago</button>
                           </div>
                         </div>
                       </div>
-
-
-
-
-
-
-                    </div>
-
-
-
-                    <div class="d-flex justify-content-end mb-2 mt-4">
-                      <button type="button" onclick='return validarFormularioCrearCuenta()'
-                        class="btn btn-block btn-lg btn-outline-light text-white-60 gradient-custom">Registrarse</button>
                     </div>
 
 
@@ -300,44 +325,59 @@
 
 
 
+                  </div>
 
 
-                    <div id="errorcc"> </div>
 
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="RecibisPromos">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Quiero recibir promociones por mail
-                      </label>
-                    </div>
+                  <div class="d-flex justify-content-end mb-2 mt-4">
+                    <button type="submit"
+                      class="btn btn-block btn-lg btn-outline-light text-white-60 gradient-custom">Registrarse</button>
+                  </div>
 
-                </div>
+
+                  <div id="errorcc"> </div>
+
+                  <!--El checkbox de-->
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="RecibisPromos">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Quiero recibir promociones por mail
+                    </label>
+                  </div>
+
+
+
+
               </div>
+            </div>
 
-              </form>
+            </form>
 
-              <div>
-                <p class="text-center text-muted text-light">Ya tenes cuenta? <a href="login.html"
+            <div>
+              <p class="text-center text-muted text-light">Ya tenes cuenta? <a href="login.html"
                   class="text-white-50 fw-bold"><u>Iniciar Sesión</u></a></p>
-           
-            </div>
-
-
 
             </div>
+
+
+
           </div>
         </div>
       </div>
-  </div>
-  </div>
+    </div>
+    </div>
+    </div>
+
+
+    </div>
+    </div>
   </section>
-  </div>
 
 
 
 
-  </div>
-  </div>
+
+
 
 
   <script src="/StyleBus/js/crearCuenta.js"></script>
@@ -345,37 +385,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 
-<footer class="bg-dark text-center text-white">
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
-    <!-- Section: Social media -->
-    <section class="mb-4">
-      <!-- Facebook -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
 
-      <!-- Twitter -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
-
-      <!-- Google -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
-
-      <!-- Instagram -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
-
-
-    </section>
-    <!-- Section: Social media -->
-  </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2022 Copyright:
-    <a class="text-white" href="#!">StyleBus.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>
 
 </html>
