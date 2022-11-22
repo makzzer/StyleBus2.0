@@ -447,11 +447,6 @@ function validarFormulario() {
 
 
 
-
-
-
-
-
     //Si seleccionó MercadoPago
     if (mercadoPagoCk.checked) {
 
@@ -467,10 +462,17 @@ function validarFormulario() {
                     alert("Por favor complete Su PASSWORD DE MERCADOPAGO para continuar")
                 }
             }
+            //si está completo el mail
         } else {
 
             if (campos.mailMercadoPago && campos.contraseñaMercadoPago && campos.CVUMercadoPago) {
                 alert("Todo correcto en mercadoPago")
+                if(listUsuarios.some(us => us.mail === mailMercadoPagoIn.value.toLowerCase())){
+                    alert("usuario ya registrado en mercadoPago, ingrese otro correo de mercado pago para continuar")
+                    formularioCompleto=false;
+                }else{
+                    alert("todo bien con el usuario")
+                }
 
             } else {
                 formularioCompleto = false;
@@ -489,51 +491,6 @@ function validarFormulario() {
 
 
     }
-
-
-    if (cajaAhorroCk.checked) {
-
-        //si no está completo el mail bancario
-        if (mailBancoIn.value.length == 0 || mailBancoIn.value == null) {
-            formularioCompleto = false;
-            alert("Por favor complete el MAIL REGISTRADO EN SU BANCO para continuar")
-            if (PinBancoIn.value.length == 0 || PinBancoIn.value == null) {
-                formularioCompleto = false;
-                alert("Por favor complete la contraseña de su CUENTA BANCARIA para continuar")
-                if (numCBUCajaAhorroIn.value.length == 0 || numCBUCajaAhorroIn.value.value == null) {
-                    formularioCompleto = false;
-                    alert("Por favor complete CBU BANCARIO para continuar")
-                }
-            }
-        } else {
-
-            if (campos.mailBanco && campos.PinBanco && campos.CBUBanco) {
-                alert("Todo correcto en Caja de ahorro")
-
-            } else {
-                formularioCompleto = false;
-                alert("Error confirmando sus datos de CAJA DE AHORRO, chekee los campos erroneos para continuar")
-            }
-
-        }
-
-
-
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
 
 
 
