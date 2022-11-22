@@ -106,7 +106,7 @@ const validarNombre = (expresion, input, campo) => {
 
     } else {
         campos[campo] = false;
-        mensajesErrorNombre.push("el campo: " + campo + " es invalido")
+        mensajesErrorNombre.push("el campo NOMBRE es invalido. El nombre solo puede contener letras y espacios")
         errorNombre.innerHTML = mensajesErrorNombre.join(', ')
         mensajesErrorNombre = []
     }
@@ -119,7 +119,7 @@ const validarApellido = (expresion, input, campo) => {
 
     } else {
         campos[campo] = false;
-        mensajesErrorApellido.push("el campo: " + campo + " es invalido")
+        mensajesErrorApellido.push("El campo: APELLIDO es invalido. El apellido solo puede contener letras y espacios")
         errorApellidoRecap.innerHTML = mensajesErrorApellido.join(', ')
         mensajesErrorApellido = []
     }
@@ -132,7 +132,7 @@ const validarEmail = (expresion, input) => {
 
     } else {
         campos.mail = false;
-        mensajesErrorEmail.push("el campo: email es invalido")
+        mensajesErrorEmail.push("El campo: email es invalido. Por favor ingrese un correo electronico valido")
         errorMailRecap.innerHTML = mensajesErrorEmail.join(', ')
         mensajesErrorEmail = []
     }
