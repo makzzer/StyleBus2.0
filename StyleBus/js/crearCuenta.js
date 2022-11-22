@@ -207,7 +207,7 @@ const campos = {
 const expresiones = {
     usuario: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // EMAIL VALIDO
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-    password: /^.{5,20}$/, // 5 a 20 digitos.
+    password: /^.{7,20}$/, // 5 a 20 digitos.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^\d{7,14}$/, // 7 a 14 numeros.
     numTarjeta: /^\d{16}$/, // 16 numeros.
@@ -690,7 +690,7 @@ const validarNombre = (expresion, input) => {
     } else {
         campos.nombre = false;
         console.log("ahoraa estoy acaaaaaaaa")
-        erroresNombreMSJ.push("el campo NOMBRE es INVALIDO")
+        erroresNombreMSJ.push("el campo NOMBRE es INVALIDO. En este campo solo puede ingresar letras y espacios")
         errorNombreDIV.innerHTML = erroresNombreMSJ.join(', ')
         erroresNombreMSJ = []
 
@@ -708,7 +708,7 @@ const validarApellido = (expresion, input) => {
 
     } else {
         campos.apellido = false;
-        erroresApellidoMSJ.push("el campo APELLIDO es INVALIDO")
+        erroresApellidoMSJ.push("el campo APELLIDO es INVALIDO. En este campo solo puede ingresar letras y espacios")
         errorApellidoDIV.innerHTML = erroresApellidoMSJ.join(', ')
         erroresApellidoMSJ = []
 
@@ -727,7 +727,7 @@ const validarDireccionCalle = (expresion, input) => {
 
     } else {
         campos.direccion_calle = false;
-        erroresNombreCalleMSJ.push("el campo NOMBRE DE CALLE es INVALIDO")
+        erroresNombreCalleMSJ.push("el campo NOMBRE DE CALLE es INVALIDO. En este campo solo puede ingresar letras y espacios")
         errorCalleNombreDIV.innerHTML = erroresNombreCalleMSJ.join(', ')
         erroresNombreCalleMSJ = []
 
@@ -746,7 +746,7 @@ const validarDireccionAltura = (expresion, input) => {
 
     } else {
         campos.direccion_calle = false;
-        erroresNumeroCalleMSJ.push("el campo NUMERO DE CALLE ingresado es INVALIDO")
+        erroresNumeroCalleMSJ.push("el campo NUMERO DE CALLE ingresado es INVALIDO. En este campo solo puede ingresar de 1 a 4 digitos numericos")
         errorCalleNumeroDIV.innerHTML = erroresNumeroCalleMSJ.join(', ')
         erroresNumeroCalleMSJ = []
 
@@ -765,7 +765,7 @@ const validarMail = (expresion, input) => {
 
     } else {
         campos.mail = false;
-        erroresMailMSJ.push("el campo MAIL ingresado no es Valido")
+        erroresMailMSJ.push("el campo MAIL ingresado no es Valido. Por favor ingrese un correo electronico valido. Ej: test@stylebus.com")
         errorMailDIV.innerHTML = erroresMailMSJ.join(', ')
         erroresMailMSJ = []
 
@@ -784,7 +784,7 @@ const validarPassword = (expresion, input) => {
 
     } else {
         campos.mail = false;
-        erroresPasswordMSJ.push("el campo PASSWORD ingresado no es Valido")
+        erroresPasswordMSJ.push("el campo PASSWORD ingresado no es Valido. La password debe tener al menos 7 caracteres. Puede incluis letras mayusculas, minusculas, numeros y simbolos.")
         errorPasswordDIV.innerHTML = erroresPasswordMSJ.join(', ')
         erroresPasswordMSJ = []
 
@@ -803,7 +803,7 @@ const validarNombreTarjeta = (expresion, input) => {
 
     } else {
         campos.mail = false;
-        erroresNombreTarjetaCreditodMSJ.push("el campo Nombre tarjeta de credito no es valido")
+        erroresNombreTarjetaCreditodMSJ.push("el campo Nombre tarjeta de credito no es valido. En este campo solo pueden ingresarse letras y espacios")
         errorNombreTarjetaCreditoDIV.innerHTML = erroresNombreTarjetaCreditodMSJ.join(', ')
         erroresNombreTarjetaCreditodMSJ = []
 
@@ -822,7 +822,7 @@ const validarNumeroTarjeta = (expresion, input) => {
 
     } else {
         campos.mail = false;
-        erroresNumeroTarjetaCreditodMSJ.push("el campo Numero tarjeta de credito no tiene formato valido")
+        erroresNumeroTarjetaCreditodMSJ.push("el campo Numero tarjeta de credito no tiene formato valido. Deben ser 16 digitos numericos sin espacios ni guiones")
         errorNumeroTarjetaCreditoDIV.innerHTML = erroresNumeroTarjetaCreditodMSJ.join(', ')
         erroresNumeroTarjetaCreditodMSJ = []
 
@@ -895,7 +895,7 @@ const validarCVVTarjeta = (expresion, input) => {
 
     } else {
         campos.cvvTarjeta = false;
-        erroresCVVTarjetaCreditodMSJ.push("el campo CVV de tarjeta de credito no tiene formato valido")
+        erroresCVVTarjetaCreditodMSJ.push("el campo CVV de tarjeta de credito no tiene formato valido. Debe ingresar los 3 digitos numericos de la clave de su tarjeta")
         errorCVVTarjetaCreditoDIV.innerHTML = erroresCVVTarjetaCreditodMSJ.join(', ')
         erroresCVVTarjetaCreditodMSJ = []
 
@@ -916,7 +916,7 @@ const validarMailMercadoPago = (expresion, input) => {
 
     } else {
         campos.mailMercadoPago = false;
-        errormailMercadoPagodMSJ.push("el campo MAIL de MERCADO PAGO ingresado no es Valido")
+        errormailMercadoPagodMSJ.push("el campo MAIL de MERCADO PAGO ingresado no es Valido. Debe ingresar un correo electronico valido. Ej: test@stylebus.com")
         errormailMercadoPagoDIV.innerHTML = errormailMercadoPagodMSJ.join(', ')
         errormailMercadoPagodMSJ = []
 
@@ -935,7 +935,7 @@ const validarPasswordMercadoPago = (expresion, input) => {
 
     } else {
         campos.contraseñaMercadoPago = false;
-        errorpasswordMercadoPagoMSJ.push("el campo CONTRASEÑA de MERCADO PAGO ingresado no es Valido")
+        errorpasswordMercadoPagoMSJ.push("el campo CONTRASEÑA de MERCADO PAGO ingresado no es Valido. Debe ser un minimo de 7 caracteres y puede contener letras minusculas, mayusculas, simbolos y numeros.")
         errorpasswordMercadoPagoDIV.innerHTML = errorpasswordMercadoPagoMSJ.join(', ')
         errorpasswordMercadoPagoMSJ = []
 
@@ -954,7 +954,7 @@ const validarCVUMercadoPago = (expresion, input) => {
 
     } else {
         campos.CVUMercadoPago = false;
-        errorNumCVUMercadoPagoMSJ.push("el campo  CVU DE MERCADO Pago ingresado no es Valido")
+        errorNumCVUMercadoPagoMSJ.push("el campo  CVU DE MERCADO Pago ingresado no es Valido. Deben ser 22 digitos numericos")
         errorNumCVUMercadoPagoDIV.innerHTML = errorNumCVUMercadoPagoMSJ.join(', ')
         errorNumCVUMercadoPagoMSJ = []
 
