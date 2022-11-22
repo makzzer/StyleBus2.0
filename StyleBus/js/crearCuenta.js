@@ -284,8 +284,7 @@ cajaAhorroCk.addEventListener('change', OcultarFormulariosMediosDePago)
 
 function validarFormulario() {
 
-    alert(fechaVencimientoTarjetaAñoIN.value)
-    alert(fechaVencimientoTarjetaMESIn.value)
+
     var formularioCompleto = true;
     //si no colocó el nombre
 

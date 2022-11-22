@@ -24,6 +24,7 @@ const emailIn = document.getElementById('emailRecap')
 //accediendo al input de clave de metodo de pago
 const claveTarjetaIn = document.getElementById('TarjetaCreditoInput')
 const cbumpIn = document.getElementById('mercadoPagoCVUInput')
+const pinBancoIn = document.getElementById('CajaPassword')
 
 
 //arrays de errores
@@ -39,7 +40,7 @@ errorMailRecap.style.color = 'red';
 errorClaveOCBU.style.color = 'red';
 
 let listUsuariosRECAP = [
-    { mail: 'makzofx@gmail.com', password: 'test1234', nombre: 'maximiliano', apellido: 'sanchez', domicilioCalle: 'Buschiazzo', domicilioAltura: '785', DNI: '36293754', fechaNacimiento: '19910927', nombreTarjetadeCredito: 'maximiliano sanchez', numeroTarjetaDeCredito: '1111111111111111', claveTarjetaDeCredito: '123', fechavenTarjetaDeCredito: '20270425', mp: '2222222222', cbu: '3333333333' }
+    { mail: 'makzofx@gmail.com', password: 'test1234', nombre: 'maximiliano', apellido: 'sanchez', domicilioCalle: 'Buschiazzo', domicilioAltura: '785', DNI: '36293754', fechaNacimiento: '19910927', nombreTarjetadeCredito: 'maximiliano sanchez', numeroTarjetaDeCredito: '1111111111111111', claveTarjetaDeCredito: '123', fechavenTarjetaDeCredito: '20270425', mp: 'testmp123', pincbu: '1234' }
 
 ]
 
@@ -50,17 +51,20 @@ const campos = {
     apellido: false,
     mail: false,
     cbu: false,
+    pinBanco: false,
+    passMp: false,
 }
 
 
 const expresiones = {
     usuario: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // EMAIL VALIDO
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-    password: /^.{4,12}$/, // 4 a 12 digitos.
+    password: /^.{5,12}$/, // 4 a 12 digitos.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^\d{7,14}$/, // 7 a 14 numeros.
     cbu: /^\d{0,10}$/, // 10 numeros.
     claveCard: /^\d{0,3}$/,
+    pinBanco: /^\d{4}$/,
 }
 
 
@@ -87,7 +91,10 @@ const validarCampos = (e) => {
             validarClaveTarjeta(expresiones.claveCard, e.target)
             break;
         case "mercadoPagoCVUInput":
-            validarCbu(expresiones.cbu, e.target)
+            validarpassMP(expresiones.password, e.target)
+            break;
+        case "CajaPassword":
+            validarPinBanco(expresiones.pinBanco, e.target)
             break;
     }
 }
@@ -147,15 +154,14 @@ const validarClaveTarjeta = (expresion, input) => {
 
 }
 
-const validarCbu = (expresion, input) => {
+const validarPinBanco = (expresion, input) => {
     if (expresion.test(input.value)) {
-        console.log("CBU correcto")
-        campos.cbu = true;
+        campos.pinBanco = true;
 
     } else {
-        campos.cbu = false;
-        console.log("fallo el CBU ")
-        mensajesErrorClaves.push("Formato de CBU de MercadoPago incorrecto. El CBU deben ser 10 Digitos numericos")
+        campos.pinBanco = false;
+        console.log("fallo el pin bancario")
+        mensajesErrorClaves.push("Formato de Pin bancario incorrecto. El formato son 4 digitos numericos")
         errorClaveOCBU.innerHTML = mensajesErrorClaves.join(', ')
         mensajesErrorClaves = []
     }
@@ -163,19 +169,168 @@ const validarCbu = (expresion, input) => {
 }
 
 
+const validarpassMP = (expresion, input) => {
+    if (expresion.test(input.value)) {
+        campos.mp = true;
+
+    } else {
+        campos.mp = false;
+        console.log("fallo la pass MercadoPago ")
+        mensajesErrorClaves.push("Password de mercadoPago Incorrecta.")
+        errorClaveOCBU.innerHTML = mensajesErrorClaves.join(', ')
+        mensajesErrorClaves = []
+    }
+
+}
+
+
+
+
+
 //habilitar o deshabilitar medios de pago
 function OcultarclavesMediosDePago() {
     if (tarjetaCk.checked) {
         claveTarjetaIn.hidden = false;
         cbumpIn.hidden = true;
+        pinBancoIn.hidden = true;
     } if (mercadoPagoCk.checked) {
         claveTarjetaIn.hidden = true;
         cbumpIn.hidden = false;
+        pinBanco.hidden = true;
     } if (cajaAhorroCk.checked) {
+        pinBancoIn.hidden = false;
         claveTarjetaIn.hidden = true;
-        cbumpIn.hidden = false;
+        cbumpIn.hidden = true;
     }
 }
+
+
+
+
+
+function validarFormulario() {
+
+    var formularioCompleto = true;
+
+    //si completó el nombre
+    if (nombreIn.value.length == 0 || nombreIn.value == null) {
+        alert("debe completar su nombre para continuar")
+        formularioCompleto = false;
+    } else {
+        if (campos.nombre) {
+            alert("nombre correcto")
+        } else {
+            formularioCompleto = false
+            console.log(" Por favor complete el nombre correctamente para continuar")
+        }
+
+
+
+    } if (apellidoIn.value.length == 0 || apellidoIn.value == null) {
+        alert("debe completar el campo APELLIDO para continuar")
+        formularioCompleto = false;
+    } else {
+        if (campos.apellido) {
+            alert("APELLIDO correcto")
+        } else {
+            formularioCompleto = false
+            console.log(" Por favor complete el apellido correctamente para continuar")
+        }
+
+
+
+
+    } if (emailIn.value.length == 0 || emailIn.value == null) {
+        alert("debe completar el campo EMAIL para continuar")
+        formularioCompleto = false;
+    } else {
+        if (campos.mail) {
+            alert("MAIL correcto")
+        } else {
+            formularioCompleto = false
+            console.log(" Por favor complete el MAIL correctamente para continuar")
+        }
+
+
+
+
+
+    } if (!tarjetaCk.checked && !mercadoPagoCk.checked && !cajaAhorroCk.checked) {
+        formularioCompleto = false;
+        alert("Debe seleccionar un metodo de pago para continuar")
+    }
+    //si selecciono tarjeta
+    if (tarjetaCk.checked) {
+        //si el campo de la clave de tarjeta es correcto
+        if (campos.passcard) {
+            //
+            if (listUsuariosRECAP.some(us => us.nombre === nombreIn.value.toLowerCase() && us.apellido === apellidoIn.value.toLowerCase() && us.mail === emailIn.value.toLowerCase() && us.claveTarjetaDeCredito === claveTarjetaIn.value)) {
+                mensajesErrorRecap.push('Pago confirmado con su tarjeta de Credito! Enviando mail de confirmación de reservaa la casilla ' + emailIn.value)
+                errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+                mensajesErrorRecap = []
+
+
+            } else {
+                formularioCompleto = false;
+                alert("La password ingresada no concuerda con la registrada")
+            }
+        } else {
+            alert("error al procesar su pago la password es incorrecta")
+            formularioCompleto = false;
+        }
+
+    }
+
+    if (mercadoPagoCk.checked) {
+        //si el campo de la clave de 
+        if (campos.mp) {
+            //
+            if (listUsuariosRECAP.some(us => us.nombre === nombreIn.value.toLowerCase() && us.apellido === apellidoIn.value.toLowerCase() && us.mail === emailIn.value.toLowerCase() && us.mp === cbumpIn.value)) {
+                mensajesErrorRecap.push('Pago confirmado con MercadoPago! Enviando mail de confirmación de reserva a la casilla ' + emailIn.value)
+                errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+                mensajesErrorRecap = []
+
+
+            } else {
+                formularioCompleto = false;
+                alert("La password de mercadoPago ingresada no concuerda con la registrada")
+            }
+        } else {
+            alert("error al procesar su pago con MercadoPago la password es incorrecta")
+            formularioCompleto = false;
+        }
+    }
+
+    if (cajaAhorroCk.checked) {
+        //si el campo de la clave de 
+        if (campos.pinBanco) {
+            //
+            if (listUsuariosRECAP.some(us => us.nombre === nombreIn.value.toLowerCase() && us.apellido === apellidoIn.value.toLowerCase() && us.mail === emailIn.value.toLowerCase() && us.pincbu === pinBancoIn.value)) {
+                mensajesErrorRecap.push('Pago confirmado con Caja de Ahorro! Enviando mail de confirmación de reservaa la casilla ' + emailIn.value)
+                errorRecap.innerHTML = mensajesErrorRecap.join(', ')
+                mensajesErrorRecap = []
+
+
+            } else {
+                formularioCompleto = false;
+                alert("El pin bancario ingresado no concuerda con el registrado")
+            }
+        } else {
+            alert("error al procesar su pago con Caja de ahorro el Pin bancario es incorrecto")
+            formularioCompleto = false;
+        }
+    }
+
+    return formularioCompleto;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -201,163 +356,11 @@ formularioRecap.addEventListener('submit', (e) => {
 
 
 
-    console.log("la clave tarjeta"+claveTarjetaIn.value)
-    console.log("el campo cbu"+ cbumpIn.value)
-    console.log(tarjetaCk.checked)
-    console.log(mercadoPagoCk.checked)
-    console.log(cajaAhorroCk.checked)
-
-    console.log(nombreIn.value)
-    console.log(apellidoIn.value)
-    console.log(emailIn.value)
-
-    //si el formulario está vacio
-
-    if (nombreIn.value.length == 0 && apellidoIn.value.length == 0 && emailIn.value.length == 0) {
-        mensajesErrorRecap.push('Formulario vacio, por favor complete los campos correctamente para continuar')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        formularioRecap.reset()
-        return
+    if (validarFormulario()) {
+        alert("Formulario validado correctamente. Compra realizada")
+    } else {
+        alert("El formulario no se pudo validar. Compruebe los datos ingresados para realizar el pago")
     }
-
-    //si solo completó el nombre y puso comprar
-    else if (nombreIn.value.length != 0 && apellidoIn.value.length == 0 && emailIn.value.length == 0) {
-        mensajesErrorRecap.push('Por favor complete su apellido y correo electronico para continuar')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
-
-    //si solo completó el nombre y el apellido pero no el mail
-    else if (nombreIn.value.length != 0 && apellidoIn.value.length != 0 && emailIn.value.length == 0) {
-        console.log("estoy aca nombre y apellido sin mail")
-        mensajesErrorRecap.push('Por favor complete su correo electronico para continuar')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
-
-
-
-    //si solo completó el nombre y mail pero no el apellido
-    else if (nombreIn.value.length != 0 && apellidoIn.value.length == 0 && emailIn.value.length != 0) {
-        mensajesErrorRecap.push('Por favor complete su Apellido para continuar')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
-
-
-    //si solo completó el apellido y puso comprar
-    else if (nombreIn.value.length == 0 && apellidoIn.value.length != 0 && emailIn.value.length == 0) {
-        mensajesErrorRecap.push('Por favor complete su nombre y correo electronico para continuar')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
-
-    //si solo completó el apellido y el mail y puso comprar
-    else if (nombreIn.value.length == 0 && apellidoIn.value.length != 0 && emailIn.value.length != 0) {
-        mensajesErrorRecap.push('Por favor complete su nombre para continuar')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
-
-
-
-    //tarjeta pero no pone clave
-    else if (tarjetaCk.checked && claveTarjetaIn.value == " " && !mercadoPagoCk && !cajaAhorroCk) {
-        mensajesErrorRecap.push('Ingrese la clave de su tarjeta para continuar por favor')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
-
-    //tarjeta pero no pone clave
-    else if (mercadoPagoCk.checked && cbumpIn.value == " " && !tarjetaCk && !cajaAhorroCk) {
-        mensajesErrorRecap.push('Ingrese su CBU de MercadoPago para continuar por favor')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
-
-    //tarjeta pero no pone clave
-    else if (cajaAhorroCk.checked  && cbumpIn.value == " " && !mercadoPagoCk && !tarjetaCk) {
-        mensajesErrorRecap.push('Ingrese el de su caja de ahorro para continuar por favor')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
-
-
-
-
-
-
-
-    //si solo completó el mail y puso comprar
-    else if (nombreIn.value.length == 0 && apellidoIn.value.length == 0 && emailIn.value.length != 0) {
-        mensajesErrorRecap.push('Por favor complete su nombre y apellido para continuar')
-        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-        mensajesErrorRecap = []
-        return
-    }
-
-
-    //Acá viene el caso correcto
-
-    //si está todo completo confirma la compra --> validar con los datos de la lista de usuarios antes elaborada
-    else if (nombreIn.value.length != 0 && apellidoIn.value.length != 0 && emailIn.value.length != 0) {
-        if (campos.nombre && campos.apellido && campos.mail) {
-
-            if (tarjetaCk.checked === true && campos.passcard) {
-                console.log(tarjetaCk.checked)
-
-
-                if (tarjetaCk && claveTarjetaIn.value.length == 0) {
-                    mensajesErrorRecap.push('Ingrese la clave de su tarjeta para continuarrrrrr por favor')
-                    errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-                    mensajesErrorRecap = []
-                    return
-                } else {
-
-
-                    if (listUsuariosRECAP.some(us => us.nombre === nombreIn.value.toLowerCase() && us.apellido === apellidoIn.value.toLowerCase() && us.mail === emailIn.value.toLowerCase() && us.claveTarjetaDeCredito === claveTarjetaIn.value)) {
-                        mensajesErrorRecap.push('Pago confirmado con su tarjeta de Credito! Enviando mail de confirmación de reservaa la casilla ' + emailIn.value)
-                        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-                        mensajesErrorRecap = []
-
-
-
-                    } else {
-                        mensajesErrorRecap.push('Ha habido un problema en procesar el pago con su tarjeta de crédito, por favor revise sus datos o seleccione otro medio de pago y vuelva a intentarlo')
-                        errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-                        mensajesErrorRecap = []
-                    }
-                }
-            } else if (mercadoPagoCk.checked === true && campos.passcard) {
-                if (listUsuariosRECAP.some(us => us.nombre === nombreIn.value.toLowerCase() && us.apellido === apellidoIn.value.toLowerCase() && us.mail === emailIn.value.toLowerCase() && us.mp === cbumpIn.value)) {
-                    mensajesErrorRecap.push('Pago confirmado con Mercado Pago! Enviando mail de confirmación de reserva a la casilla ' + emailIn.value)
-                    errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-                    mensajesErrorRecap = []
-
-
-
-                } else {
-                    mensajesErrorRecap.push('Ha habido un problema en procesar el pago con MercadoPago, por favor revise sus datos o seleccione otro medio de pago y vuelva a intentarlo')
-                    errorRecap.innerHTML = mensajesErrorRecap.join(', ')
-                    mensajesErrorRecap = []
-                }
-
-            }
-        }
-    }
-
-
-
-
 
 });
 
@@ -367,20 +370,3 @@ inputs.forEach((input) => {
     input.addEventListener('keyup', validarCampos);
     input.addEventListener('blur', validarCampos);
 })
-
-/*
-
-const validarFormulario = () => {
-    console.log("nada")
-
-    var formularioValido = true;
-
-    if (nombreIn.value.length == 0 || nombreIn.value == null){
-        alert("debe ")
-    }
-
-
-
-}
-
-*/
