@@ -466,10 +466,10 @@ function validarFormulario() {
 
             if (campos.mailMercadoPago && campos.contraseñaMercadoPago && campos.CVUMercadoPago) {
                 alert("Todo correcto en mercadoPago")
-                if(listUsuarios.some(us => us.mail === mailMercadoPagoIn.value.toLowerCase())){
+                if (listUsuarios.some(us => us.mail === mailMercadoPagoIn.value.toLowerCase())) {
                     alert("usuario ya registrado en mercadoPago, ingrese otro correo de mercado pago para continuar")
-                    formularioCompleto=false;
-                }else{
+                    formularioCompleto = false;
+                } else {
                     alert("todo bien con el usuario")
                 }
 
@@ -511,10 +511,10 @@ function validarFormulario() {
 
             if (campos.mailBanco && campos.PinBanco && campos.CBUBanco) {
                 alert("Todo correcto comunicandonos con su banco")
-                if(listUsuarios.some(us => us.mail === mailBancoIn.value.toLowerCase())){
+                if (listUsuarios.some(us => us.mail === mailBancoIn.value.toLowerCase())) {
                     alert("Ya existe otro usuario registrado con ese Mail, ingrese otro correo de cuenta bancaria para continuar")
-                    formularioCompleto=false;
-                }else{
+                    formularioCompleto = false;
+                } else {
                     alert("todo bien con el usuario bancario")
                 }
 
@@ -620,9 +620,10 @@ const validarCampos = e => {
 const validarmailBanco = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.mailBanco = true;
-        errormailmailBancoMSJ.push("el campo MAIL BANCARIO ingresado es Valido")
-        errormailBancoDIV.innerHTML = errormailmailBancoMSJ.join(', ')
+        //errormailmailBancoMSJ.push("el campo MAIL BANCARIO ingresado es Valido")
+        //errormailBancoDIV.innerHTML = errormailmailBancoMSJ.join(', ')
         errormailmailBancoMSJ = []
+        errormailBancoDIV.innerHTML = ""
 
     } else {
         campos.mailBanco = false;
@@ -638,8 +639,9 @@ const validarmailBanco = (expresion, input) => {
 const validarPinBanco = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.PinBanco = true;
-        errorPasswordBancoMSJ.push("el campo PIN BANCARIO ingresado es Valido")
-        errorPasswordBancoDIV.innerHTML = errorPasswordBancoMSJ.join(', ')
+        errorPasswordBancoDIV.innerHTML = ""
+        //errorPasswordBancoMSJ.push("el campo PIN BANCARIO ingresado es Valido")
+        //errorPasswordBancoDIV.innerHTML = errorPasswordBancoMSJ.join(', ')
         errorPasswordBancoMSJ = []
 
     } else {
@@ -656,7 +658,8 @@ const validarPinBanco = (expresion, input) => {
 const validarnumCBUCajaAhorro = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.CBUBanco = true;
-        errornumCBUCajaAhorroMSJ.push("el campo CBU DE LA CAJA DE AHORRO es Valido")
+        errornumCBUCajaAhorroDIV.innerHTML = ""
+        //errornumCBUCajaAhorroMSJ.push("el campo CBU DE LA CAJA DE AHORRO es Valido")
         errornumCBUCajaAhorroDIV.innerHTML = errornumCBUCajaAhorroMSJ.join(', ')
         errornumCBUCajaAhorroMSJ = []
 
@@ -679,8 +682,9 @@ const validarNombre = (expresion, input) => {
     if (expresion.test(input.value)) {
         console.log("estoy acaaaaaaaa")
         campos.nombre = true;
-        erroresNombreMSJ.push("el campo NOMBRE es VALIDO")
-        errorNombreDIV.innerHTML = erroresNombreMSJ.join(', ')
+        //erroresNombreMSJ.push("el campo NOMBRE es VALIDO")
+        //errorNombreDIV.innerHTML = erroresNombreMSJ.join(', ')
+        errorNombreDIV.innerHTML = ""
         erroresNombreMSJ = []
 
     } else {
@@ -697,8 +701,9 @@ const validarNombre = (expresion, input) => {
 const validarApellido = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.apellido = true;
-        erroresApellidoMSJ.push("el campo APELLIDO es VALIDO")
-        errorApellidoDIV.innerHTML = erroresApellidoMSJ.join(', ')
+        //erroresApellidoMSJ.push("el campo APELLIDO es VALIDO")
+        //errorApellidoDIV.innerHTML = erroresApellidoMSJ.join(', ')
+        errorApellidoDIV.innerHTML = ""
         erroresApellidoMSJ = []
 
     } else {
@@ -715,8 +720,9 @@ const validarApellido = (expresion, input) => {
 const validarDireccionCalle = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.direccion_calle = true;
-        erroresNombreCalleMSJ.push("el campo NOMBRE DE CALLE es VALIDO")
-        errorCalleNombreDIV.innerHTML = erroresNombreCalleMSJ.join(', ')
+        //erroresNombreCalleMSJ.push("el campo NOMBRE DE CALLE es VALIDO")
+        //errorCalleNombreDIV.innerHTML = erroresNombreCalleMSJ.join(', ')
+        errorCalleNombreDIV.innerHTML = ""
         erroresNombreCalleMSJ = []
 
     } else {
@@ -733,9 +739,10 @@ const validarDireccionCalle = (expresion, input) => {
 const validarDireccionAltura = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.direccion_numero = true;
-        erroresNumeroCalleMSJ.push("el campo NUMERO DE CALLE ingresado es VALIDO")
-        errorCalleNumeroDIV.innerHTML = erroresNumeroCalleMSJ.join(', ')
+        //erroresNumeroCalleMSJ.push("el campo NUMERO DE CALLE ingresado es VALIDO")
+        //errorCalleNumeroDIV.innerHTML = erroresNumeroCalleMSJ.join(', ')
         erroresNumeroCalleMSJ = []
+        errorCalleNumeroDIV.innerHTML = ""
 
     } else {
         campos.direccion_calle = false;
@@ -751,8 +758,9 @@ const validarDireccionAltura = (expresion, input) => {
 const validarMail = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.mail = true;
-        erroresMailMSJ.push("el campo MAIL ingresado es Valido")
-        errorMailDIV.innerHTML = erroresMailMSJ.join(', ')
+        //erroresMailMSJ.push("el campo MAIL ingresado es Valido")
+        //errorMailDIV.innerHTML = erroresMailMSJ.join(', ')
+        errorMailDIV.innerHTML = ""
         erroresMailMSJ = []
 
     } else {
@@ -769,8 +777,9 @@ const validarMail = (expresion, input) => {
 const validarPassword = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.password = true;
-        erroresPasswordMSJ.push("el campo PASSWORD ingresado es Valido")
-        errorPasswordDIV.innerHTML = erroresPasswordMSJ.join(', ')
+        //erroresPasswordMSJ.push("el campo PASSWORD ingresado es Valido")
+        //errorPasswordDIV.innerHTML = erroresPasswordMSJ.join(', ')
+        errorPasswordDIV.innerHTML = ""
         erroresPasswordMSJ = []
 
     } else {
@@ -787,8 +796,9 @@ const validarPassword = (expresion, input) => {
 const validarNombreTarjeta = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.nombreEnTarjeta = true;
-        erroresNombreTarjetaCreditodMSJ.push("el campo Nombre tarjeta de credito es valido")
-        errorNombreTarjetaCreditoDIV.innerHTML = erroresNombreTarjetaCreditodMSJ.join(', ')
+        //erroresNombreTarjetaCreditodMSJ.push("el campo Nombre tarjeta de credito es valido")
+        //errorNombreTarjetaCreditoDIV.innerHTML = erroresNombreTarjetaCreditodMSJ.join(', ')
+        errorNombreTarjetaCreditoDIV.innerHTML = ""
         erroresNombreTarjetaCreditodMSJ = []
 
     } else {
@@ -805,8 +815,9 @@ const validarNombreTarjeta = (expresion, input) => {
 const validarNumeroTarjeta = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.numeroTarjeta = true;
-        erroresNumeroTarjetaCreditodMSJ.push("el campo Numero tarjeta de credito tiene formato valido")
-        errorNumeroTarjetaCreditoDIV.innerHTML = erroresNumeroTarjetaCreditodMSJ.join(', ')
+        //erroresNumeroTarjetaCreditodMSJ.push("el campo Numero tarjeta de credito tiene formato valido")
+        //errorNumeroTarjetaCreditoDIV.innerHTML = erroresNumeroTarjetaCreditodMSJ.join(', ')
+        errorNumeroTarjetaCreditoDIV.innerHTML = ""
         erroresNumeroTarjetaCreditodMSJ = []
 
     } else {
@@ -836,8 +847,9 @@ const validarMesTarjeta = (expresion, input) => {
 
         if (expresion.test(input.value)) {
             campos.vencimientoTarjetaMes = true;
-            erroresVencimientoTarjetaCreditodMSJ.push("el campo MES VENCIMIENTO de credito tiene formato valido")
-            errorVencimientoTarjetaCreditoDIV.innerHTML = erroresVencimientoTarjetaCreditodMSJ.join(', ')
+            errorVencimientoTarjetaCreditoDIV.innerHTML = ""
+            //erroresVencimientoTarjetaCreditodMSJ.push("el campo MES VENCIMIENTO de credito tiene formato valido")
+            //errorVencimientoTarjetaCreditoDIV.innerHTML = erroresVencimientoTarjetaCreditodMSJ.join(', ')
             erroresVencimientoTarjetaCreditodMSJ = []
 
         } else {
@@ -857,8 +869,9 @@ const validarMesTarjeta = (expresion, input) => {
 const validarañoTarjeta = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.vencimientoTarjetaAño = true;
-        erroresVencimientoTarjetaCreditodMSJ.push("el campo año VENCIMIENTO de tarjeta de credito tiene formato valido")
-        errorVencimientoTarjetaCreditoDIV.innerHTML = erroresVencimientoTarjetaCreditodMSJ.join(', ')
+        //erroresVencimientoTarjetaCreditodMSJ.push("el campo año VENCIMIENTO de tarjeta de credito tiene formato valido")
+        //errorVencimientoTarjetaCreditoDIV.innerHTML = erroresVencimientoTarjetaCreditodMSJ.join(', ')
+        errorVencimientoTarjetaCreditoDIV.innerHTML = ""
         erroresVencimientoTarjetaCreditodMSJ = []
 
     } else {
@@ -875,8 +888,9 @@ const validarañoTarjeta = (expresion, input) => {
 const validarCVVTarjeta = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.cvvTarjeta = true;
-        erroresCVVTarjetaCreditodMSJ.push("el campo CVV de tarjeta de credito tiene formato valido")
-        errorCVVTarjetaCreditoDIV.innerHTML = erroresCVVTarjetaCreditodMSJ.join(', ')
+        errorCVVTarjetaCreditoDIV.innerHTML = ""
+        //erroresCVVTarjetaCreditodMSJ.push("el campo CVV de tarjeta de credito tiene formato valido")
+        //errorCVVTarjetaCreditoDIV.innerHTML = erroresCVVTarjetaCreditodMSJ.join(', ')
         erroresCVVTarjetaCreditodMSJ = []
 
     } else {
@@ -895,8 +909,9 @@ const validarCVVTarjeta = (expresion, input) => {
 const validarMailMercadoPago = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.mailMercadoPago = true;
-        errormailMercadoPagodMSJ.push("el campo MAIL de Mercado Pago ingresado es Valido")
-        errormailMercadoPagoDIV.innerHTML = erroresMailMSJ.join(', ')
+        errormailMercadoPagoDIV.innerHTML = ""
+        //errormailMercadoPagodMSJ.push("el campo MAIL de Mercado Pago ingresado es Valido")
+        //errormailMercadoPagoDIV.innerHTML = erroresMailMSJ.join(', ')
         errormailMercadoPagodMSJ = []
 
     } else {
@@ -913,8 +928,9 @@ const validarMailMercadoPago = (expresion, input) => {
 const validarPasswordMercadoPago = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.contraseñaMercadoPago = true;
-        errorpasswordMercadoPagoMSJ.push("el campo CONTRASEÑA de Mercado Pago ingresado es Valido")
-        errorpasswordMercadoPagoDIV.innerHTML = errorpasswordMercadoPagoMSJ.join(', ')
+        errorpasswordMercadoPagoDIV.innerHTML = ""
+        //errorpasswordMercadoPagoMSJ.push("el campo CONTRASEÑA de Mercado Pago ingresado es Valido")
+        //errorpasswordMercadoPagoDIV.innerHTML = errorpasswordMercadoPagoMSJ.join(', ')
         errorpasswordMercadoPagoMSJ = []
 
     } else {
@@ -931,8 +947,9 @@ const validarPasswordMercadoPago = (expresion, input) => {
 const validarCVUMercadoPago = (expresion, input) => {
     if (expresion.test(input.value)) {
         campos.CVUMercadoPago = true;
-        errorNumCVUMercadoPagoMSJ.push("el campo CVU DE MERCADO Pago ingresado es Valido")
-        errorNumCVUMercadoPagoDIV.innerHTML = errorNumCVUMercadoPagoMSJ.join(', ')
+        errorNumCVUMercadoPagoDIV.innerHTML = ""
+        //errorNumCVUMercadoPagoMSJ.push("el campo CVU DE MERCADO Pago ingresado es Valido")
+        //errorNumCVUMercadoPagoDIV.innerHTML = errorNumCVUMercadoPagoMSJ.join(', ')
         errorNumCVUMercadoPagoMSJ = []
 
     } else {
