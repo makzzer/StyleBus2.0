@@ -459,7 +459,7 @@ function validarFormulario() {
                 alert("Por favor complete la contraseña de mercadoPago para continuar")
                 if (numCVUMercadoPagoIn.value.length == 0 || numCVUMercadoPagoIn.value.value == null) {
                     formularioCompleto = false;
-                    alert("Por favor complete Su PASSWORD DE MERCADOPAGO para continuar")
+                    alert("Por favor complete Su CVU de MERCADOPAGO para continuar")
                 }
             }
             //si está completo el mail
@@ -492,6 +492,50 @@ function validarFormulario() {
 
     }
 
+    //Si seleccionó Caja de Ahorro
+    if (cajaAhorroCk.checked) {
+
+        //si no está completo el mail
+        if (mailBancoIn.value.length == 0 || mailBancoIn.value == null) {
+            formularioCompleto = false;
+            alert("Por favor complete el MAIL REGISTRADO EN SU BANCO para continuar")
+            if (PinBancoIn.value.length == 0 || PinBancoIn.value == null) {
+                formularioCompleto = false;
+                alert("Por favor complete el PIN DE SU BANCO para continuar")
+                if (numCBUCajaAhorroIn.value.length == 0 || numCBUCajaAhorroIn.value.value == null) {
+                    formularioCompleto = false;
+                    alert("Por favor complete el cbu de su banco para continuar")
+                }
+            }
+            //si está completo el mail
+        } else {
+
+            if (campos.mailBanco && campos.PinBanco && campos.CBUBanco) {
+                alert("Todo correcto comunicandonos con su banco")
+                if(listUsuarios.some(us => us.mail === mailBancoIn.value.toLowerCase())){
+                    alert("Ya existe otro usuario registrado con ese Mail, ingrese otro correo de cuenta bancaria para continuar")
+                    formularioCompleto=false;
+                }else{
+                    alert("todo bien con el usuario bancario")
+                }
+
+            } else {
+                formularioCompleto = false;
+                alert("Error confirmando sus datos de cuenta bancaria, chekee los campos erroneos para continuar")
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+    }
 
 
 
