@@ -291,7 +291,7 @@ const dibujarFooter = (carrito) => {
 
 
 function hayCupo(cupo, cantPasajeros) {
-  if (cupo - cantPasajeros > 0 && cupo - cantPasajeros >= cantPasajeros) {
+  if (cupo - cantPasajeros >= 0 || cupo - cantPasajeros > cantPasajeros) {
     return true;
   }
   return false;

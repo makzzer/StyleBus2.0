@@ -218,10 +218,10 @@ function validarFormulario() {
         formularioCompleto = false;
     } else {
         if (campos.nombre) {
-            alert("nombre correcto")
+            console.log("nombre correcto")
         } else {
             formularioCompleto = false
-            console.log(" Por favor complete el nombre correctamente para continuar")
+            console.log("Por favor complete el nombre correctamente para continuar")
         }
 
 
@@ -231,7 +231,7 @@ function validarFormulario() {
         formularioCompleto = false;
     } else {
         if (campos.apellido) {
-            alert("APELLIDO correcto")
+            console.log("APELLIDO correcto")
         } else {
             formularioCompleto = false
             console.log(" Por favor complete el apellido correctamente para continuar")
@@ -245,10 +245,10 @@ function validarFormulario() {
         formularioCompleto = false;
     } else {
         if (campos.mail) {
-            alert("MAIL correcto")
+            console.log("MAIL correcto")
         } else {
             formularioCompleto = false
-            console.log(" Por favor complete el MAIL correctamente para continuar")
+            alert("Por favor complete el MAIL correctamente para continuar")
         }
 
 

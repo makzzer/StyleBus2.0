@@ -207,7 +207,7 @@ const campos = {
 const expresiones = {
     usuario: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // EMAIL VALIDO
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-    password: /^.{7,20}$/, // 5 a 20 digitos.
+    password: /^.{7,20}$/, // 7 a 20 digitos.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^\d{7,14}$/, // 7 a 14 numeros.
     numTarjeta: /^\d{16}$/, // 16 numeros.
@@ -298,22 +298,26 @@ function validarFormulario() {
             formularioCompleto = false
             console.log(" Por favor complete el nombre correctamente para continuar")
         }
+
+
     } if (apellidoccIn.value.length == 0 || apellidoccIn.value == null) {
         alert("debe completar el Apellido para continuar")
         formularioCompleto = false
     } else {
         if (campos.apellido) {
-            alert("el campo Apellido está ok")
+            console.log("el campo Apellido está ok")
         } else {
-            alert("el campo Apellido está completo pero no tiene un formato válido")
+            console.log("el campo Apellido está completo pero no tiene un formato válido")
             formularioCompleto = false;
         }
-    } if (direccionCalleIn.value.length == 0 || direccionCalleIn.value == null) {
+    }
+
+    if (direccionCalleIn.value.length == 0 || direccionCalleIn.value == null) {
         alert("debe completar el nombre de su calle para continuar")
         formularioCompleto = false
     } else {
         if (campos.direccion_calle) {
-            alert("el campo nombre de calle está ok")
+            console.log("el campo nombre de calle está ok")
         } else {
             alert("el campo nombre de calle está completo pero no tiene un formato válido")
             formularioCompleto = false
@@ -323,7 +327,7 @@ function validarFormulario() {
         formularioCompleto = false
     } else {
         if (campos.direccion_numero) {
-            alert("el campo numero de la calle ok")
+            console.log("el campo numero de la calle ok")
         } else {
             alert("el campo altura de calle está completo pero no tiene un formato válido")
             formularioCompleto = false
@@ -362,7 +366,7 @@ function validarFormulario() {
             if (listUsuarios.some(us => us.mail === mailIn.value.toLowerCase())) {
                 alert("El mail ingresado ya se encuentra registrado")
                 formularioCompleto = false
-                alert("el campo mail está ok")
+                console.log("el campo mail está ok")
             } else {
                 console.log("mail aceptado")
             }
@@ -375,7 +379,7 @@ function validarFormulario() {
         formularioCompleto = false
     } else {
         if (campos.password) {
-            alert("Password Correcta")
+            console.log("Password Correcta")
         } else {
             alert("La password ingresada no cumple con los parametros de seguridad")
             formularioCompleto = false
@@ -412,7 +416,7 @@ function validarFormulario() {
                 }
             }
         } else {
-            alert("paso la validacion voy a la parte de la tarjeta")
+            alert("Validando la informacion ingresada de tarjeta")
 
             //si estan todos los campos son y validos
             if (campos.nombreEnTarjeta && campos.numeroTarjeta && campos.vencimientoTarjetaAño && campos.vencimientoTarjetaMes && campos.cvvTarjeta) {
@@ -420,7 +424,7 @@ function validarFormulario() {
 
                 //si la tarjeta no está vencida
                 if (!tarjetaVencida(fechaVencimientoTarjetaAñoIN.value, fechaVencimientoTarjetaMESIn.value)) {
-                    alert("todo en orden , agregamos el medio de pago de la tarjeta de credito")
+                    console.log("todo en orden , agregamos el medio de pago de la tarjeta de credito")
                 } else {
                     //si la tarjeta está vencida
                     alert("Tarjeta vencida, ingrese otra tarjeta o seleccione otro medio de pago para continuar")
@@ -465,12 +469,12 @@ function validarFormulario() {
         } else {
 
             if (campos.mailMercadoPago && campos.contraseñaMercadoPago && campos.CVUMercadoPago) {
-                alert("Todo correcto en mercadoPago")
+                alert("Conectandonos con MercadoPago para validar sus datos")
                 if (listUsuarios.some(us => us.mail === mailMercadoPagoIn.value.toLowerCase())) {
                     alert("usuario ya registrado en mercadoPago, ingrese otro correo de mercado pago para continuar")
                     formularioCompleto = false;
                 } else {
-                    alert("todo bien con el usuario")
+                    console.log("todo bien con el usuario")
                 }
 
             } else {
@@ -510,12 +514,12 @@ function validarFormulario() {
         } else {
 
             if (campos.mailBanco && campos.PinBanco && campos.CBUBanco) {
-                alert("Todo correcto comunicandonos con su banco")
+                alert("Conexion correcta con su banco")
                 if (listUsuarios.some(us => us.mail === mailBancoIn.value.toLowerCase())) {
                     alert("Ya existe otro usuario registrado con ese Mail, ingrese otro correo de cuenta bancaria para continuar")
                     formularioCompleto = false;
                 } else {
-                    alert("todo bien con el usuario bancario")
+                    console.log("todo bien con el usuario bancario")
                 }
 
             } else {
